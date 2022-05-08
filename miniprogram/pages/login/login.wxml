@@ -1,0 +1,15 @@
+<view class="container" style="margin-top: {{margintop}}rpx;">
+  <view class="head">Welcome Login!</view>
+  <view class="subhead">欢迎使用校享空间</view>
+  <x-phone-input class="input input-phone" bindinputchange="handlePhoneInputChange" input="{{phone}}"></x-phone-input>
+  <x-pass-input class="input input-pass" bindinputchange="handlePassInputChange" input="{{password}}"></x-pass-input>
+  <view class="lable lable_hi">Hi～如果您首次使用校享空间</view>
+  <view class="lable lable_account">请先前<text class="strong activate">激活/注册账号</text></view>
+  <block wx:if="{{verify}}"><view class="login login-pass" bindtap="handleTapLoginButton">登录</view></block>
+  <block wx:else><view class="login">登录</view></block>
+  <view class="agree">
+    <view class="agree-btn {{agree?'agree-btn-clicked':''}}" bindtap="handleTapAgreeButton">✓</view>
+    <text class="lable">同意<text class="strong">《校享空间用户协议》</text>
+    </text>
+  </view>
+</view>

@@ -17,3 +17,18 @@ const formatNumber = (n: number) => {
   const s = n.toString()
   return s[1] ? s : '0' + s
 }
+
+
+export const countDown = (callback: Function, second: number) => {
+  return new Promise(resolve => {
+    var i = second - 1;
+    var myInter = setInterval(() => {
+      if (i < 1) {
+        resolve(true)
+        clearInterval(myInter);
+      }
+      callback();
+      i--;
+    }, 1000);
+  })
+}

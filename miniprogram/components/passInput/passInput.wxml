@@ -1,0 +1,21 @@
+<view class="custom">
+  <block wx:if="{{inputFucused}}">
+    <view class="lable-group">
+      <view class="lable-group-item lable">密码</view>
+      <view class="lable-group-item lable">无法登录？</view>
+    </view>
+  </block>
+  <div class="input-container">
+    <input class="input" placeholder="{{inputFucused ? '' : '密码'}}" maxlength="21" confirm-type="next"
+      password="{{!showPass}}"
+      value="{{account}}" bindinput="handleInput" bindfocus="handleFocus" bindblur="handleBlur"
+    />
+    <block wx:if="{{!inputFucused}}"><view class="btn-unable lable">无法登录？</view></block>
+    <block wx:if="{{inputFucused}}">
+      <view class="btn-pass" bindtap="handleShowPassClick">
+        <block wx:if="{{!showPass}}"><image class="btn-pass-img" src="../../image/unpass.png"/></block>
+        <block wx:else><image class="btn-pass-img" src="../../image/pass.png"/></block>
+      </view>
+    </block>
+  </div>
+</view>

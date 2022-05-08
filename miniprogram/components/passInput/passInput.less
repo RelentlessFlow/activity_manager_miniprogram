@@ -1,0 +1,42 @@
+.custom {
+  display: flex;
+  flex-direction: column;
+  .lable-group { // 上面的提示
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30rpx;
+    .lable-group-item {}
+    .lable {
+      font-size: 32rpx;
+      font-weight: 500;
+    }
+  }
+  .input-container { // 下方输入框
+    position: relative;
+    .input {
+      border-bottom: .1rpx solid #b1aeae;
+      padding-bottom: 20rpx;
+      color: #333333;
+      font-size: 30rpx;
+      font-weight: 550;
+    }
+    .input-placeholder {
+      color: #b1aeae;
+    }
+    .btn-unable {
+      position: absolute;
+      top: 0; right: 0;
+    }
+    .btn-pass {
+      position: absolute;
+      top: 0; right: 30rpx;
+      width: 50rpx;
+      height: 50rpx;
+      z-index: 100;
+      .btn-pass-img {
+        width: inherit;
+        height: inherit;
+      }      
+    }
+  }
+}

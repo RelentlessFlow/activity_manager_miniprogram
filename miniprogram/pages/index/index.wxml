@@ -1,4 +1,5 @@
 <!--index.wxml-->
 <view class="container">
-  index 
+  <x-phone-input bindinputchange="handleHello"></x-phone-input>
+  <!-- <x-pass-input bindinputchange="handleHello"></x-pass-input> -->
 </view>

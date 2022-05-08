@@ -1,0 +1,45 @@
+.container {
+	justify-content: space-between;
+	.top {
+    position: relative;
+		image {
+			width: 750rpx;
+			height: 1125rpx;
+    }
+    .tap {
+      position: absolute;
+      top: 200rpx;
+      right: 80rpx;
+      width: 120rpx;
+      height: 50rpx;
+      text-align: center;
+      line-height: 50rpx;
+      border-radius: 25rpx;
+      color: #ffffff;
+      font-size: 30rpx;
+      background-color: #0000001e;
+    }
+	}
+
+	.bottom {
+		display: flex;
+		flex-grow: 1;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		.logo {
+			width: 500rpx;
+			height: calc(500rpx * 140 / 566);
+			image {
+				width: inherit;
+				height: inherit;
+			}
+		}
+		.desc {
+			margin-top: 3rpx;
+			font-weight: 300;
+			font-size: 40rpx;
+			color: #707070;
+		}
+	}
+}
