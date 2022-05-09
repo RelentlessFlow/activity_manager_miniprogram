@@ -1,0 +1,8 @@
+<view class="title-container">
+  <view class="title-container-title">
+    <slot name="title"></slot>
+  </view>
+  <view class="title-container-desc">
+    <slot name="desc"></slot>
+  </view>
+</view>

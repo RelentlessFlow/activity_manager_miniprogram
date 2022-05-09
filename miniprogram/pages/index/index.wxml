@@ -1,5 +1,43 @@
-<!--index.wxml-->
-<view class="container">
-  <x-phone-input bindinputchange="handleHello"></x-phone-input>
-  <!-- <x-pass-input bindinputchange="handleHello"></x-pass-input> -->
-</view>
+<scroll-view class="container" enable-flex="true" style="padding-top: {{paddingtop}}rpx;padding-bottom: {{paddingbottom}}rpx;" scroll-y="true">
+  <!-- 搜索框 -->
+  <view class="search-container">
+    <x-search class="search" input="{{searchInput}}" 
+      bindinputchange="handleSearchInput"
+      placeholder="{{searchPlaceholder}}" />
+  </view>
+  <!-- 顶部按钮组 -->
+  <view class="top-group">
+    <x-top-button class="top-group-item">活动</x-top-button>
+    <x-top-button class="top-group-item">
+      <text class="strong">通知</text>
+    </x-top-button>
+    <x-top-button class="top-group-item">平台精品</x-top-button>
+  </view>
+  <x-swiper class="swiper" /><!-- 轮播图 -->
+  <!-- 热门活动 -->
+  <view class="hot-gourp">
+    <block wx:for="{{hots}}" wx:key="id">
+      <view class="hot-gourp-item">
+        <view class="hot-gourp-item-icon" style="background-color: {{item.color}};"><image src="{{item.icon}}" /></view>
+        <view class="hot-gourp-item-desc">{{item.title}}</view>
+      </view>
+    </block>
+  </view>
+  <!-- 平台专题 -->
+  <view class="theme">
+    <x-title>
+      <text slot="title">平台专题</text>
+      <text slot="desc">为你推荐热门平台专题活动</text>
+    </x-title>
+    <x-theme-card theme="{{theme}}"/>
+  </view>
+  
+  <!-- 校内活动 -->
+  <view class="activity">
+    <x-title>
+      <text slot="title">校内活动</text>
+      <text slot="desc">为你推荐热门校内活动</text>
+    </x-title>
+    <x-activity-list activities="{{activities}}"></x-activity-list>
+  </view>
+</scroll-view>

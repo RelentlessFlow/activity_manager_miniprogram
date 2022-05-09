@@ -1,4 +1,3 @@
-// pages/login/login.ts
 Page({
   data: {
     margintop: 0,
@@ -12,6 +11,8 @@ Page({
       this.setData({ 'margintop': resolve.safeArea.top })
     })
   },
+  onReady() {
+  },
   handlePhoneInputChange: function (e: any) { // 处理手机号输入
     this.setData({ phone: e.detail.value }, this.handleVerifyPass)
   },
@@ -22,15 +23,21 @@ Page({
     const { agree } = this.data
     this.setData({ agree: !agree }, this.handleVerifyPass)
   },
-  handleTapLoginButton: function () { // 登录按钮点击逻辑
-    console.log('ccc')
-  },
   handleVerifyPass: function () { // 表单验证通过(前台)
     let { phone, password, agree } = this.data
-    if (phone != "" && password != "" && agree) {
-      this.setData({ verify: true })
+    let pattern = new RegExp("^1[34578][0-9]{9}$", 'i'); // 手机号正则匹配
+    if (phone != "" && pattern.test(phone) && password != "" && agree) {
+    this.setData({ verify: true })
     } else {
       this.setData({ verify: false })
+    }
+  },
+  handleTapLoginButton: function () { // 登录按钮点击逻辑
+    const result = { value : true, desc: '成功' }
+    if(!result.value) {
+      wx.showToast({ title: `${result.desc}`, icon: 'error', duration: 2000 })
+    } else {
+      wx.navigateTo({"url": '../index/index'})
     }
   },
 })

@@ -1,0 +1,9 @@
+<view class="search">
+  <input class="search-input"
+    placeholder-class="search-input-placeholder" placeholder="{{placeholder}}" 
+    value="{{input}}" bindinput="handleInputChange"
+  />
+  <view class="icon">
+    <image src="../../image/search.png" />
+  </view>
+</view>

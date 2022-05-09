@@ -1,0 +1,3 @@
+<view class="top-button">
+<slot></slot>{{text}}
+</view>

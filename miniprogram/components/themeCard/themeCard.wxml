@@ -1,0 +1,10 @@
+<view class="theme-card">
+  <view class="theme-card-img">
+    <image src="{{theme.cover}}" />
+  </view>
+  <view class="theme-card-content">
+    <view class="theme-card-content-title">{{theme.title}}</view>
+    <view class="theme-card-content-time">专题事件：{{theme.date.start}} 至 {{theme.date.end}}</view>
+    <view class="theme-card-content-count">专题活动数量：{{theme.count}}</view>
+  </view>
+</view>
