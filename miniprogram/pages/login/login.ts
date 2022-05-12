@@ -1,18 +1,12 @@
 Page({
   data: {
-    margintop: 0,
     phone: "",
     password: "",
     agree: false,
     verify: false,
   },
-  onLoad() {
-    wx.getSystemInfo().then(resolve => {
-      this.setData({ 'margintop': resolve.safeArea.top })
-    })
-  },
-  onReady() {
-  },
+  onLoad() {},
+  onReady() {},
   handlePhoneInputChange: function (e: any) { // 处理手机号输入
     this.setData({ phone: e.detail.value }, this.handleVerifyPass)
   },

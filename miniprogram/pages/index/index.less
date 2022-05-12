@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   .search-container { // 搜索框
     margin-top: 50rpx; margin-left: 20rpx;
     .search { width: 450rpx; height: 20rpx; border-radius: 40rpx; }
@@ -12,8 +13,6 @@
     display: flex;
     margin-top: 60rpx;
     height: 30%;
-    padding-bottom: 40rpx;
-    border-bottom: .1rpx solid #cccccc;
     .hot-gourp-item{
       display: flex;
       flex-direction: column;
@@ -36,7 +35,18 @@
     }
   }
   .theme { // 专题
-    margin-top: 60rpx; margin-left: 40rpx; } 
+    margin-top: 60rpx; margin-left: 40rpx;
+  } 
   .activity { // 校内活动列表
-    margin-top: 60rpx; margin-left: 40rpx; }
+    margin-top: 60rpx; margin-left: 40rpx; 
+    .activity-list {margin-top: 40rpx;}
+  }
+  .release { // 发布活动
+    position: fixed;
+    width: 200rpx; height: 78rpx; box-shadow: #cccccc 5rpx 5rpx 5rpx;
+    border-radius: 35rpx;
+    text-align: center; line-height: 78rpx;
+    background-color: #ffffff;
+    bottom: 50rpx ; left: calc(50% - 100rpx);
+  }
 }

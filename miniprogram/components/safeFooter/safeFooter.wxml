@@ -1,0 +1,3 @@
+<view class="safe-footer" style="margin-bottom: {{marginbottom}}rpx;">
+<slot/>
+</view>

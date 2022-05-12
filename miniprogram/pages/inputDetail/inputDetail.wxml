@@ -1,0 +1,18 @@
+
+<view class="container border-top">
+  <x-safe-header bindtapback="handleTapBack"/>
+  <view class="list border-box column" enable-flex="true">
+    <view class="list-item flex align-center border-bottom">
+      <input class="list-item-right flex1" value="苑紫清" /> 
+    </view>
+  </view>
+  <view class="list border-box flex1 column" enable-flex="true">
+    <view class="list-item flex align-center">
+      <view class="list-item-right flex1">
+        <text></text>
+      </view>
+    </view>
+  </view>
+  <view class="footer text-center box-shadow">保存</view>
+  <x-safe-footer/>
+</view>

@@ -1,0 +1,62 @@
+
+<view class="container border-top">
+  <scroll-view class="list border-box flex1 column" enable-flex="true">
+    <view class="list-item flex align-center border-bottom">
+      <view class="list-item-left flex1">头像</view>
+      <view class="list-item-right flex">
+        <view class="list-item-right-avatar flex center border-circle">
+          <image src="../../image/avatar.png" />
+        </view>
+      </view>
+    </view>
+    <view class="list-item flex align-center border-bottom" data-value="{{user.name.value}}" data-property="name" bindtap="handleItemTap">
+      <view class="list-item-left flex1">姓名</view>
+      <view class="list-item-right flex">{{user.name.value}}</view>
+    </view>
+    <view class="list-item flex align-center border-bottom" data-value="{{user.nickName.value}}" data-property="nickName" bindtap="handleItemTap">
+      <view class="list-item-left flex1">昵称</view>
+      <view class="list-item-right flex">{{user.nickName.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+    </view>
+    <view class="list-item flex align-center border-bottom" data-value="{{user.introduce.value}}" data-property="introduce" bindtap="handleItemTap">
+      <view class="list-item-left flex1">简介</view>
+      <view class="list-item-right flex">{{user.introduce.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+    </view>
+    <view class="list-item flex align-center border-bottom" data-value="{{user.favorite.value}}" data-property="favorite" bindtap="handleItemTap">
+      <view class="list-item-left flex1">兴趣</view>
+      <view class="list-item-right flex">{{user.favorite.value}}</view>
+    </view>
+    <view class="list-item flex align-center border-bottom" data-value="{{user.birthday.value}}" data-property="birthday" bindtap="handleItemTap">
+      <view class="list-item-left flex1">生日</view>
+      <view class="list-item-right flex">{{user.birthday.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+    </view>
+    <view class="list-item flex align-center border-bottom" data-value="{{user.idCard.value}}" data-property="idCard" bindtap="handleItemTap">
+      <view class="list-item-left flex1">身份证号（证件号）</view>
+      <view class="list-item-right flex">{{user.idCard.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+    </view>
+    <view class="list-item flex align-center border-bottom" data-value="{{user.school.value}}" data-property="school" bindtap="handleItemTap">
+      <view class="list-item-left flex1">学校</view>
+      <view class="list-item-right flex">{{user.school.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+    </view>
+    <view class="list-item flex align-center border-bottom" data-value="{{user.major.value}}" data-property="major" bindtap="handleItemTap">
+      <view class="list-item-left flex1">专业</view>
+      <view class="list-item-right flex">{{user.major.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+    </view>
+    <view class="list-item flex align-center border-bottom" data-value="{{user.nation.value}}" data-property="nation" bindtap="handleItemTap">
+      <view class="list-item-left flex1">民族</view>
+      <view class="list-item-right flex">{{user.nation.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+    </view>
+    
+    <view class="list-item flex align-center border-bottom" data-value="{{user.nation.value}}" data-property="nation" bindtap="handleItemTap">
+      <view class="list-item-left flex1">所在地</view>
+      <view class="list-item-right flex">{{user.location.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+    </view>
+    <view class="list-item flex align-center border-bottom" data-value="{{user.hometown.value}}" data-property="hometown" bindtap="handleItemTap">
+      <view class="list-item-left flex1">家乡</view>
+      <view class="list-item-right flex">{{user.hometown.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+    </view>
+    
+  </scroll-view>
+  <view class="footer text-center box-shadow" bindtap="handleTapSave">保存</view>
+  <x-safe-footer/>
+</view>
+  

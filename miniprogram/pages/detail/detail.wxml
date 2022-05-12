@@ -1,0 +1,170 @@
+<!-- 发布活动 -->
+<view class="container">
+  <!-- 顶部按钮组 -->
+  <view class="button-group" style="background-color: rgba(51, 51, 51, {{opacity}});">
+    <view class="button-group-item cancel" bindtap="handleTapCancel">返回</view>
+  </view>
+  <!-- 预览 -->
+  <view class="preview">
+    <view class="preview-shade" />
+    <view class="preview-cover">
+      <image src="{{cover}}"></image>
+      <view class="preview-cover-content">
+        <view class="preview-cover-content-cantainer">
+          <view class="preview-cover-content-cantainer-name">{{name?name:'活动标题'}}</view>
+          <view class="preview-cover-content-cantainer-desc">
+            <view class="col">
+              <view class="preview-cover-content-cantainer-left">
+                <image src="../../image/location.png" />{{location.name?location.name:'活动位置'}}
+              </view>
+              <view class="preview-cover-content-cantainer-right">
+                {{category?category:'活动分类'}}
+              </view>
+            </view>
+          </view>
+          <view class="preview-cover-content-cantainer-desc">
+            <view class="col">
+              <view class="preview-cover-content-cantainer-left">
+                <image src="../../image/clock-fill.png" />{{'活动时间'}}
+              </view>
+              <view class="preview-cover-content-cantainer-right time">
+                {{time.start.date}}-{{time.start.time}}~{{time.end.date}}-{{time.end.time}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 页内导航 -->
+  <view class="switch">
+    <view class="switch-item {{navIndex === 0 ? 'switch-item-active' : ''}}" data-index="0" bindtap="handleSwitchTap">摘要</view>
+    <view class="switch-item {{navIndex === 1 ? 'switch-item-active' : ''}}" data-index="1" bindtap="handleSwitchTap">信息</view>
+    <view class="switch-item {{navIndex === 2 ? 'switch-item-active' : ''}}" data-index="2" bindtap="handleSwitchTap">人员</view>
+    <view class="switch-item {{navIndex === 3 ? 'switch-item-active' : ''}}" data-index="3" bindtap="handleSwitchTap">位置</view>
+  </view>
+
+  <!-- 活动 -->
+  <block wx:if="{{navIndex === 0}}">
+    <!-- 表单 -->
+    <view class="input" style="padding-bottom: 100rpx;" >
+      <view class="input-group">
+        <view class="input-group-item">
+          <x-input value="{{name}}" bindinputchange="handleNameInputChange" hiddenCount="{{true}}" hiddenLable="{{false}}" placeholder="此处输入活动标题" lable="活动标题" ph-class="ph-class" ph-active-class="ph-active-class" text-class="text-class" disable="{{true}}"/>
+        </view>
+        <view class="input-group-item">
+          <x-textarea class="input-group-item-area" value="{{desc}}" bindinputchange="handleDescInputChange" hiddenCount="{{true}}" hiddenLable="{{false}}" placeholder="此处输入活动摘要" lable="活动摘要" text-class="text-area-class" input="{{desc}}" maxlength="500" defaultTextAreaHeight="200" disable="{{true}}">
+          </x-textarea>
+        </view>
+      </view>
+    </view>
+  </block>
+
+<!-- 信息 -->
+  <block wx:if="{{navIndex === 1}}">
+    <view class="info">
+      <view class="info-title">时间范围</view>
+      <view class="info-content">
+        <view class="info-content-item">
+          <view class="info-content-item-title">报名时间</view>
+          <view class="info-content-item-content">{{!signTime.start.date ? '待填写' : signTime.start.date}} {{signTime.start.time}} {{signTime.end.date ? '-' : ''}} {{signTime.end.date}} {{signTime.end.time}}</view>
+        </view>
+        <view class="info-content-item">
+          <view class="info-content-item-title">活动时间</view>
+          <view class="info-content-item-content">{{!time.start.date ? '待填写' : time.start.date}} {{time.start.time}} {{time.end.date ? '-' : ''}} {{time.end.date}} {{time.end.time}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="info">
+      <view class="info-title">活动分类</view>
+      <view class="info-content">
+        <view class="info-content-item">
+          <view class="info-content-item-title">当前活动分类</view>
+          <view class="info-content-item-content">{{category ? category : '待填写'}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="info">
+      <view class="info-title">活动人数</view>
+      <view class="info-content">
+        <view class="info-content-item">
+          <view class="info-content-item-title">当前活动人数</view>
+          <view class="info-content-item-content">1000</view>
+        </view>
+      </view>
+    </view>
+    <view class="info">
+      <view class="info-title">专题活动</view>
+      <view class="info-content">
+        <view class="info-content-item">
+          <view class="info-content-item-title">是否参与</view>
+          <view class="info-content-item-content">{{topic ? '是' : '否' }}</view>
+        </view>
+        <view class="info-content-item">
+          <view class="info-content-item-title">当前专题活动</view>
+          <view class="info-content-item-content">{{topic ? topic : '不参与专题活动'}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 人员 -->
+  <block wx:if="{{navIndex === 2}}">
+    <view class="people">
+      <view class="people-item">
+        <view class="people-item-left">
+          <image src="../../image/avatar.png"></image>
+        </view>
+        <view class="people-item-middle">
+          <view class="people-item-middle-name">苑紫清</view>
+          <view class="people-item-middle-desc">河北传媒学学院·信息技术与管理学院</view>
+        </view>
+        <view class="people-item-right">
+          <view class="people-item-right-stamp organize">负责人</view>
+        </view>
+      </view>
+      <view class="people-item">
+        <view class="people-item-left">
+          <image src="../../image/avatar.png"></image>
+        </view>
+        <view class="people-item-middle">
+          <view class="people-item-middle-name">苑紫清</view>
+          <view class="people-item-middle-desc">河北传媒学学院·信息技术与管理学院</view>
+        </view>
+        <view class="people-item-right">
+          <view class="people-item-right-stamp admit">已录取</view>
+        </view>
+      </view>
+      <view class="people-item">
+        <view class="people-item-left">
+          <image src="../../image/avatar.png"></image>
+        </view>
+        <view class="people-item-middle">
+          <view class="people-item-middle-name">苑紫清</view>
+          <view class="people-item-middle-desc">河北传媒学学院·信息技术与管理学院</view>
+        </view>
+        <view class="people-item-right">
+          <view class="people-item-right-stamp pending">待录取</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{navIndex === 3}}">
+    <view style="display: flex; height: 100%; justify-content: center; align-items: center;">
+      请填写活动地点</view>
+  </block>
+
+  <view class="footer flex center box-shadow">
+    <view class="footer-item left flex1 text-center" bindtap="handleAdmitDetail">
+      报名详情
+    </view>
+    <block wx:if="{{admitInfo.isAdmit}}">
+      <view class="footer-item right flex1 text-center">已报名</view>
+    </block>
+    <block wx:elif="{{!admitInfo.isAdmit}}">
+      <view class="footer-item right flex1 text-center">立刻报名</view>
+    </block>
+  </view>
+  <x-safe-footer></x-safe-footer>
+</view>

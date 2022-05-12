@@ -1,0 +1,114 @@
+.container {
+  .user {
+    color: #ffffff;
+    .user-top {
+      width: 100%;
+      height: 300rpx;
+      background-color: #3a3a3a;
+      z-index: -1;
+      position: relative;
+      image {
+        position: absolute;
+        bottom: 0; right: 100rpx;
+        width: calc(257rpx * 1.5);
+        height: calc(253rpx * 1.5);
+        z-index: -3;
+      }
+    }
+    .user-content {
+      display: flex;
+      flex-direction: column;
+      .user-content-top {
+        display: flex;
+        height: 200rpx; 
+        background-color: #2a2a2a;
+        .user-content-top-left {
+          height: 200rpx;
+          .user-content-top-left-avatar {
+            margin-top: -50rpx; margin-left: 50rpx;
+            width: 200rpx; height: 200rpx;
+            background-color: #dcedfc;
+            border-radius: 100%;
+            image {
+              width: inherit; height: inherit;
+            }
+          }
+        }
+        .user-content-top-right {
+          margin: 30rpx 50rpx 0 50rpx;
+          flex: 1;
+          .user-content-top-right-info {
+            padding: 15rpx 0;
+            flex: 1; 
+            text-align: center;
+            background-color: #3a3a3a;
+          }
+        }
+      }
+      .user-content-info {
+        background-color: #2a2a2a;
+        padding: 0 50rpx 50rpx 50rpx;
+        display: flex;
+        flex-direction: column;
+        &.user-content-info_activity {
+          flex-direction: row;
+          .user-content-info-item {
+            flex: 1; font-size: 26rpx;
+            .strong {
+              font-weight: 800;
+              margin-right: 10rpx;
+            }
+          }
+        }
+        .user-content-info-name {
+          font-size: 45rpx;
+        }
+        .user-content-info-desc {
+          font-size: 26rpx;
+          font-weight: 300;
+          margin-top: 10rpx;
+          padding-bottom: 40rpx;
+          border-bottom: .1rpx solid black;       
+        }
+      }
+    }
+  }
+}
+
+
+.activity {
+  width: 750rpx;
+  .activity-item {
+    display: flex;
+    .activity-item-left {
+      padding-top: 74rpx;
+      padding-left: 30rpx;
+      padding-right: 30rpx;
+      width: 130rpx;
+      line-height: 50rpx;
+      border-right: .1rpx solid #cccccc;
+      position: relative;
+      font-size: 28rpx;
+      .activity-item-left-text {
+        font-weight: 550;
+        .small { font-size: 26rpx; font-weight: 400; }
+      }
+      .activity-item-left-circle {
+        position: absolute;
+        width: 30rpx;
+        height: 30rpx;
+        border-radius: 100%;
+        background-color: #e5be63;
+        border: 1px solid #e5be63;
+        background-clip:content-box;
+        padding: 3rpx;
+        top: 80rpx; right: -21rpx;
+      }
+    }
+    .activity-item-right {
+      padding-top: 50rpx;
+      margin-left: 50rpx;
+      flex: 1;
+    }
+  }
+}

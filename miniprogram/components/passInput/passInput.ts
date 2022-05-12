@@ -1,5 +1,5 @@
-// components/phoneInput/phoneInput.ts
 Component({
+  options: { styleIsolation: "apply-shared" },
   properties: {
     input: { type: String, value: "", },
   },

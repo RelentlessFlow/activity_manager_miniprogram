@@ -1,3 +1,4 @@
+<!-- 首屏启动 -->
 <view class="container">
 	<view class="top">
 		<image src="../../image/guide.jpg"></image>

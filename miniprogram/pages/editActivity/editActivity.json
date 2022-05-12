@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "x-input": "../../components/myInput/myInput",
+    "x-textarea": "../../components/mytextarea/mytextarea"
+  },
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white"
+}

@@ -1,12 +1,5 @@
 <view class="activity-list">
   <block wx:for="{{activities}}" wx:key="id">
-    <view class="activity-list-item">
-      <view class="activity-list-item-cover">
-        <image src="{{item.cover}}"></image>
-      </view>
-      <view class="activity-list-item-time">{{item.date.start}} 至 {{item.date.end}}</view>
-      <view class="activity-list-item-name">{{item.name}}</view>
-      <view class="activity-list-item-type">{{item.type}}</view>
-    </view>
+    <x-item activity="{{item}}" style="flex: 1;"></x-item>
   </block>
 </view>

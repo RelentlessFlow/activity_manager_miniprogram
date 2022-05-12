@@ -1,4 +1,8 @@
 Component({
+  options: { 
+    multipleSlots: true,
+    styleIsolation: "apply-shared" 
+  },
   properties: {
     theme: {
       type: Object,

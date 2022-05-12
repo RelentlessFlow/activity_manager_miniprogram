@@ -1,11 +1,11 @@
 {
   "usingComponents": {
     "x-search": "../../components/search/search",
-    "x-swiper": "../../components/myswiper/myswiper",
-    "x-activity-list": "../../components/activitylist/activitylist",
     "x-top-button": "../../components/topButton/topButton",
+    "x-swiper": "../../components/myswiper/myswiper",
     "x-title": "../../components/myTitle/myTitle",
-    "x-theme-card": "../../components/themeCard/themeCard"
+    "x-theme-card": "../../components/themeCard/themeCard",
+    "x-activity-list": "../../components/activitylist/activitylist"
   },
   "navigationStyle": "custom"
 }

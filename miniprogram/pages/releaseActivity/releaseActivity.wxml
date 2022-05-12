@@ -1,0 +1,251 @@
+<!-- 发布活动 -->
+<view class="container">
+  <!-- 顶部按钮组 -->
+  <view class="button-group" style="background-color: rgba(51, 51, 51, {{opacity}});">
+    <view class="button-group-item cancel" bindtap="handleTapCancel">取消</view>
+    <view class="button-group-item save">存草稿</view>
+    <view class="button-group-item publish">发布</view>
+  </view>
+  <!-- 预览 -->
+  <view class="preview">
+    <view class="preview-shade" />
+    <view class="preview-cover" bindtap="handleTapChangeCover">
+      <view class="preview-cover-edit">点击编辑封面</view>
+      <image src="{{cover}}"></image>
+      <view class="preview-cover-content">
+        <view class="preview-cover-content-cantainer">
+          <view class="preview-cover-content-cantainer-name">{{name?name:'活动标题'}}</view>
+          <view class="preview-cover-content-cantainer-desc">
+            <view class="col">
+              <view class="preview-cover-content-cantainer-left">
+                <image src="../../image/location.png" />{{location.name?location.name:'活动位置'}}
+              </view>
+              <view class="preview-cover-content-cantainer-right">
+                {{category?category:'活动分类'}}
+              </view>
+            </view>
+          </view>
+          <view class="preview-cover-content-cantainer-desc">
+            <view class="col">
+              <view class="preview-cover-content-cantainer-left">
+                <image src="../../image/clock-fill.png" />{{'活动时间'}}
+              </view>
+              <view class="preview-cover-content-cantainer-right time">
+                {{time.start.date}}-{{time.start.time}}~{{time.end.date}}-{{time.end.time}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 页内导航 -->
+  <view class="switch">
+    <view class="switch-item {{navIndex === 0 ? 'switch-item-active' : ''}}" data-index="0" bindtap="handleSwitchTap">编辑</view>
+    <view class="switch-item {{navIndex === 1 ? 'switch-item-active' : ''}}" data-index="1" bindtap="handleSwitchTap">信息</view>
+    <view class="switch-item {{navIndex === 2 ? 'switch-item-active' : ''}}" data-index="2" bindtap="handleSwitchTap">人员</view>
+    <view class="switch-item {{navIndex === 3 ? 'switch-item-active' : ''}}" data-index="3" bindtap="handleSwitchTap">位置</view>
+  </view>
+
+  <!-- 编辑 -->
+  <block wx:if="{{navIndex === 0}}">
+    <!-- 表单 -->
+    <view class="input">
+      <view class="input-group">
+        <view class="input-group-item">
+          <x-input value="{{name}}" bindinputchange="handleNameInputChange" hiddenCount="{{false}}" hiddenLable="{{false}}" placeholder="此处输入活动标题" lable="活动标题" ph-class="ph-class" ph-active-class="ph-active-class" text-class="text-class" />
+        </view>
+        <view class="input-group-item">
+          <x-textarea class="input-group-item-area" value="{{desc}}" bindinputchange="handleDescInputChange" hiddenCount="{{false}}" hiddenLable="{{false}}" placeholder="此处输入活动摘要" lable="活动摘要" text-class="text-area-class" input="{{desc}}" maxlength="500" defaultTextAreaHeight="200">
+          </x-textarea>
+        </view>
+        <view class="input-group-item">
+          <view class="input-group-item-content">
+            <image src="../../image/category.png" /><text class="title">活动分类</text>
+            <picker bindchange="handlePickerActivityChange" range="{{categories}}" range-key="name" value="{{pickerIndex.activity}}" data-id="{{categories[pickerIndex.activity].id}}">
+              <view class="picker content">{{categories[pickerIndex.activity].name}}</view>
+            </picker>
+            <view class="arrows"> > </view>
+          </view>
+          <view class="input-group-item-content">
+            <image src="../../image/location_strong.png" /><text class="title">活动地点</text>
+            <view class="content" bindtap="handleTapLocSelector">
+              {{location.name ? location.name : '选择位置'}}
+            </view>
+            <view class="arrows"> > </view>
+          </view>
+          <view class="input-group-item-content">
+            <image src="../../image/people.png" /><text class="title">活动人数</text>
+            <input class="content input" placeholder="输入人数" maxlength="9" type="number" />
+            <view class="arrows"> > </view>
+          </view>
+          <!-- 报名时间 -->
+          <view class="input-group-item-content input-group-item-content_pickers">
+            <view class="row">
+              <image src="../../image/clock.png" /><text class="title">活动时间</text>
+            </view>
+            <view class="input-group-item-content-pickers">
+              <block wx:if="{{!time.start.date}}">
+                <picker mode="date" value="{{time.start.date}}" bindchange="handleStartDate">
+                  <view class="picker content"> 开始日期{{time.start.date}}<text class="arrows"> > </text></view>
+                </picker>
+              </block>
+              <block wx:elif="{{time.start.date && !time.start.time}}">
+                <picker mode="time" value="{{time.start.time}}" bindchange="handleStartTime">
+                  <view class="picker content"> 开始时间 {{time.start.time}}<text class="arrows"> > </text></view>
+                </picker>
+              </block>
+              <block wx:elif="{{time.start.time && !time.end.date}}">
+                <picker mode="date" value="{{time.end.date}}" bindchange="handleEndDate">
+                  <view class="picker content"> 结束日期 {{time.end.date}}<text class="arrows"> > </text></view>
+                </picker>
+              </block>
+              <block wx:elif="{{time.end.date}}">
+                <picker mode="time" value="{{time.end.time}}" bindchange="handleEndTime">
+                  <view class="picker content"> 结束时间 {{time.end.time}}<text class="arrows"> > </text></view>
+                </picker>
+              </block>
+            </view>
+          </view>
+          <view class="input-group-item-content input-group-item-content_pickers">
+            <view class="row">
+              <image src="../../image/signup.png" /><text class="title">报名时间</text>
+            </view>
+            <view class="input-group-item-content-pickers">
+              <block wx:if="{{!signTime.start.date}}">
+                <picker mode="date" value="{{signTime.start.date}}" bindchange="handleStartDate">
+                  <view class="picker content"> 开始日期{{signTime.start.date}}<text class="arrows"> > </text></view>
+                </picker>
+              </block>
+              <block wx:elif="{{signTime.start.date && !signTime.start.time}}">
+                <picker mode="time" value="{{signTime.start.time}}" bindchange="handleStartTime">
+                  <view class="picker content"> 开始时间 {{signTime.start.time}}<text class="arrows"> > </text></view>
+                </picker>
+              </block>
+              <block wx:elif="{{signTime.start.time && !signTime.end.date}}">
+                <picker mode="date" value="{{signTime.end.date}}" bindchange="handleEndDate">
+                  <view class="picker content"> 结束日期 {{signTime.end.date}}<text class="arrows"> > </text></view>
+                </picker>
+              </block>
+              <block wx:elif="{{signTime.end.date}}">
+                <picker mode="time" value="{{signTime.end.time}}" bindchange="handleEndTime">
+                  <view class="picker content"> 结束时间 {{signTime.end.time}}<text class="arrows"> > </text></view>
+                </picker>
+              </block>
+            </view>
+          </view>
+          <view class="input-group-item-content">
+            <image src="../../image/zhuanti.png" /><text class="title">参加专题</text>
+            <switch checked="{{joinTopic}}" bindchange="handleSwitchTopic" />
+          </view>
+          <block wx:if="{{joinTopic}}">
+            <view class="input-group-item-content input-group-item-content_topic">
+              <text class="title">选择专题</text>
+              <picker bindchange="handlePickerTopicChange" range="{{topics}}" range-key="name" value="{{pickerIndex.topic}}" data-id="{{topics[pickerIndex.topic].id}}">
+                <view class="picker content">{{topics[pickerIndex.topic].name}}</view>
+              </picker>
+              <view class="arrows"> > </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </block>
+
+<!-- 信息 -->
+  <block wx:if="{{navIndex === 1}}">
+    <view class="info">
+      <view class="info-title">时间范围</view>
+      <view class="info-content">
+        <view class="info-content-item">
+          <view class="info-content-item-title">报名时间</view>
+          <view class="info-content-item-content">{{!signTime.start.date ? '待填写' : signTime.start.date}} {{signTime.start.time}} {{signTime.end.date ? '-' : ''}} {{signTime.end.date}} {{signTime.end.time}}</view>
+        </view>
+        <view class="info-content-item">
+          <view class="info-content-item-title">活动时间</view>
+          <view class="info-content-item-content">{{!time.start.date ? '待填写' : time.start.date}} {{time.start.time}} {{time.end.date ? '-' : ''}} {{time.end.date}} {{time.end.time}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="info">
+      <view class="info-title">活动分类</view>
+      <view class="info-content">
+        <view class="info-content-item">
+          <view class="info-content-item-title">当前活动分类</view>
+          <view class="info-content-item-content">{{category ? category : '待填写'}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="info">
+      <view class="info-title">活动人数</view>
+      <view class="info-content">
+        <view class="info-content-item">
+          <view class="info-content-item-title">当前活动人数</view>
+          <view class="info-content-item-content">1000</view>
+        </view>
+      </view>
+    </view>
+    <view class="info">
+      <view class="info-title">专题活动</view>
+      <view class="info-content">
+        <view class="info-content-item">
+          <view class="info-content-item-title">是否参与</view>
+          <view class="info-content-item-content">{{topic ? '是' : '否' }}</view>
+        </view>
+        <view class="info-content-item">
+          <view class="info-content-item-title">当前专题活动</view>
+          <view class="info-content-item-content">{{topic ? topic : '不参与专题活动'}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 人员 -->
+  <block wx:if="{{navIndex === 2}}">
+    <view class="people">
+      <view class="people-item">
+        <view class="people-item-left">
+          <image src="../../image/avatar.png"></image>
+        </view>
+        <view class="people-item-middle">
+          <view class="people-item-middle-name">苑紫清</view>
+          <view class="people-item-middle-desc">河北传媒学学院·信息技术与管理学院</view>
+        </view>
+        <view class="people-item-right">
+          <view class="people-item-right-stamp organize">负责人</view>
+        </view>
+      </view>
+      <view class="people-item">
+        <view class="people-item-left">
+          <image src="../../image/avatar.png"></image>
+        </view>
+        <view class="people-item-middle">
+          <view class="people-item-middle-name">苑紫清</view>
+          <view class="people-item-middle-desc">河北传媒学学院·信息技术与管理学院</view>
+        </view>
+        <view class="people-item-right">
+          <view class="people-item-right-stamp admit">已录取</view>
+        </view>
+      </view>
+      <view class="people-item">
+        <view class="people-item-left">
+          <image src="../../image/avatar.png"></image>
+        </view>
+        <view class="people-item-middle">
+          <view class="people-item-middle-name">苑紫清</view>
+          <view class="people-item-middle-desc">河北传媒学学院·信息技术与管理学院</view>
+        </view>
+        <view class="people-item-right">
+          <view class="people-item-right-stamp pending">待录取</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{navIndex === 3}}">
+    <view style="display: flex; height: 100%; justify-content: center; align-items: center;">
+      请填写活动地点</view>
+  </block>
+
+  <x-safe-footer></x-safe-footer>
+</view>

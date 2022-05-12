@@ -1,4 +1,6 @@
-<scroll-view class="container" enable-flex="true" style="padding-top: {{paddingtop}}rpx;padding-bottom: {{paddingbottom}}rpx;" scroll-y="true">
+<!-- 主页 -->
+<scroll-view class="container" enable-flex="true" scroll-y="true">
+<x-safe-area>
   <!-- 搜索框 -->
   <view class="search-container">
     <x-search class="search" input="{{searchInput}}" 
@@ -7,11 +9,12 @@
   </view>
   <!-- 顶部按钮组 -->
   <view class="top-group">
-    <x-top-button class="top-group-item">活动</x-top-button>
+    <x-top-button class="top-group-item" bindtap="handleTopActivityTap">活动</x-top-button>
     <x-top-button class="top-group-item">
       <text class="strong">通知</text>
     </x-top-button>
     <x-top-button class="top-group-item">平台精品</x-top-button>
+    <x-top-button class="top-group-item">待办</x-top-button>
   </view>
   <x-swiper class="swiper" /><!-- 轮播图 -->
   <!-- 热门活动 -->
@@ -24,20 +27,23 @@
     </block>
   </view>
   <!-- 平台专题 -->
-  <view class="theme">
+  <view class="theme" bindtap="handleThemeCardTap">
+    <view class="dividing_line"/>
     <x-title>
       <text slot="title">平台专题</text>
       <text slot="desc">为你推荐热门平台专题活动</text>
     </x-title>
-    <x-theme-card theme="{{theme}}"/>
+    <x-theme-card theme="{{theme}}" class="theme-card"/>
   </view>
-  
-  <!-- 校内活动 -->
+  <!-- 校内活动列表 -->
   <view class="activity">
     <x-title>
       <text slot="title">校内活动</text>
       <text slot="desc">为你推荐热门校内活动</text>
     </x-title>
-    <x-activity-list activities="{{activities}}"></x-activity-list>
+    <x-activity-list activities="{{activities}}" class="activity-list"></x-activity-list>
   </view>
+  <!-- 发布活动 -->
+  <view class="release" bindtap="handleReleaseActivityTap">发布活动</view>
+</x-safe-area>
 </scroll-view>

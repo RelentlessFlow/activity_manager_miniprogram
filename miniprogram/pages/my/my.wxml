@@ -1,0 +1,56 @@
+<view class="container">
+  <view class="user">
+    <view class="user-top">
+      <image src="../../image/hotel.png"/>
+    </view>
+    <view class="user-content">
+      <view class="user-content-top">
+        <view class="user-content-top-left">
+          <view class="user-content-top-left-avatar">
+            <image src="../../image/avatar.png"/>
+          </view>
+        </view>
+        <view class="user-content-top-right">
+          <view class="user-content-top-right-info" bindtap="handleTapInfoEdit">
+            编辑资料
+          </view>
+          
+        </view>
+      </view>
+      <view class="user-content-info">
+        <view class="user-content-info-name">苑紫清</view>
+        <view class="user-content-info-desc">河北传媒学院信息技术与管理学院在读</view>
+      </view>
+      <view class="user-content-info user-content-info_activity">
+        <view class="user-content-info-item"><text class="strong">2</text>我组织</view>
+        <view class="user-content-info-item"><text class="strong">20</text>我参与</view>
+        <view class="user-content-info-item"><text class="strong">1</text>正在进行</view>
+        <view class="user-content-info-item"><text class="strong">21</text>已结束</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="activity">
+    <view class="activity-item">
+      <view class="activity-item-left">
+        <text class="activity-item-left-text">12月21日 \n <text class="small">参与了</text></text>
+        <view class="activity-item-left-circle"/>
+      </view>
+      <veiw class="activity-item-right">
+        <x-activity-item></x-activity-item>
+      </veiw>
+    </view>
+    <view class="activity-item">
+      <view class="activity-item-left">
+        <text class="activity-item-left-text">12月21日 \n <text class="small">参与了</text></text>
+        <view class="activity-item-left-circle"/>
+      </view>
+      <veiw class="activity-item-right">
+        <x-activity-item></x-activity-item>
+      </veiw>
+    </view>
+  </view>
+
+
+  <x-safe-footer/>
+</view>

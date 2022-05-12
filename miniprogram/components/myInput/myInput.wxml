@@ -1,0 +1,16 @@
+<view class="custom">
+  <block wx:if="{{inputFucused || !hiddenLable}}">
+    <view class="lable-group">
+      <view class="lable-group-item lable ph-active-class">{{lable ? lable : placeholder}}</view>
+    </view>
+  </block>
+  <view class="input-container">
+    <input class="input text-class" placeholder="{{inputFucused ? '' : placeholder}}" maxlength="{{maxlength}}" confirm-type="next" type="number"
+      value="{{value}}" bindinput="handleInput" bindfocus="handleFocus" bindblur="handleBlur"
+      style="{{hiddenLable ? '' : 'padding-right: 150rpx;'}}" disabled="{{disabled}}"
+    />
+    <block wx:if="{{!hiddenCount}}">
+      <view class="wordscount">{{inputLength}}/{{maxlength}}</view>
+    </block>
+  </view>
+</view>

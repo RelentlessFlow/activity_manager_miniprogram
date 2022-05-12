@@ -1,5 +1,6 @@
 // components/myswiper/myswiper.ts
 Component({
+  options: { styleIsolation: "apply-shared" },
   properties: {
     imgs: {
       type: Array,

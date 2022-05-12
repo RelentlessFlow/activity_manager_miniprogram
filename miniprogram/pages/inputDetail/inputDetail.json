@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "x-safe-header": "../../components/safeHeader/safeHeader"
+  },
+  "navigationStyle": "custom"
+}

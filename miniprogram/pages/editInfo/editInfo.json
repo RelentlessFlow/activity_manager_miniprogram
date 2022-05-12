@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "x-input" : "../../components/myInput/myInput",
+    "x-safe-header": "../../components/safeHeader/safeHeader"
+  },
+  "navigationBarTitleText": ""
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "x-activity-item": "../../components/activitylistItem/activitylistItem"
+  },
+  "navigationStyle": "custom"
+}

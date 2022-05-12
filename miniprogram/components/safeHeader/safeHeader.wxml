@@ -1,0 +1,6 @@
+<view class="safe-footer" style="margin-top: {{margintop}}rpx;">
+  <view class="nav flex border-bottom">
+  <view class="back" bindtap="hanldeBackClick">{{'<'}}</view>
+  <slot/>
+  </view>
+</view>

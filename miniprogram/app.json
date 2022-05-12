@@ -1,10 +1,53 @@
 {
+  "usingComponents": {
+    "x-safe-area": "./components/safeArea/safeArea",
+    "x-safe-footer": "./components/safeFooter/safeFooter"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "pages": [
-    "pages/index/index",
     "pages/login/login",
+    "pages/editActivity/editActivity",
+    "pages/releaseActivity/releaseActivity",
+    "pages/index/index",
+    "pages/themeActivity/themeActivity",
+    "pages/activity/activity",
+    "pages/detail/detail",
+    "pages/editInfo/editInfo",
+    "pages/inputDetail/inputDetail",
+    "pages/my/my",
+    "pages/square/square",
     "pages/guide/guide",
     "pages/register/register"
   ],
+  "tabBar": {
+    "color": "#cccccc",
+    "selectedColor": "#525252",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "image/home_fill.png",
+        "iconPath": "image/home_line.png",
+        "pagePath": "pages/index/index",
+        "text": "校内"
+      },
+      {
+        "selectedIconPath": "image/square_fill.png",
+        "iconPath": "image/square_line.png",
+        "pagePath": "pages/square/square",
+        "text": "广场"
+      },
+      {
+        "selectedIconPath": "image/my_fill.png",
+        "iconPath": "image/my_line.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
