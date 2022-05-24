@@ -1,2 +1,16 @@
-<!-- 注册界面 -->
-<text>pages/register/register.wxml</text>
+<!-- 登录界面 -->
+<view class="container">
+<x-safe-area>
+  <view class="head">Welcome Register!</view>
+  <view class="subhead">欢迎注册校享空间</view>
+  <view class="input input-phone"><x-phone-input bindinputchange="handlePhoneInputChange" input="{{phone}}"></x-phone-input></view>
+  <view class="input input-pass"><x-pass-input displayUnableLogin="{{false}}" bindinputchange="handlePassInputChange" input="{{password}}"></x-pass-input></view>  
+  <block wx:if="{{verify}}"><view class="login login-pass" bindtap="handleTapRigisterButton">注册</view></block>
+  <block wx:else><view class="login">注册</view></block>
+  <view class="agree">
+    <view class="agree-btn {{agree?'agree-btn-clicked':''}}" bindtap="handleTapAgreeButton">✓</view>
+    <text class="lable">同意<text class="strong">《校享空间用户协议》</text>
+    </text>
+  </view>
+</x-safe-area>
+</view>

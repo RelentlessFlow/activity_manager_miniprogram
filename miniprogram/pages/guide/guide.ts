@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    allow: false,
     times: 3
   },
 
@@ -14,7 +13,12 @@ Page({
     await countDown(() => {
       this.setData({ times: this.data.times - 1 })
     }, this.data.times)
-    this.setData({ allow: true })
-    wx.navigateTo({ url: '../index/index' })
+    this.gotoIndex()
   },
+
+  gotoIndex: function() {
+    wx.navigateTo({
+      url: "../login/login"
+    })
+  }
 })

@@ -6,7 +6,7 @@
   <view class="input input-phone"><x-phone-input bindinputchange="handlePhoneInputChange" input="{{phone}}"></x-phone-input></view>
   <view class="input input-pass"><x-pass-input bindinputchange="handlePassInputChange" input="{{password}}"></x-pass-input></view>
   <view class="lable lable_hi">Hi～如果您首次使用校享空间</view>
-  <view class="lable lable_account">请先前<text class="strong activate">激活/注册账号</text></view>
+  <view class="lable lable_account" bindtap="handleTapRegisterButton">请先前<text class="strong activate">激活/注册账号</text></view>
   <block wx:if="{{verify}}"><view class="login login-pass" bindtap="handleTapLoginButton">登录</view></block>
   <block wx:else><view class="login">登录</view></block>
   <view class="agree">

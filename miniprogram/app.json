@@ -9,19 +9,19 @@
     }
   },
   "pages": [
-    "pages/login/login",
-    "pages/editActivity/editActivity",
-    "pages/releaseActivity/releaseActivity",
+    "pages/guide/guide",
     "pages/index/index",
+    "pages/login/login",
+    "pages/register/register",
     "pages/themeActivity/themeActivity",
+    "pages/releaseActivity/releaseActivity",
+    "pages/editInfo/editInfo",
+    "pages/editActivity/editActivity",
     "pages/activity/activity",
     "pages/detail/detail",
-    "pages/editInfo/editInfo",
     "pages/inputDetail/inputDetail",
     "pages/my/my",
-    "pages/square/square",
-    "pages/guide/guide",
-    "pages/register/register"
+    "pages/square/square"
   ],
   "tabBar": {
     "color": "#cccccc",

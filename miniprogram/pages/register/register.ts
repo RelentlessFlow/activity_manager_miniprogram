@@ -1,66 +1,38 @@
-// pages/register/register.ts
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    phone: "",
+    password: "",
+    agree: false,
+    verify: false,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad() {
-
+  onLoad() {},
+  onReady() {},
+  handlePhoneInputChange: function (e: any) { // 处理手机号输入
+    this.setData({ phone: e.detail.value }, this.handleVerifyPass)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  handlePassInputChange: function (e: any) { // 处理密码输入
+    this.setData({ password: e.detail.value }, this.handleVerifyPass)
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  handleTapAgreeButton: function () { // 同意按钮点击UI逻辑
+    const { agree } = this.data
+    this.setData({ agree: !agree }, this.handleVerifyPass)
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  handleVerifyPass: function () { // 表单验证通过(前台)
+    let { phone, password, agree } = this.data
+    let pattern = new RegExp("^1[34578][0-9]{9}$", 'i'); // 手机号正则匹配
+    if (phone != "" && pattern.test(phone) && password != "" && agree) {
+    this.setData({ verify: true })
+    } else {
+      this.setData({ verify: false })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
+  handleTapRigisterButton: function () { // 登录按钮点击逻辑
+    const result = { value : true, desc: '成功' }
+    if(!result.value) {
+      wx.showToast({ title: `${result.desc}`, icon: 'error', duration: 2000 })
+    } else {
+      wx.switchTab({"url": '../index/index'})
+    }
+    
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

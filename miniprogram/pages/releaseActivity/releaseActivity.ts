@@ -54,6 +54,7 @@ Page({
     })
   },
   handleNameInputChange: function(e:any) {  //活动名称表单处理
+    console.log(e)
     this.setData({name: e.detail.value})
   },
   handleDescInputChange: function(e:any) {  //活动描述表单处理

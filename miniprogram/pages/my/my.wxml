@@ -46,7 +46,7 @@
         <view class="activity-item-left-circle"/>
       </view>
       <veiw class="activity-item-right">
-        <x-activity-item></x-activity-item>
+        <x-activity-item toEdit="{{true}}"></x-activity-item>
       </veiw>
     </view>
   </view>

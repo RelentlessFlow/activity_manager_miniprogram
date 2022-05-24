@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "x-phone-input": "../../components/phoneInput/phoneInput",
+    "x-pass-input": "../../components/passInput/passInput"
+  },
+  "navigationStyle": "custom"
 }

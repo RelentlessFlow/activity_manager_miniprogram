@@ -31,7 +31,12 @@ Page({
     if(!result.value) {
       wx.showToast({ title: `${result.desc}`, icon: 'error', duration: 2000 })
     } else {
-      wx.navigateTo({"url": '../index/index'})
+      wx.switchTab({"url": '../index/index'})
     }
   },
+  handleTapRegisterButton: function () {
+    wx.navigateTo({ 
+      "url": '../register/register'
+     })
+  }
 })

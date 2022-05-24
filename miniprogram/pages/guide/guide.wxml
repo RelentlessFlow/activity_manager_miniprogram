@@ -2,7 +2,7 @@
 <view class="container">
 	<view class="top">
 		<image src="../../image/guide.jpg"></image>
-		<view class="tap">{{times}} 跳过</view>
+		<view class="tap" bindtap="gotoIndex">{{times}} 跳过</view>
 	</view>
 	<view class="bottom">
 		<view class="logo"><image src="../../image/logo.png"/></view>

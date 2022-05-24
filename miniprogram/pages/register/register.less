@@ -1,1 +1,77 @@
-/* pages/register/register.wxss */
+.container { // 顶部距离
+  margin: 0 70rpx;
+}
+.head { // Welcome
+  margin-top: 15vh;
+  font-size: 60rpx;
+  font-weight: 550;
+  color: #333333;
+  margin-left: 5rpx;
+}
+.subhead { // 欢迎使用
+  margin-top: 50rpx;
+  color: #cccccc;
+  font-size: 30rpx;
+  font-weight: 300;
+  margin-left: 10rpx;
+}
+.input-phone { // 手机号
+  margin-top: 80rpx;
+}
+.input-pass { // 密码
+  margin-top: 80rpx;
+}
+.lable-group { // 提示
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+.lable { // 输入提示 （激活，如果你首次使用等）
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.lable_hi {
+  margin-top: 120rpx;
+  margin-left: 5rpx;
+}
+.lable_account {
+  margin-top: 80rpx;
+  margin-left: 10rpx;
+}
+.strong { // 激活注册账号等高亮字体
+  font-size: 32rpx;
+  background-image:-webkit-linear-gradient(left,rgb(163, 0, 196),#0057c9); 
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.strong.activate {
+  margin-left: 30rpx;
+}
+.login { // 登录大按钮
+  margin-top: 80rpx;
+  font-size: 70rpx;
+  font-weight: 550;
+  color: #d5d4d5;
+}
+.login-pass {
+  color: #242424;
+}
+.agree {
+  @height: 40rpx;
+  margin-top: 50rpx;
+  margin-left: 10rpx;
+  height: @height;
+  line-height: @height;
+  .agree-btn {
+    display: inline-block;
+    color: white;
+    height: @height; width: @height;
+    text-align: center; line-height: @height;
+    background-color: #cfcece;
+    margin-right: 15rpx;
+    border-radius: 17.5rpx;
+  }
+  .agree-btn-clicked{
+    background-color: #7193ed;
+  }
+}

@@ -2,6 +2,7 @@ Component({
   options: { styleIsolation: "apply-shared" },
   properties: {
     input: { type: String, value: "", },
+    displayUnableLogin: {type: Boolean, value: true}
   },
   data: {showPass: false, inputFucused: false},
   methods: {
