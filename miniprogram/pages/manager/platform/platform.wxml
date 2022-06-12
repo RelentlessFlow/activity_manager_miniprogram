@@ -1,10 +1,8 @@
 <view class="container">
   <view class="search-container">
-    <x-search class="search" input="{{searchInput}}" 
-      bindinputchange="handleSearchInput"
-      placeholder="{{searchPlaceholder}}" />
+    <x-search class="search" input="{{searchInput}}" bindinputchange="handleSearchInput" placeholder="{{searchPlaceholder}}" />
   </view>
-  <view class="info flex align-center" >
+  <view class="info flex align-center">
     <view class="info-logo">
       <image src="../../../image/logo_s.png"></image>
     </view>
@@ -15,98 +13,81 @@
     </view>
   </view>
   <!-- 注册学校列表 -->
-  <!-- <view class="main flex column">
-    <view class="main-title flex" bindtap="handleSwitchTypeTap">
-      <view class="flex1">注册学校列表</view>
-      <view class="main-title-hbbton box-shadow">{{currentType === 'school' ? '-' : '+'}}</view>
-    </view>
-    <block wx:if="{{currentType === 'school'}}">
-      <view class="main-list">
-        <block wx:for="{{schools}}" wx:key="id">
-          <view class="main-list-item flex">
-          <view class="main-list-item-left">
-            <view class="main-list-item-left-badge">
-              <image src="{{item.badge}}"></image>
-            </view>
-          </view>
-          <view class="main-list-item-middle flex flex1 column justify-center">
-            <view class="main-main-list-item-middle-name">{{item.name}}</view>
-            <view class="main-main-list-item-middle-desc text-overflow-hidden">{{item.desc}}</view>
-          </view>
-          <view class="main-list-item-right">
-            <view class="main-list-item-right-button box-shadow">查看</view>
-          </view>
-        </view>
-        </block>
-      </view>
-    </block>
-  </view> -->
-
-    <!-- 注册学校列表 -->
-    <view class="main flex column">
-    <view class="main-title flex" bindtap="handleSwitchTypeTap">
-      <view class="flex1">注册学校列表</view>
-      <view class="main-title-hbbton box-shadow">{{currentType === 'school' ? '-' : '+'}}</view>
-    </view>
-    <block wx:if="{{currentType === 'school'}}">
-      <view class="main-list">
-        <block wx:for="{{schools}}" wx:key="id">
-          <view class="main-list-item flex">
-          <view class="main-list-item-left">
-            <view class="main-list-item-left-badge">
-              <image src="{{item.badge}}"></image>
-            </view>
-          </view>
-          <view class="main-list-item-middle flex flex1 column justify-center">
-            <view class="main-main-list-item-middle-name">{{item.name}}</view>
-            <view class="main-main-list-item-middle-desc text-overflow-hidden">{{item.desc}}</view>
-          </view>
-          <view class="main-list-item-right">
-            <view class="main-list-item-right-button box-shadow">查看</view>
-          </view>
-        </view>
-        </block>
-      </view>
-    </block>
-  </view>
-
-
-
-
-
-<!-- 注册用户列表 -->
-<view class="main flex column">
-    <view class="main-title flex" bindtap="handleSwitchTypeTap">
-      <view class="flex1">注册用户列表</view>
-      <view class="main-title-hbbton box-shadow">{{currentType === 'user' ? '-' : '+'}}</view>
-    </view>
-    <block wx:if="{{currentType === 'user'}}">
-      <view class="main-list">
-        <block wx:for="{{users}}" wx:key="id">
-          <view class="main-list-item flex">
-            <view class="main-list-item-left">
-              <view class="main-list-item-left-badge">
-                <image src="{{item.avatar || '../../../image/avatar.png'}}"></image>
+  <x-list title="已注册学校" bindtitletap="handleSwitchTypeTap" show="{{currentType === 'school'}}">
+    <block>
+      <block wx:for="{{schools}}" wx:key="id">
+        <view class="item flex align-center" data-id="{{item.id}}" data-index="{{index}}" bindtap="handleSchoolItemTap">
+          <!-- 没点击其中一项时 -->
+          <block wx:if="{{!item.active}}">
+            <view class="item-left">
+              <view class="item-left-badge">
+                <image src="{{item.badge}}"></image>
               </view>
             </view>
-            <view class="main-list-item-middle flex flex1 column justify-center">
-              <view class="main-main-list-item-middle-name">{{item.name || '未填写真实姓名'}}</view>
-              <view class="main-main-list-item-middle-desc text-overflow-hidden">
+            <view class="item-middle flex flex1 column justify-center">
+              <view class="main-item-middle-name">{{item.name}}</view>
+              <view class="main-item-middle-desc text-overflow-hidden">{{item.desc}}</view>
+            </view>
+            <view class="item-right">
+              <view class="item-right-button box-shadow">操作</view>
+            </view>
+          </block>
+          <!-- 点击某一项之后 -->
+          <block wx:else="{{item.active}}">
+            <view class="item-btn-group flex flex1 center">
+              <view class="item-btn-group-item flex1 flex center" 
+                bindtap="handleTapListItemBtn" data-type="add"
+              >
+                <view class="item-btn-group-item-button inff">添加</view>
+              </view>
+              <view class="item-btn-group-item flex1 flex center" bindtap="handleTapListItemBtn" data-type="modify">
+                <view class="item-btn-group-item-button primary">编辑</view>
+              </view>
+              <view class="item-btn-group-item flex1 flex center" bindtap="handleTapListItemBtn" data-type="ban">
+                <view class="item-btn-group-item-button ban">禁用</view>
+              </view>
+              <view class="item-btn-group-item flex center">
+                <view class="item-btn-group-item-button">返回</view>
+              </view>
+            </view>
+
+          </block>
+        </view>
+      </block>
+    </block>
+  </x-list>
+
+
+
+
+
+  <!-- 注册用户列表 -->
+  <x-list title="已注册用户" bindtitletap="handleSwitchTypeTap" show="{{currentType === 'user'}}">
+    <block>
+      <block wx:for="{{users}}" wx:key="id">
+        <view class="item flex align-center">
+          <view class="item-left">
+            <view class="item-left-badge">
+              <image src="{{item.avatar || '../../../image/avatar.png'}}"></image>
+            </view>
+          </view>
+          <view class="item-middle flex flex1 column justify-center">
+            <view class="main-item-middle-name">{{item.name || '未填写真实姓名'}}</view>
+            <view class="main-item-middle-desc text-overflow-hidden">
               <text>{{item.phone}}\n{{item.school || '未填写学校信息'}}</text>
-              </view>
             </view>
+          </view>
+          <view class="item-right">
+            <view class="item-right-button box-shadow">操作</view>
+          </view>
         </view>
-        </block>
-        
-      </view>
+      </block>
     </block>
-  </view>
+  </x-list>
 
-  
+
+
   <x-safe-footer class="footer flex justify-center">
     我是有底线的
   </x-safe-footer>
-  <view class="addbutton">+</view>
 </view>
-
-

@@ -1,11 +1,9 @@
 <view class="main flex column">
-    <view class="main-title flex" bindtap="handleTitleTap">
-      <view class="flex1">{{title}}</view>
-      <view class="main-title-hbbton box-shadow">{{!show ? '-' : '+'}}</view>
+    <view class="main-title flex1" bindtap="handleTitleTap">
+      {{title}}<text class="main-title-hbbton">{{show ? '-' : '+'}} </text>
     </view>
     <block wx:if="{{show}}">
       <view class="main-list">
-        插槽
         <slot/>
       </view>
     </block>

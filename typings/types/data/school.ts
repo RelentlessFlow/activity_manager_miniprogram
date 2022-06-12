@@ -2,5 +2,6 @@ export type School = {
   id: string,
   name: string,
   desc: string,
-  badge: string
+  badge: string,
+  ban: boolean
 }

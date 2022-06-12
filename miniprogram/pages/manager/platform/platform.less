@@ -32,96 +32,93 @@
       }
     }
   }
+
   .search {
     height: 14rpx; 
     border-radius: 20rpx;
     margin-top: 20rpx;
   }
-  .main {
-    @border-radius: 20rpx;
-    background-color: #ffffff;
-    margin-top: 20rpx;
-
-    .main-title {
+  
+  .item {
+    border-bottom: .1rpx solid #cccccc;
+    height: 120rpx;
+    box-sizing: border-box;
+    .item-left {
       padding-left: 30rpx;
-      font-size: 26rpx;
-      height: 80rpx;
-      line-height: 80rpx;
-      border: .1rpx solid #cccccc;
-      border-bottom: none;
-      border-top-left-radius: @border-radius;
-      border-top-right-radius: @border-radius;
-      font-weight: 500;
-      
-      .main-title-hbbton {
-        margin-right: 20rpx;
-        height: 40rpx; width: 40rpx;
-        border-radius: 30rpx;
-        line-height: 40rpx; text-align: center;
-        margin-top: 20rpx;
+      .item-left-badge {
+        width: 80rpx; height: 80rpx;
+        margin: 20rpx 0;
+        background-color: yellowgreen;
+        border-radius: 100%;
+        image {
+          width: inherit; height: inherit;
+        }
       }
-
     }
-    .main-list {
-      box-sizing: border-box;
-      border: .1rpx solid #cccccc;
-      border-bottom-left-radius: @border-radius;
-      border-bottom-right-radius: @border-radius;
-      .main-list-item {
-        border-bottom: .1rpx solid #cccccc;
-        .main-list-item-left {
-          padding-left: 30rpx;
-          .main-list-item-left-badge {
-            width: 80rpx; height: 80rpx;
-            margin: 20rpx 0;
-            background-color: yellowgreen;
-            border-radius: 100%;
-            image {
-              width: inherit; height: inherit;
-            }
-          }
+    .item-middle {
+      margin-left: 40rpx;
+      width: 300rpx;
+      .main-item-middle-name {
+        font-size: 26rpx;
+        font-weight: 400;
+      }
+      .main-item-middle-desc {
+        font-size: 20rpx;
+        font-weight: 350;
+        margin-top: 6rpx;
+        color: #3b3b3b;
+        height: 60rpx;
+        width: 400rpx;
+      }
+    }
+    .item-right {
+      padding-right: 30rpx;
+      background-color:#ffffff;
+      .item-right-button {
+        margin: 20rpx 0;
+        height: 80rpx; width: 80rpx;
+        border-radius: 40rpx;
+        line-height: 80rpx; text-align: center;
+        background-color: #e2aa29;
+        font-size: 24rpx; font-weight: 400;
+        color: #ffffff;
+      }
+    }
+
+    // 点击了之后
+    .item-btn-group {
+      height: 120rpx;
+      padding-left: 30rpx;
+      padding-right: 30rpx;
+      z-index: 2;
+      .item-btn-group-item {
+        height: inherit;
+        z-index: 10;
+        .item-btn-group-item-button {
+          height: 80rpx; width: 80rpx;
+          border-radius: 40rpx;
+          line-height: 80rpx; text-align: center;
+          background-color: #e2aa29;
+          font-size: 24rpx; font-weight: 400;
+          color: #ffffff;
         }
-        .main-list-item-middle {
-          margin-left: 40rpx;
-          width: 300rpx;
-          .main-main-list-item-middle-name {
-            font-size: 26rpx;
-            font-weight: 400;
-          }
-          .main-main-list-item-middle-desc {
-            font-size: 20rpx;
-            font-weight: 350;
-            margin-top: 6rpx;
-            color: #3b3b3b;
-            height: 60rpx;
-            width: 400rpx;
-          }
+        .inff {
+          background-color: #7ed3a2; color: #ffffff;
         }
-        .main-list-item-right {
-          padding-right: 30rpx;
-          background-color:#ffffff;
-          .main-list-item-right-button {
-            height: 80rpx; width: 80rpx;
-            margin: 20rpx 0; border-radius: 40rpx;
-            line-height: 80rpx; text-align: center;
-            background-color: #e2aa29;
-            font-size: 24rpx; font-weight: 400;
-            color: #ffffff;
-          }
+        .ban {
+          background-color: #ff7e72; color: #ffffff;
         }
+        .primary {
+          background-color: #f7f7f7; color: #333333;
+        }
+        
       }
     }
   }
-  
+
   .footer {
-    margin-top: 10rpx;
-    .release {
-      width: 200rpx; height: 78rpx; 
-      box-shadow: #cccccc 5rpx 5rpx 5rpx;
-      border-radius: 35rpx;
-      text-align: center; line-height: 78rpx;
-      background-color: #ffffff;
-    }
+    margin-top: 20rpx;
+    font-size: 24rpx;
   }
   
 }
@@ -134,14 +131,16 @@
 .addbutton {
   height: 80rpx;
   width: 80rpx;
+  box-sizing: border-box;
   line-height: 80rpx;
   text-align: center;
   border-radius: 50rpx;
   font-size: 50rpx;
   font-weight: 800;
-  background-color: #eeeff1;
+  background-color: #c5c5c5;
   position: fixed;
   bottom: 150rpx;
   right: 100rpx;
-  border: 5rpx solid #d1a733;
+  color: #ffffff;
 }
+

@@ -14,7 +14,7 @@ Page({
     searchInput: "", searchPlaceholder: "请输入学校名称",
     currentType: "school" as "school" | "user" | "",
     hiddenSchools: false, hiddenUsers: true,
-    schools: [{}] as Array<School>,
+    schools: [{}] as Array<School & {active: boolean | null | undefined}>,
     users: [{}] as Array<User>,
     searchSchools: [{}] as Array<School>, // 搜索学校结果
     searchUsers: [{}] as Array<User>, // 搜索用户结果
@@ -24,6 +24,7 @@ Page({
   handleSearchInput: async function (e: any) {
     this.setData({ searchInput: e.detail }, this.searchDataUpdate)
   },
+  // 切换标签卡片
   handleSwitchTypeTap: function () {
     const { currentType } = this.data
     switch (currentType) {
@@ -38,6 +39,22 @@ Page({
         this.setData({ searchInput: "" })
         break
     }
+  },
+
+  handleTapListItemBtn: function(e:any) {
+    const {type} = e.currentTarget.dataset
+    if(type === 'add') {
+      
+    }
+  },
+
+  // 点击标签卡片
+  handleSchoolItemTap: function(e:any) {
+    const {id, index} = e.currentTarget.dataset
+    const {schools} = this.data
+    if(schools[index].active === undefined) { schools[index].active = false }
+    schools[index].active = !schools[index].active
+    this.setData({schools})
   },
 
   //搜索框数据更新（请求）
