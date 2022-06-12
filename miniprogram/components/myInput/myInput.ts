@@ -21,7 +21,7 @@ Component({
   },
   methods: {
     handleInput: function(e:any){
-      this.setData({input: e.detail.value}, () => {
+      this.setData({value: e.detail.value}, () => {
         this.triggerEvent("inputchange", {value: this.properties.value})
       })
     },

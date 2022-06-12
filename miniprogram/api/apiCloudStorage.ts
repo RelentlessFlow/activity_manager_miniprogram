@@ -12,3 +12,26 @@ export const uploadCloud = (location: string, target: string) => {
     })
   })
 }
+
+/**
+ * 将本地临时存储的图片上传到云端
+ * @param path 图片本地路径 http://tem........
+ * @param target 上传云端地址 eg : avatar => avatar/filename.png
+ */
+export const uploadFast = async (path: string, target: string) => {
+  if(path) {
+    const pathArr = path?.split('/')
+    if(pathArr[2] === 'tmp') { // 判定为本地图片
+      const rs = await uploadCloud(path, `${target}/${pathArr[3]}`)
+      if(rs.statusCode !== 204) {
+        wx.showToast({title: '图片上传失败', icon: 'error'})
+        return new Error('上传失败') // 图片上传失败直接返回
+      }
+      return rs.fileID 
+    } else {
+      return false
+    }
+  } else {
+    return new Error('文件路径错误')
+  }
+}

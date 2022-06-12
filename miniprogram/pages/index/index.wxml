@@ -17,12 +17,12 @@
     <x-top-button class="top-group-item">待办</x-top-button>
   </view>
   <x-swiper class="swiper" /><!-- 轮播图 -->
-  <!-- 热门活动 -->
+  <!-- 热门分类 -->
   <view class="hot-gourp">
-    <block wx:for="{{hots}}" wx:key="id">
+    <block wx:for="{{categories}}" wx:key="id">
       <view class="hot-gourp-item">
-        <view class="hot-gourp-item-icon" style="background-color: {{item.color}};"><image src="{{item.icon}}" /></view>
-        <view class="hot-gourp-item-desc">{{item.title}}</view>
+        <view class="hot-gourp-item-icon" style="background-color: {{'#bdbdbd'}};"><image src="{{item.img}}" /></view>
+        <view class="hot-gourp-item-desc text-overflow-hidden-two">{{item.name}}</view>
       </view>
     </block>
   </view>

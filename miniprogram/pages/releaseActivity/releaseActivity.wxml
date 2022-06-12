@@ -78,7 +78,7 @@
           </view>
           <view class="input-group-item-content">
             <image src="../../image/people.png" /><text class="title">活动人数</text>
-            <input class="content input" placeholder="输入人数" maxlength="9" type="number" />
+            <input class="content input" placeholder="输入人数" value="{{people}}" maxlength="9" type="number" bindinput="hanlePeopleInputChange"/>
             <view class="arrows"> > </view>
           </view>
           <!-- 报名时间 -->
@@ -100,13 +100,13 @@
           </view>
           <view class="input-group-item-content">
             <image src="../../image/zhuanti.png" /><text class="title">参加专题</text>
-            <switch checked="{{joinTopic}}" bindchange="handleSwitchTopic" />
+            <switch checked="{{joinTheme}}" bindchange="handleSwitchTheme" />
           </view>
-          <block wx:if="{{joinTopic}}">
+          <block wx:if="{{joinTheme}}">
             <view class="input-group-item-content input-group-item-content_topic">
               <text class="title">选择专题</text>
-              <picker bindchange="handlePickerTopicChange" range="{{topics}}" range-key="name" value="{{pickerIndex.topic}}" data-id="{{topics[pickerIndex.topic].id}}">
-                <view class="picker content">{{topics[pickerIndex.topic].name}}</view>
+              <picker bindchange="handlePickerTopicChange" range="{{themes}}" range-key="name" value="{{pickerIndex.topic}}" data-id="{{themes[pickerIndex.theme].id}}">
+                <view class="picker content">{{themes[pickerIndex.theme].name}}</view>
               </picker>
               <view class="arrows"> > </view>
             </view>
@@ -145,7 +145,7 @@
       <view class="info-content">
         <view class="info-content-item">
           <view class="info-content-item-title">当前活动人数</view>
-          <view class="info-content-item-content">1000</view>
+          <view class="info-content-item-content">{{people ? people : '待填写'}}</view>
         </view>
       </view>
     </view>
@@ -172,35 +172,11 @@
           <image src="../../image/avatar.png"></image>
         </view>
         <view class="people-item-middle">
-          <view class="people-item-middle-name">苑紫清</view>
-          <view class="people-item-middle-desc">河北传媒学学院·信息技术与管理学院</view>
+          <view class="people-item-middle-name">{{sponsor.name}}</view>
+          <view class="people-item-middle-desc">{{sponsor.school}} - {{sponsor.major}}</view>
         </view>
         <view class="people-item-right">
           <view class="people-item-right-stamp organize">负责人</view>
-        </view>
-      </view>
-      <view class="people-item">
-        <view class="people-item-left">
-          <image src="../../image/avatar.png"></image>
-        </view>
-        <view class="people-item-middle">
-          <view class="people-item-middle-name">苑紫清</view>
-          <view class="people-item-middle-desc">河北传媒学学院·信息技术与管理学院</view>
-        </view>
-        <view class="people-item-right">
-          <view class="people-item-right-stamp admit">已录取</view>
-        </view>
-      </view>
-      <view class="people-item">
-        <view class="people-item-left">
-          <image src="../../image/avatar.png"></image>
-        </view>
-        <view class="people-item-middle">
-          <view class="people-item-middle-name">苑紫清</view>
-          <view class="people-item-middle-desc">河北传媒学学院·信息技术与管理学院</view>
-        </view>
-        <view class="people-item-right">
-          <view class="people-item-right-stamp pending">待录取</view>
         </view>
       </view>
     </view>

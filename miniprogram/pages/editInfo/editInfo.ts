@@ -2,7 +2,7 @@ import { IAppOption } from "../../../typings"
 import { User } from "../../../typings/types/data/user"
 import { countDown, customNavBack, isUploadFile } from "../../utils/util"
 import { putUsers } from '../../api/apiUser'
-import { uploadCloud } from '../../api/apiCloudStorage'
+import { uploadFast } from '../../api/apiCloudStorage'
 const app = <IAppOption>getApp()
 // pages/editInfo/editInfo.ts
 Page({
@@ -51,15 +51,10 @@ Page({
   handleTapSave: async function() {
     const {user} = this.data
     if(user.avatar) {
-      const avatarArr = user.avatar?.split('/')
-      if(avatarArr[2] === 'tmp') { // 判定为本地图片
-        const rs = await uploadCloud(user.avatar, `avatar/${avatarArr[3]}`)
-        if(rs.statusCode !== 204) {
-          wx.showToast({title: '图片上传失败', icon: 'error'})
-          return // 图片上传失败直接返回
-        }
-        user.avatar = rs.fileID 
-        this.setData({user})// 将返回的图片ID保存到用户数据上
+      const result = await uploadFast(user.avatar, 'avatar')
+      if(result) {
+        user.avatar = result as string
+        this.setData(user)
       }
     }
     if(user.id) { 
@@ -78,7 +73,7 @@ Page({
 
   onReady() {
     const user = app.globalData.currentUser
-    if(user === undefined) {
+    if(user !== null) {
       this.setData({user})
     }
   },

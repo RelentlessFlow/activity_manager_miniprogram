@@ -13,12 +13,18 @@
     display: flex;
     margin-top: 60rpx;
     height: 30%;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      color: transparent;
+    }
     .hot-gourp-item{
       display: flex;
       flex-direction: column;
       justify-content: center; align-content: center;
       margin-left: 48rpx;
-      &:last-child {margin-right: 70rpx;}
+      &:last-child {margin-right: 48rpx;}
       .hot-gourp-item-icon {
         height: 100rpx; width: 100rpx;
         background-color: #727272;
@@ -28,8 +34,9 @@
       .hot-gourp-item-desc {
         margin-top: 30rpx;
         text-align: center;
-        font-size: 30rpx;
+        font-size: 24rpx;
         font-weight: 300;
+        height: 70rpx;
         color: #4d4d4d;
       }
     }

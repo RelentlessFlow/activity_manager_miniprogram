@@ -78,7 +78,6 @@
       "introduce": "读书分享会......",
       "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/book.jpg",
       "id": "1001"
-      
     },
     {
       "name": "电影分享会/放映会",
@@ -121,37 +120,59 @@
       "introduce": "个性化导赏......",
       "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/movie.jpg",
       "id": "1008"
-    },{
+    },
+    {
       "name": "专业技能培训",
       "introduce": "行业技能交流会......",
       "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/business.jpg",
       "id": "1009"
-    },{
+    },
+    {
       "name": "DIY",
       "introduce": "DIY......",
       "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/openmind.jpg",
       "id": "1010"
-    },{
+    },
+    {
       "name": "兴趣学习活动",
       "introduce": "兴趣学习活动......",
       "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/hobby.jpg",
       "id": "1011"
-    },{
+    },
+    {
       "name": "舞会",
       "introduce": "舞会......",
       "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/dance.jpg",
       "id": "1012"
-    },{
+    },
+    {
       "name": "英语角/英语沙龙",
       "introduce": "英语角/英语沙龙......",
       "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/english.jpg",
       "id": "1013"
     }
   ],
-  "themes":[ {
-    "cover": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
-    "title": "全国大学生金融挑战赛",
-    "date": {"start": "2022.04.22", "end": "2022.05.17"},
-    "count": "166"
-  }]
+  "themes": [
+    {
+      "cover": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
+      "name": "全国大学生金融挑战赛第一季",
+      "desc": "全国大学生金融挑战赛由金融信息及数据服务商Wind资讯发起并主办，第一届比赛正在进行中（2015年10-12月）。",
+      "startTime": "2022.01.22",
+      "endTime": "2022.02.17",
+      "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg"
+    },
+    {
+      "cover": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
+      "name": "全国大学生金融挑战赛第二季",
+      "desc": "全国大学生金融挑战赛由金融信息及数据服务商Wind资讯发起并主办，第二届比赛正在进行中（2016年10-12月）。",
+      "startTime": "2022.04.22",
+      "endTime": "2022.05.17",
+      "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg"
+    }
+  ],
+  "activities": [
+  ],
+  "activityThemeCategory": [
+    
+  ]
 }

@@ -1,6 +1,8 @@
 // index.ts
 
 import { IAppOption } from "../../../typings"
+import { Category } from "../../../typings/types/data/categories"
+import { getCategories } from "../../api/apiCategory"
 
 // 获取应用实例
 const app = getApp<IAppOption>()
@@ -14,6 +16,7 @@ Page({
       {id: 3, title: '返家乡', icon: 'https://activity-1257765810.cos.ap-beijing.myqcloud.com/fangzi.png', color:'#bdbdbd'},
       {id: 4, title: '返家乡', icon: 'https://activity-1257765810.cos.ap-beijing.myqcloud.com/fangzi.png', color:'#bdbdbd'},
     ],
+    categories: [] as Array<Category>,
     theme: {
       cover: "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
       title: '全国大学生金融挑战赛',
@@ -93,8 +96,14 @@ Page({
     }
     
   },
+  intailPageDate: async function () {
+    const cateResult = await getCategories()
+    if(cateResult.statusCode === 200) {
+      this.setData({categories: cateResult.value})
+    } else {wx.showToast({title: cateResult.desc}) }
+  },
   onLoad() {
-    
+    this.intailPageDate()
   },
   onReady() {
     this.verifyUserInfo()

@@ -1,32 +1,28 @@
-import { Category } from "../../../typings/types/data/categories"
+import { IAppOption } from "../../../typings"
+import { Category } from "../../../typings/types/data/activity"
+import { User } from "../../../typings/types/data/user"
 import { getCategories } from "../../api/apiCategory"
-
+const app = <IAppOption>getApp()
 // pages/releaseActivity/releaseActivity.ts
 Page({
   data: {
-    name: "", desc: "", 
-    people: 0, // 人数
+    name: undefined, desc: undefined, 
+    people: undefined, // 人数
     category: "", categoryId: "",  // 分类
-    topic: "", topicId: "", // 专题
+    theme: "", themeId: "", // 专题
     location: { address: "", latitude: 0, longitude: 0, name: '' },
     cover: 'https://activity-1257765810.cos.ap-beijing.myqcloud.com/WX20220508-222713%402x.png',
     categories: [] as Array<Category>,
-    joinTopic: false,
-    topics: [
+    joinTheme: false,
+    themes: [
       { id: '1', name: '青春有我' }, 
     ],
     pickerIndex: {
-      activity: 0, status: 0, topic: 0
+      activity: 0, status: 0, theme: 0
     },
     opacity: 0, initialDistance: 0, // 处理顶部导航渐变
     navIndex: 0,
-    userList: {
-      organize: {
-        id: '1', name: "苑紫清"
-      },
-      admit: [],  // 已录用
-      pending: [] // 待录取
-    },
+    sponsor: {} as User,
     // 日期选择器处理
     activitStartTime: "",
     activitStartTimePlaceholder: "开始时间",
@@ -67,13 +63,17 @@ Page({
       this.setData({ category: this.data.categories[pickerIndex.activity].name})
     })
   },
+  hanlePeopleInputChange: function(e:any){ // 人数输入框
+    const {value} = e.detail
+    this.setData({people: value})
+  },
   handlePickerTopicChange: function(e:any) {  // 专题选择器逻辑
     let { id } = e.currentTarget.dataset
     const { pickerIndex } = this.data
-    pickerIndex.topic = e.detail.value
+    pickerIndex.theme = e.detail.value
     this.setData({ pickerIndex }, () => {
-      this.setData({ topicId: id});
-      this.setData({ topic: this.data.topics[pickerIndex.topic].name})
+      this.setData({ themeId: id});
+      this.setData({ theme: this.data.themes[pickerIndex.theme].name})
     })
   },
   handleTapLocSelector: function() {  // 位置选择事件
@@ -90,10 +90,10 @@ Page({
       }
     })
   },
-  handleSwitchTopic: function(e:any) {  // 参加专题
-    this.setData({joinTopic: e.detail.value})
+  handleSwitchTheme: function(e:any) {  // 参加专题
+    this.setData({joinTheme: e.detail.value})
   },
-  handleSwitchTap: function(e:any) { // 
+  handleSwitchTap: function(e:any) { // 业内导航
     this.setData({navIndex: parseInt(e.currentTarget.dataset.index)})
     if(e.currentTarget.dataset.index === 3) {
       if( this.data.location.longitude !== 0 && this.data.location.latitude === 0) {
@@ -153,12 +153,17 @@ Page({
   },
   // 初始化数据
   intailPageDate: async function () {
+    // 分类数据
     const cateResult = await getCategories()
     if(cateResult.statusCode === 200) {
-      console.log(cateResult)
       this.setData({categories: cateResult.value})
+      this.setData({category: (cateResult.value[0] as Category).name})
+      this.setData({categoryId: (cateResult.value[0] as Category).id})
     } else {wx.showToast({title: cateResult.desc}) }
-    
+    // 发起人（当前用户）
+    if(app.globalData.currentUser != null) {
+      this.setData({sponsor: app.globalData.currentUser})
+    }
   },
 
   onLoad() {
