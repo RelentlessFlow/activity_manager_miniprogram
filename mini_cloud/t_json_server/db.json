@@ -67,23 +67,85 @@
     {
       "badge": "https://imgsa.baidu.com/forum/pic/item/a71ea8d3fd1f4134b31eb4d4291f95cad1c85e6a.jpg",
       "name": "河北工业职业技术大学",
-      "desc": "河北工业职业技术大学（Hebei Vocational University of Industry and Technology），位于河北省石家庄市，是教育部现代学徒制试点单位、国家示范性高等职业院校、国家优质专科高等职业院校，",
+      "desc": "河北工业职业技术大学(Hebei Vocational University of Industry and Technology)，位于河北省石家庄市，是教育部现代学徒制试点单位、国家示范性高等职业院校、国家优质专科高等职业院校，",
       "id": 3,
       "ban": false
     }
   ],
   "categories": [
     {
-      "id": "1001",
-      "name": "剧本杀",
-      "introduce": "剧本杀......",
-      "img": ""
+      "name": "读书分享会",
+      "introduce": "读书分享会......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/book.jpg",
+      "id": "1001"
+      
     },
     {
-      "name": "剧本杀2",
-      "introduce": "剧本杀2......",
-      "img": "",
-      "id": "dH8nudp"
+      "name": "电影分享会/放映会",
+      "introduce": "电影分享会......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/movie.jpg",
+      "id": "1002"
+    },
+    {
+      "name": "脑洞大开的活动/分享会",
+      "introduce": "脑洞大开的活动/分享会......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/openmind.jpg",
+      "id": "1003"
+    },
+    {
+      "name": "辩论会",
+      "introduce": "辩论会......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/debate.jpg",
+      "id": "1004"
+    },
+    {
+      "name": "即兴表演",
+      "introduce": "即兴表演......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/act.jpg",
+      "id": "1005"
+    },
+    {
+      "name": "美食聚会",
+      "introduce": "美食聚会......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/food.jpg",
+      "id": "1006"
+    },
+    {
+      "name": "行业技能交流会",
+      "introduce": "行业技能交流会......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/business.jpg",
+      "id": "1007"
+    },
+    {
+      "name": "个性化导赏",
+      "introduce": "个性化导赏......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/movie.jpg",
+      "id": "1008"
+    },{
+      "name": "专业技能培训",
+      "introduce": "行业技能交流会......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/business.jpg",
+      "id": "1009"
+    },{
+      "name": "DIY",
+      "introduce": "DIY......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/openmind.jpg",
+      "id": "1010"
+    },{
+      "name": "兴趣学习活动",
+      "introduce": "兴趣学习活动......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/hobby.jpg",
+      "id": "1011"
+    },{
+      "name": "舞会",
+      "introduce": "舞会......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/dance.jpg",
+      "id": "1012"
+    },{
+      "name": "英语角/英语沙龙",
+      "introduce": "英语角/英语沙龙......",
+      "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/english.jpg",
+      "id": "1013"
     }
   ],
   "themes":[ {

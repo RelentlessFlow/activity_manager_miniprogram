@@ -1,4 +1,5 @@
 import { Category } from "../../../typings/types/data/categories"
+import { getCategories } from "../../api/apiCategory"
 
 // pages/releaseActivity/releaseActivity.ts
 Page({
@@ -151,8 +152,15 @@ Page({
     joinEndTime?.setTime("2010-01-01 00:00", "2099-12-31 23:59", "2022-01-01 00:00");
   },
   // 初始化数据
+  intailPageDate: async function () {
+    const cateResult = await getCategories()
+    if(cateResult.statusCode === 200) {
+      console.log(cateResult)
+      this.setData({categories: cateResult.value})
+    } else {wx.showToast({title: cateResult.desc}) }
+    
+  },
 
-  
   onLoad() {
     this.selectButtonGroupBottom().then(resolveButton => {
       this.selectSwitchBottom().then(resolveSwitch => {
@@ -166,6 +174,8 @@ Page({
   onReady() {
     // 初始化日期组件
     this.initalDataComponents()
+    // 初始化数据
+    this.intailPageDate()
   },
   onPageScroll(e) {
     const opacity = e.scrollTop / this.data.initialDistance * 2
