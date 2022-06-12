@@ -4,7 +4,8 @@
   <view class="head">Welcome Register!</view>
   <view class="subhead">欢迎注册校享空间</view>
   <view class="input input-phone"><x-phone-input bindinputchange="handlePhoneInputChange" input="{{phone}}"></x-phone-input></view>
-  <view class="input input-pass"><x-pass-input displayUnableLogin="{{false}}" bindinputchange="handlePassInputChange" input="{{password}}"></x-pass-input></view>  
+  <view class="input input-pass"><x-pass-input displayUnableLogin="{{false}}" bindinputchange="handlePassInputChange" input="{{password}}"></x-pass-input></view>
+  <view class="input input-pass"><x-pass-input displayUnableLogin="{{false}}" bindinputchange="handleConfirmPassInputChange" input="{{confirmPassword}}" label="确认密码"></x-pass-input></view>
   <block wx:if="{{verify}}"><view class="login login-pass" bindtap="handleTapRigisterButton">注册</view></block>
   <block wx:else><view class="login">注册</view></block>
   <view class="agree">

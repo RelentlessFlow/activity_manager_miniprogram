@@ -2,7 +2,8 @@ Component({
   options: { styleIsolation: "apply-shared" },
   properties: {
     input: { type: String, value: "", },
-    displayUnableLogin: {type: Boolean, value: true}
+    displayUnableLogin: {type: Boolean, value: true},
+    label: {type: String, value: "密码"}
   },
   data: {showPass: false, inputFucused: false},
   methods: {

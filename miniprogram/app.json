@@ -9,19 +9,24 @@
     }
   },
   "pages": [
+    "pages/manager/platform/platform",
     "pages/guide/guide",
+    "pages/userSettingPages/nameSetting/nameSetting",
+    "pages/userSettingPages/idCardSetting/idCardSetting",
+    "pages/userSettingPages/schoolSetting/schoolSetting",
+    "pages/userSettingPages/majorSetting/majorSetting",
+    "pages/editInfo/editInfo",
     "pages/index/index",
     "pages/login/login",
     "pages/register/register",
     "pages/themeActivity/themeActivity",
     "pages/releaseActivity/releaseActivity",
-    "pages/editInfo/editInfo",
     "pages/editActivity/editActivity",
     "pages/activity/activity",
     "pages/detail/detail",
-    "pages/inputDetail/inputDetail",
     "pages/my/my",
-    "pages/square/square"
+    "pages/manager/index/index",
+    "pages/manager/school/school"
   ],
   "tabBar": {
     "color": "#cccccc",
@@ -35,16 +40,16 @@
         "text": "校内"
       },
       {
-        "selectedIconPath": "image/square_fill.png",
-        "iconPath": "image/square_line.png",
-        "pagePath": "pages/square/square",
-        "text": "广场"
-      },
-      {
         "selectedIconPath": "image/my_fill.png",
         "iconPath": "image/my_line.png",
         "pagePath": "pages/my/my",
         "text": "我的"
+      },
+      {
+        "selectedIconPath": "image/square_fill.png",
+        "iconPath": "image/square_line.png",
+        "pagePath": "pages/manager/index/index",
+        "text": "管理"
       }
     ]
   },

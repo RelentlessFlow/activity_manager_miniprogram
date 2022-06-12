@@ -1,58 +1,58 @@
 
 <view class="container border-top">
   <scroll-view class="list border-box flex1 column" enable-flex="true">
-    <view class="list-item flex align-center border-bottom">
+    <view class="list-item flex align-center border-bottom" bindtap="handleAvatarTap">
       <view class="list-item-left flex1">头像</view>
       <view class="list-item-right flex">
         <view class="list-item-right-avatar flex center border-circle">
-          <image src="../../image/avatar.png" />
+          <image class="border-circle" src="{{user.avatar || '../../image/avatar.png'}}"/>
         </view>
       </view>
     </view>
-    <view class="list-item flex align-center border-bottom" data-value="{{user.name.value}}" data-property="name" bindtap="handleItemTap">
+    <view class="list-item flex align-center border-bottom" data-value="{{user.name || ''}}" data-property="name" data-label="真实姓名" bindtap="handleItemTap">
       <view class="list-item-left flex1">姓名</view>
-      <view class="list-item-right flex">{{user.name.value}}</view>
+      <view class="list-item-right flex">{{user.name || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
     </view>
-    <view class="list-item flex align-center border-bottom" data-value="{{user.nickName.value}}" data-property="nickName" bindtap="handleItemTap">
+    <view class="list-item flex align-center border-bottom" data-value="{{user.nickName || ''}}" data-property="nickName" data-label="昵称" bindtap="handleItemTap">
       <view class="list-item-left flex1">昵称</view>
-      <view class="list-item-right flex">{{user.nickName.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+      <view class="list-item-right flex">{{user.nickName || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
     </view>
-    <view class="list-item flex align-center border-bottom" data-value="{{user.introduce.value}}" data-property="introduce" bindtap="handleItemTap">
+    <view class="list-item flex align-center border-bottom" data-value="{{user.introduce || ''}}" data-property="introduce" data-label="简介" bindtap="handleItemTap">
       <view class="list-item-left flex1">简介</view>
-      <view class="list-item-right flex">{{user.introduce.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+      <view class="list-item-right flex">{{user.introduce || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
     </view>
-    <view class="list-item flex align-center border-bottom" data-value="{{user.favorite.value}}" data-property="favorite" bindtap="handleItemTap">
+    <view class="list-item flex align-center border-bottom" data-value="{{user.favorite || ''}}" data-property="favorite" data-label="兴趣" bindtap="handleItemTap">
       <view class="list-item-left flex1">兴趣</view>
-      <view class="list-item-right flex">{{user.favorite.value}}</view>
+      <view class="list-item-right flex">{{user.favorite || '请填写'}}</view>
     </view>
-    <view class="list-item flex align-center border-bottom" data-value="{{user.birthday.value}}" data-property="birthday" bindtap="handleItemTap">
+    <view class="list-item flex align-center border-bottom" data-value="{{user.birthday || ''}}" data-property="birthday" data-label="生日" bindtap="handleItemTap">
       <view class="list-item-left flex1">生日</view>
-      <view class="list-item-right flex">{{user.birthday.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+      <view class="list-item-right flex">{{user.birthday || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
     </view>
-    <view class="list-item flex align-center border-bottom" data-value="{{user.idCard.value}}" data-property="idCard" bindtap="handleItemTap">
+    <view class="list-item flex align-center border-bottom" data-value="{{user.idCard || ''}}" data-property="idCard" data-label="身份号" bindtap="handleItemTap">
       <view class="list-item-left flex1">身份证号（证件号）</view>
-      <view class="list-item-right flex">{{user.idCard.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+      <view class="list-item-right flex">{{user.idCard || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
     </view>
-    <view class="list-item flex align-center border-bottom" data-value="{{user.school.value}}" data-property="school" bindtap="handleItemTap">
-      <view class="list-item-left flex1">学校</view>
-      <view class="list-item-right flex">{{user.school.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+    <view class="list-item flex align-center border-bottom" data-value="{{user.school || ''}}" data-property="school" data-label="就读学校" bindtap="handleItemTap">
+      <view class="list-item-left flex1">就读学校</view>
+      <view class="list-item-right flex">{{user.school || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
     </view>
-    <view class="list-item flex align-center border-bottom" data-value="{{user.major.value}}" data-property="major" bindtap="handleItemTap">
-      <view class="list-item-left flex1">专业</view>
-      <view class="list-item-right flex">{{user.major.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+    <view class="list-item flex align-center border-bottom" data-value="{{user.major || ''}}" data-property="major" data-label="所在院系" bindtap="handleItemTap">
+      <view class="list-item-left flex1">所在院系</view>
+      <view class="list-item-right flex">{{user.major || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
     </view>
-    <view class="list-item flex align-center border-bottom" data-value="{{user.nation.value}}" data-property="nation" bindtap="handleItemTap">
+    <view class="list-item flex align-center border-bottom" data-value="{{user.nation || ''}}" data-property="nation" data-label="民族" bindtap="handleItemTap">
       <view class="list-item-left flex1">民族</view>
-      <view class="list-item-right flex">{{user.nation.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+      <view class="list-item-right flex">{{user.nation || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
     </view>
     
-    <view class="list-item flex align-center border-bottom" data-value="{{user.nation.value}}" data-property="nation" bindtap="handleItemTap">
+    <view class="list-item flex align-center border-bottom" data-value="{{user.location || ''}}" data-property="location" data-label="所在地" bindtap="handleItemTap">
       <view class="list-item-left flex1">所在地</view>
-      <view class="list-item-right flex">{{user.location.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+      <view class="list-item-right flex">{{user.location || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
     </view>
-    <view class="list-item flex align-center border-bottom" data-value="{{user.hometown.value}}" data-property="hometown" bindtap="handleItemTap">
+    <view class="list-item flex align-center border-bottom" data-value="{{user.hometown || ''}}" data-property="hometown" data-label="家乡" bindtap="handleItemTap">
       <view class="list-item-left flex1">家乡</view>
-      <view class="list-item-right flex">{{user.hometown.value}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+      <view class="list-item-right flex">{{user.hometown || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
     </view>
     
   </scroll-view>

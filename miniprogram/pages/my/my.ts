@@ -1,6 +1,10 @@
+import { IAppOption } from "../../../typings"
+import { User } from "../../../typings/types/data/user"
+const app = <IAppOption>getApp()
 // pages/my/my.ts
 Page({
   data: {
+    user: {} as User,
     activities: [{
       id: "1",
       cover: 'https://activity-1257765810.cos.ap-beijing.myqcloud.com/WX20220508-222713%402x.png',
@@ -36,9 +40,17 @@ Page({
       url: '../../pages/editInfo/editInfo'
     })
   },
-  onLoad() {},
-  onReady() {},
-  onShow() {},
+  onLoad() {
+  },
+  onReady() {
+    
+  },
+  onShow() {
+    const user = app.globalData.currentUser
+    if(user) {
+      this.setData({user})
+    }
+  },
 
   onHide() {},
   onUnload() {},

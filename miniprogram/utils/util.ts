@@ -61,3 +61,41 @@ export const customNavBack = (value= '') => {
       url: `/${route}?value=${value as string}`
     })
 }
+
+export const generateUUID = () => {
+  var d = new Date().getTime();
+  var uuid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+    /[xy]/g,
+    function (c) {
+      var r = (d + Math.random() * 16) % 16 | 0;
+      d = Math.floor(d / 16);
+      return (c == "x" ? r : (r & 0x3) | 0x8).toString(16);
+    }
+  );
+  return uuid;
+}
+
+
+export const isUploadFile = (path: string) => {
+  const pathArr = path.split('/')
+  if(pathArr[2] === 'tmp') {
+    return true
+  }
+  return false
+}
+
+/**
+ * 节流
+ * @param {function} fn
+ * @param {number} delay
+ */
+export function throttle(fn: Function, delay = 500){
+  let timer: any = null
+  return () =>{
+      if(timer) return
+      timer = setTimeout(()=>{
+          fn.apply(this, arguments)
+          timer = null
+      }, delay)
+  }
+}

@@ -1,0 +1,17 @@
+
+<view class="container border-top">
+  <view class="list border-box column" enable-flex="true">
+    <view class="list-item flex align-center border-bottom">
+      <input class="list-item-right flex1" bindinput="handleInputValue" placeholder="身份证号" value="{{value}}" /> 
+    </view>
+  </view>
+  <view class="list border-box flex1 column" enable-flex="true">
+    <view class="list-item flex align-center">
+      <view class="list-item-right flex1">
+        <text>请输入正确的18位身份证号</text>
+      </view>
+    </view>
+  </view>
+  <view class="footer text-center box-shadow" bindtap="handleTapSave">保存</view>
+  <x-safe-footer/>
+</view>

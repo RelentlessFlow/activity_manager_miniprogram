@@ -1,4 +1,6 @@
-import {countDown} from '../../utils/util'
+import { IAppOption } from '../../../typings'
+import { countDown } from '../../utils/util'
+const app = getApp<IAppOption>()
 Page({
 
   /**
@@ -10,15 +12,20 @@ Page({
 
   async onReady() {
     // 倒计时函数
-    await countDown(() => {
+    const complete = await countDown(() => {
       this.setData({ times: this.data.times - 1 })
     }, this.data.times)
-    this.gotoIndex()
+    if(complete) { this.gotoNext() }
   },
 
-  gotoIndex: function() {
-    wx.navigateTo({
-      url: "../login/login"
-    })
+  gotoNext: function () {
+    let pages = getCurrentPages();
+    let currentPage = pages[pages.length - 1];
+    const route = currentPage.route
+    if(route === 'pages/guide/guide') {
+      wx.switchTab({
+        url: "../index/index"
+      })
+    }
   }
 })

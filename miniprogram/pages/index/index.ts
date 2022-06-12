@@ -1,4 +1,7 @@
 // index.ts
+
+import { IAppOption } from "../../../typings"
+
 // 获取应用实例
 const app = getApp<IAppOption>()
 
@@ -65,5 +68,35 @@ Page({
       url: '../../pages/themeActivity/themeActivity'
     })
   },
-  onLoad() {}
+  verifyUserInfo: function() {
+    // 存在登录用户
+    if(app.globalData.currentUser !== null || app.globalData.currentUser != undefined) {
+      const { name, idCard, school, major } = app.globalData.currentUser
+      if(name === undefined) {
+        wx.navigateTo({url: '../../pages/userSettingPages/nameSetting/nameSetting'})
+        return
+      }
+      if(idCard === undefined) {
+        wx.navigateTo({url: '../../pages/userSettingPages/idCardSetting/idCardSetting'})
+        return
+      }
+      if(school === undefined) {
+        wx.navigateTo({url: '../../pages/userSettingPages/schoolSetting/schoolSetting'})
+        return
+      }
+      if(major === undefined) {
+        wx.navigateTo({url: '../../pages/userSettingPages/majorSetting/majorSetting'})
+        return
+      }
+    } else { // 用户未登录
+      wx.navigateTo( {url: '../login/login'} )
+    }
+    
+  },
+  onLoad() {
+    
+  },
+  onReady() {
+    this.verifyUserInfo()
+  },
 })

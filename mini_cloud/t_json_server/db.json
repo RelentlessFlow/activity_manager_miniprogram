@@ -1,0 +1,69 @@
+{
+  "users": [
+    {
+      "id": "1001",
+      "phone": "17692463717",
+      "password": "q200048@",
+      "avatar": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/avatar/7YHAYbMID1cl3072c6e2c84ca73b7614b8541c9526a5.png",
+      "name": "苑紫清",
+      "nickName": "爱吃辣的机器人",
+      "introduce": "Stay foolish, Stay hungry.",
+      "favorite": "剧本杀，读书分享会",
+      "birthday": "2000-05-11",
+      "idCard": "21100220000511121X",
+      "school": "河北传媒学院",
+      "major": "信息技术与管理学院——物联网工程",
+      "nation": "汉族",
+      "location": "河北石家庄",
+      "hometown": "辽宁辽阳",
+      "role": [1,2]
+    },
+    {
+      "phone": "17092463727",
+      "password": "q200048@",
+      "id": "rfRwSPh",
+      "name": "张三",
+      "idCard": "21100220000511121X",
+      "school": "河北传媒学院",
+      "major": "信息技术与管理学院",
+      "nickName": "张三快乐一生",
+      "introduce": "我就是张三",
+      "favorite": "张三没有兴趣",
+      "birthday": "张三是从石头里生出来的",
+      "nation": "汉族",
+      "hometown": "RockTown",
+      "location": "RockTown",
+      "avatar": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/avatar/QDVhXh2qJON53072c6e2c84ca73b7614b8541c9526a5.png"
+    },
+    {
+      "phone": "17692463718",
+      "password": "q200048@",
+      "id": "AU5wd_5"
+    },
+    {
+      "phone": "17692463718",
+      "password": "q200048@",
+      "id": "edbYRb9"
+    }
+  ],
+  "schools": [
+    {
+      "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
+      "name": "河北传媒学院",
+      "desc": "河北传媒学院是一所传媒艺术特色鲜明、文、理、工、管兼容的应用型全日制普通高等教育本科院校。",
+      "id": 1
+    },
+    {
+      "badge": "https://imgsa.baidu.com/forum/pic/item/71cf3bc79f3df8dc746fac13ca11728b461028e5.jpg",
+      "name": "河北工业大学",
+      "desc": "河北工业大学（Hebei University of Technology），坐落于天津市，由河北省人民政府、天津市人民政府与中华人民共和国教育部共建，隶属于河北省，是国家“双一流”建设高校。",
+      "id": 2
+    },
+    {
+      "badge": "https://imgsa.baidu.com/forum/pic/item/a71ea8d3fd1f4134b31eb4d4291f95cad1c85e6a.jpg",
+      "name": "河北工业职业技术大学",
+      "desc": "河北工业职业技术大学（Hebei Vocational University of Industry and Technology），位于河北省石家庄市，是教育部现代学徒制试点单位、国家示范性高等职业院校、国家优质专科高等职业院校，",
+      "id": 3
+    }
+  ]
+}

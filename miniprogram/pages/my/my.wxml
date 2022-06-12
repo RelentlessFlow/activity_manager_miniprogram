@@ -7,19 +7,18 @@
       <view class="user-content-top">
         <view class="user-content-top-left">
           <view class="user-content-top-left-avatar">
-            <image src="../../image/avatar.png"/>
+            <image src="{{user.avatar || '../../image/avatar.png'}}"/>
           </view>
         </view>
         <view class="user-content-top-right">
           <view class="user-content-top-right-info" bindtap="handleTapInfoEdit">
             编辑资料
           </view>
-          
         </view>
       </view>
       <view class="user-content-info">
-        <view class="user-content-info-name">苑紫清</view>
-        <view class="user-content-info-desc">河北传媒学院信息技术与管理学院在读</view>
+        <view class="user-content-info-name">{{user.name}} {{user.nickName && '('}}{{user.nickName}}{{user.nickName && ')'}}</view>
+        <view class="user-content-info-desc">{{user.school}}{{user.major}}在读</view>
       </view>
       <view class="user-content-info user-content-info_activity">
         <view class="user-content-info-item"><text class="strong">2</text>我组织</view>

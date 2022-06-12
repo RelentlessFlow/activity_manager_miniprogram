@@ -1,0 +1,17 @@
+
+<view class="container border-top">
+  <view class="list border-box column" enable-flex="true">
+    <view class="list-item flex align-center border-bottom">
+      <input class="list-item-right flex1" bindinput="handleInputValue" placeholder="学院全称" value="{{value}}" /> 
+    </view>
+  </view>
+  <view class="list border-box flex1 column" enable-flex="true">
+    <view class="list-item flex align-center">
+      <view class="list-item-right flex1">
+        <text>请填写正确的学院全称。\n 例如：信息技术与管理学院</text>
+      </view>
+    </view>
+  </view>
+  <view class="footer text-center box-shadow" bindtap="handleTapSave">保存</view>
+  <x-safe-footer/>
+</view>

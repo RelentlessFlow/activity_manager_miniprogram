@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="main flex flex1 column center">
+    <view class="button-group flex column  ">
+      <view class="title text-center">管理人员入口</view>
+      <view class="button-group-item flex center box-shadow" bindtap="handleTapToPlatform">
+        <view class="button-group-item-content">
+          <text>平台管理\n人员入口</text>
+        </view>
+        
+      </view>
+      <view class="button-group-item flex center box-shadow" bindtap="handleTapToSchool">
+        <view class="button-group-item-content">
+          <text>校方管理\n人员入口</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

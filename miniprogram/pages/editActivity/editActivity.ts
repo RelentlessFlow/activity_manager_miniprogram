@@ -205,7 +205,7 @@ Page({
     })
   },
   onReady() {},
-  onPageScroll(e) {
+  onPageScroll(e:any) {
     const opacity = e.scrollTop / this.data.initialDistance * 2
     if(opacity >= 0) { this.setData({opacity}) }
   }

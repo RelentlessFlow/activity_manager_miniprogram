@@ -1,3 +1,7 @@
+import { IAppOption } from "../../../typings"
+import { getUserByPhoneAndPassoword } from "../../api/apiUser"
+import { countDown } from "../../utils/util"
+const app = getApp<IAppOption>()
 Page({
   data: {
     phone: "",
@@ -26,12 +30,22 @@ Page({
       this.setData({ verify: false })
     }
   },
-  handleTapLoginButton: function () { // 登录按钮点击逻辑
-    const result = { value : true, desc: '成功' }
-    if(!result.value) {
-      wx.showToast({ title: `${result.desc}`, icon: 'error', duration: 2000 })
+  handleTapLoginButton: async function () { // 登录按钮点击逻辑
+    const {phone, password} = this.data
+    const result = await getUserByPhoneAndPassoword(phone, password)
+    console.log(result)
+    if(result.statusCode === 200) {
+      app.globalData.currentUser = result.value[0]
+      wx.setStorage({
+        key:"currentUser",
+        data:app.globalData.currentUser?.id
+      })
+      wx.showToast({ title: `${result.desc}`, duration: 1000 })
+      countDown(()=> {
+        wx.switchTab({"url": '../index/index'})
+      }, 1000)
     } else {
-      wx.switchTab({"url": '../index/index'})
+      wx.showToast({ title: `${result.desc}`,icon: 'error', duration: 2000 })
     }
   },
   handleTapRegisterButton: function () {
