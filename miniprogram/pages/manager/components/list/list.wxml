@@ -1,7 +1,10 @@
 <view class="main flex column">
     <view class="main-title flex1" bindtap="handleTitleTap">
-      {{title}}<text class="main-title-hbbton">{{show ? '-' : '+'}} </text>
+      {{title}}
+
+      <text class="main-title-hbbton">{{show ? '-' : '+'}} </text>
     </view>
+    
     <block wx:if="{{show}}">
       <view class="main-list">
         <slot/>

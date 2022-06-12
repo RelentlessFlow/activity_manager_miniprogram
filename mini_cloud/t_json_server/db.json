@@ -16,7 +16,10 @@
       "nation": "汉族",
       "location": "河北石家庄",
       "hometown": "辽宁辽阳",
-      "role": [1,2]
+      "role": [
+        1,
+        2
+      ]
     },
     {
       "phone": "17092463727",
@@ -60,7 +63,6 @@
       "desc": "河北工业大学（Hebei University of Technology），坐落于天津市，由河北省人民政府、天津市人民政府与中华人民共和国教育部共建，隶属于河北省，是国家“双一流”建设高校。",
       "id": 2,
       "ban": false
-
     },
     {
       "badge": "https://imgsa.baidu.com/forum/pic/item/a71ea8d3fd1f4134b31eb4d4291f95cad1c85e6a.jpg",
@@ -69,5 +71,25 @@
       "id": 3,
       "ban": false
     }
-  ]
+  ],
+  "categories": [
+    {
+      "id": "1001",
+      "name": "剧本杀",
+      "introduce": "剧本杀......",
+      "img": ""
+    },
+    {
+      "name": "剧本杀2",
+      "introduce": "剧本杀2......",
+      "img": "",
+      "id": "dH8nudp"
+    }
+  ],
+  "themes":[ {
+    "cover": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
+    "title": "全国大学生金融挑战赛",
+    "date": {"start": "2022.04.22", "end": "2022.05.17"},
+    "count": "166"
+  }]
 }
