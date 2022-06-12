@@ -31,7 +31,9 @@
                 <image src="../../image/clock-fill.png" />{{'活动时间'}}
               </view>
               <view class="preview-cover-content-cantainer-right time">
-                {{time.start.date}}-{{time.start.time}}~{{time.end.date}}-{{time.end.time}}
+                <block wx:if="{{activitStartTime!== '' && activitEndTime!== ''}}">
+                  {{activitStartTime}}~{{activitEndTime}}
+                </block>
               </view>
             </view>
           </view>
@@ -84,55 +86,17 @@
             <view class="row">
               <image src="../../image/clock.png" /><text class="title">活动时间</text>
             </view>
-            <view class="input-group-item-content-pickers">
-              <block wx:if="{{!time.start.date}}">
-                <picker mode="date" value="{{time.start.date}}" bindchange="handleStartDate">
-                  <view class="picker content"> 开始日期{{time.start.date}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-              <block wx:elif="{{time.start.date && !time.start.time}}">
-                <picker mode="time" value="{{time.start.time}}" bindchange="handleStartTime">
-                  <view class="picker content"> 开始时间 {{time.start.time}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-              <block wx:elif="{{time.start.time && !time.end.date}}">
-                <picker mode="date" value="{{time.end.date}}" bindchange="handleEndDate">
-                  <view class="picker content"> 结束日期 {{time.end.date}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-              <block wx:elif="{{time.end.date}}">
-                <picker mode="time" value="{{time.end.time}}" bindchange="handleEndTime">
-                  <view class="picker content"> 结束时间 {{time.end.time}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-            </view>
+            <date-time id="activitStartTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{activitStartTime}}" placeholder="{{activitStartTimePlaceholder}}" binddateTimeChanged="handleActivityTimeStart" hidden="{{activitStartTime !== ''}}">  ></date-time>
+            <date-time id="activitEndTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{activitEndTime}}" placeholder="{{activitEndTimePlaceholder}}" binddateTimeChanged="handleActivityTimeEnd" hidden="{{activitStartTime === '' || activitEndTime !== ''}}"> ></date-time>
+            <view wx:if="{{activitStartTime !== '' && activitEndTime !== ''}}">设定完成</view>
           </view>
           <view class="input-group-item-content input-group-item-content_pickers">
             <view class="row">
               <image src="../../image/signup.png" /><text class="title">报名时间</text>
             </view>
-            <view class="input-group-item-content-pickers">
-              <block wx:if="{{!signTime.start.date}}">
-                <picker mode="date" value="{{signTime.start.date}}" bindchange="handleStartDate">
-                  <view class="picker content"> 开始日期{{signTime.start.date}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-              <block wx:elif="{{signTime.start.date && !signTime.start.time}}">
-                <picker mode="time" value="{{signTime.start.time}}" bindchange="handleStartTime">
-                  <view class="picker content"> 开始时间 {{signTime.start.time}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-              <block wx:elif="{{signTime.start.time && !signTime.end.date}}">
-                <picker mode="date" value="{{signTime.end.date}}" bindchange="handleEndDate">
-                  <view class="picker content"> 结束日期 {{signTime.end.date}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-              <block wx:elif="{{signTime.end.date}}">
-                <picker mode="time" value="{{signTime.end.time}}" bindchange="handleEndTime">
-                  <view class="picker content"> 结束时间 {{signTime.end.time}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-            </view>
+            <date-time id="joinStartTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{joinStartTime}}" placeholder="{{joinStartTimePlaceholder}}" binddateTimeChanged="handleJoinTimeStart" hidden="{{joinStartTime !== ''}}">  ></date-time>
+            <date-time id="joinEndTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{joinEndTime}}" placeholder="{{joinEndTimePlaceholder}}" binddateTimeChanged="handleJoinTimeEnd" hidden="{{joinStartTime === '' || joinEndTime !== ''}}"> ></date-time>
+            <view wx:if="{{joinStartTime !== '' && joinEndTime !== ''}}">设定完成</view>
           </view>
           <view class="input-group-item-content">
             <image src="../../image/zhuanti.png" /><text class="title">参加专题</text>
@@ -152,7 +116,7 @@
     </view>
   </block>
 
-<!-- 信息 -->
+  <!-- 信息 -->
   <block wx:if="{{navIndex === 1}}">
     <view class="info">
       <view class="info-title">时间范围</view>

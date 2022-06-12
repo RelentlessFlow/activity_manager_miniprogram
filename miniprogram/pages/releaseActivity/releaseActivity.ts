@@ -2,14 +2,6 @@
 Page({
   data: {
     name: "", desc: "", 
-    time: {
-      start: { date: "", time: "", }, 
-      end: { date: "", time: "", },
-    },
-    signTime: {
-      start: { date: "", time: "", }, 
-      end: { date: "", time: "", },
-    },
     people: 0, // 人数
     category: "", categoryId: "",  // 分类
     topic: "", topicId: "", // 专题
@@ -37,7 +29,16 @@ Page({
       },
       admit: [],  // 已录用
       pending: [] // 待录取
-    }
+    },
+    // 日期选择器处理
+    activitStartTime: "",
+    activitStartTimePlaceholder: "开始时间",
+    activitEndTime: "",
+    activitEndTimePlaceholder: "结束时间",
+    joinStartTime: "",
+    joinStartTimePlaceholder: "开始时间",
+    joinEndTime: "",
+    joinEndTimePlaceholder: "结束时间",
   },
   handleTapCancel: function() { // 返回上一级
     wx.navigateBack()
@@ -95,46 +96,6 @@ Page({
   handleSwitchTopic: function(e:any) {  // 参加专题
     this.setData({joinTopic: e.detail.value})
   },
-  handleStartDate: function(e:any) {  // 处理活动开始日期
-    const {time} = this.data
-    time.start.date = e.detail.value
-    this.setData({time})
-  },
-  handleStartTime: function(e:any) { // 处理活动开始时间
-    const {time} = this.data
-    time.start.time = e.detail.value
-    this.setData({time})
-  },
-  handleEndDate: function(e:any) { // 处理活动结束日期
-    const {time} = this.data
-    time.end.date = e.detail.value
-    this.setData({time})
-  },
-  handleEndTime: function(e:any) { // 处理活动开始时间
-    const {time} = this.data
-    time.end.time = e.detail.value
-    this.setData({time})
-  },
-  handleSignUpStartDate: function(e:any) {  // 处理活动报名开始日期
-    const {signTime: time} = this.data
-    time.start.date = e.detail.value
-    this.setData({time})
-  },
-  handleSignUpStartTime: function(e:any) { // 处理活动报名开始时间
-    const {signTime: time} = this.data
-    time.start.time = e.detail.value
-    this.setData({time})
-  },
-  handleSignUpEndDate: function(e:any) { // 处理活动报名结束日期
-    const {signTime: time} = this.data
-    time.end.date = e.detail.value
-    this.setData({time})
-  },
-  handleSignUpEndTime: function(e:any) { // 处理活动报名结束时间
-    const {signTime: time} = this.data
-    time.end.time = e.detail.value
-    this.setData({time})
-  },
   handleSwitchTap: function(e:any) { // 
     this.setData({navIndex: parseInt(e.currentTarget.dataset.index)})
     if(e.currentTarget.dataset.index === 3) {
@@ -177,6 +138,22 @@ Page({
       console.log(res)
     })
   },
+  // 日期处理
+  // 日期选择函数（开始日期）
+  handleActivityTimeStart: function (e:any) { var model = e.detail; this.setData({ activitStartTime: model.dateTime }) },
+  handleActivityTimeEnd: function (e:any) { var model = e.detail; this.setData({ activitEndTime: model.dateTime }) },
+  handleJoinTimeStart: function (e:any) { var model = e.detail; this.setData({ joinStartTime: model.dateTime }) },
+  handleJoinTimeEnd: function (e:any) { var model = e.detail; this.setData({ joinEndTime: model.dateTime }) },
+  initalDataComponents: function() { // 初始化日期组件
+    const activitStartTime = this.selectComponent("#activitStartTime");
+    activitStartTime?.setTime("2010-01-01 00:00", "2099-12-31 23:59", "2022-01-01 00:00");
+    const activitEndTime = this.selectComponent("#activitEndTime");
+    activitEndTime?.setTime("2010-01-01 00:00", "2099-12-31 23:59", "2022-01-01 00:00");
+    const joinStartTime = this.selectComponent("#joinStartTime");
+    joinStartTime?.setTime("2010-01-01 00:00", "2099-12-31 23:59", "2022-01-01 00:00");
+    const joinEndTime = this.selectComponent("#joinEndTime");
+    joinEndTime?.setTime("2010-01-01 00:00", "2099-12-31 23:59", "2022-01-01 00:00");
+  },
   onLoad() {
     this.selectButtonGroupBottom().then(resolveButton => {
       this.selectSwitchBottom().then(resolveSwitch => {
@@ -187,7 +164,10 @@ Page({
       }) // 存储滚动距离
     })
   },
-  onReady() {},
+  onReady() {
+    // 初始化日期组件
+    this.initalDataComponents()
+  },
   onPageScroll(e) {
     const opacity = e.scrollTop / this.data.initialDistance * 2
     if(opacity >= 0) { this.setData({opacity}) }

@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "x-input": "../../components/myInput/myInput",
-    "x-textarea": "../../components/mytextarea/mytextarea"
+    "x-textarea": "../../components/mytextarea/mytextarea",
+    "date-time": "../../components/dateTimeComponent/dateTimeComponent"
   },
   "navigationStyle": "custom",
   "navigationBarTextStyle": "white"
