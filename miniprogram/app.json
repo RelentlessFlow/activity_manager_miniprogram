@@ -9,10 +9,9 @@
     }
   },
   "pages": [
-    
+    "pages/guide/guide",
     "pages/manager/platform/platform",
     "pages/manager/platformaddschool/platformaddschool",
-    "pages/guide/guide",
     "pages/userSettingPages/nameSetting/nameSetting",
     "pages/userSettingPages/idCardSetting/idCardSetting",
     "pages/userSettingPages/schoolSetting/schoolSetting",

@@ -1,3 +1,5 @@
+import { Category } from "../../../typings/types/data/categories"
+
 // pages/releaseActivity/releaseActivity.ts
 Page({
   data: {
@@ -7,13 +9,7 @@ Page({
     topic: "", topicId: "", // 专题
     location: { address: "", latitude: 0, longitude: 0, name: '' },
     cover: 'https://activity-1257765810.cos.ap-beijing.myqcloud.com/WX20220508-222713%402x.png',
-    categories: [ //活动分类
-      { id: '-1', name: '选择分类' },
-      { id: '1', name: '读书分享会' }, { id: '2', name: '电影分享会/放映会' },  { id: '3', name: '脑洞大开的活动/分享会' }, 
-      { id: '4', name: '辩论会' }, { id: '5', name: '即兴表演' }, { id: '6', name: '美食聚会' }, 
-      { id: '7', name: '行业技能交流会' }, { id: '8', name: '个性化导赏' }, { id: '9', name: 'DIY' }, 
-      { id: '10', name: '兴趣学习活动' }, { id: '11', name: '舞会' }, { id: '12', name: '英语角/英语沙龙' },
-    ],
+    categories: [] as Array<Category>,
     joinTopic: false,
     topics: [
       { id: '1', name: '青春有我' }, 
@@ -154,6 +150,9 @@ Page({
     const joinEndTime = this.selectComponent("#joinEndTime");
     joinEndTime?.setTime("2010-01-01 00:00", "2099-12-31 23:59", "2022-01-01 00:00");
   },
+  // 初始化数据
+
+  
   onLoad() {
     this.selectButtonGroupBottom().then(resolveButton => {
       this.selectSwitchBottom().then(resolveSwitch => {

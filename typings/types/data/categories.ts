@@ -1,4 +1,4 @@
-export type categories = {
+export type Category = {
   id: string | undefined,
   name: string | undefined,
   introduce: string | undefined,
