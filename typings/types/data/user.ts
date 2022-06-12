@@ -4,7 +4,7 @@ export type User = {
   password: string | null,
   avatar: string | null,
   name: string | null,
-  nickName: string | null,
+  nickName: string | null | undefined,
   introduce: string | null,
   favorite: string | null,
   birthday: Date | null,

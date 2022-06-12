@@ -9,6 +9,9 @@
     }
   },
   "pages": [
+    
+    "pages/manager/platform/platform",
+    "pages/manager/platformaddschool/platformaddschool",
     "pages/guide/guide",
     "pages/userSettingPages/nameSetting/nameSetting",
     "pages/userSettingPages/idCardSetting/idCardSetting",
@@ -24,9 +27,10 @@
     "pages/activity/activity",
     "pages/detail/detail",
     "pages/my/my",
-    "pages/manager/platform/platform",
+    
     "pages/manager/index/index",
     "pages/manager/school/school"
+
   ],
   "tabBar": {
     "color": "#cccccc",

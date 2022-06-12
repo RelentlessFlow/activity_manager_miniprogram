@@ -17,6 +17,7 @@ Page({
       sourceType: ['album', 'camera'],
       success(res) {
         const path = res.tempFilePaths[0]
+        console.log(path)
         const {user} = _this.data
         user.avatar = path
         _this.setData({ user })
@@ -76,8 +77,10 @@ Page({
   },
 
   onReady() {
-    const user = app.globalData.currentUser as User
-    this.setData({user})
+    const user = app.globalData.currentUser
+    if(user === undefined) {
+      this.setData({user})
+    }
   },
 
   onShow() {
