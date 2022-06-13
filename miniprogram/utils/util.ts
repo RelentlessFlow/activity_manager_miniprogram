@@ -99,3 +99,38 @@ export function throttle(fn: Function, delay = 500){
       }, delay)
   }
 }
+
+/**
+ * 递归判断JS对象内所有属性值是否为空，并返回空值的key和value(https://editor.csdn.net/md/?articleId=125267660)
+ * @param obj 
+ */
+export const paramsValidate = (obj: any) => {
+  let currentKey:Array<string> = [] // 当前的Key
+  let unValidateKeyArr:Map<Array<string>, string> = new Map() // 未通过的Key
+  const valNull = (obj: any) => {
+    for(let k in obj) {    
+      if (obj[k] instanceof Array) {
+        currentKey.push(k)
+        if(obj[k].length === 0) {
+          unValidateKeyArr.set(currentKey.slice(), obj[k])
+        }
+        currentKey.pop()
+      }
+      if(obj[k] instanceof Object) {
+        currentKey.push(k)
+        valNull(obj[k])
+        currentKey.pop()
+      } 
+      currentKey.push(k)
+      if(obj[k] === undefined || obj[k] === null || obj[k] === '') {
+        unValidateKeyArr.set(currentKey.slice(), obj[k])
+      }
+      if(obj[k] instanceof Object && Object.keys(obj[k]).length === 0) {
+        unValidateKeyArr.set(currentKey.slice(), obj[k])
+      }
+      currentKey.pop()
+    }
+    return unValidateKeyArr
+  }
+  return valNull(obj)
+}

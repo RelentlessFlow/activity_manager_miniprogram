@@ -41,7 +41,7 @@ Page({
         data:app.globalData.currentUser?.id
       })
       wx.showToast({ title: `${result.desc}`, duration: 1000 })
-      countDown(()=> {
+      setTimeout(()=> {
         wx.switchTab({"url": '../index/index'})
       }, 1000)
     } else {

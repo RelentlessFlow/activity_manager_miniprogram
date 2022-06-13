@@ -154,6 +154,7 @@
   ],
   "themes": [
     {
+      "id": "1001",
       "cover": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
       "name": "全国大学生金融挑战赛第一季",
       "desc": "全国大学生金融挑战赛由金融信息及数据服务商Wind资讯发起并主办，第一届比赛正在进行中（2015年10-12月）。",
@@ -162,6 +163,7 @@
       "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg"
     },
     {
+      "id": "1002",
       "cover": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
       "name": "全国大学生金融挑战赛第二季",
       "desc": "全国大学生金融挑战赛由金融信息及数据服务商Wind资讯发起并主办，第二届比赛正在进行中（2016年10-12月）。",
@@ -173,6 +175,23 @@
   "activities": [
   ],
   "activityThemeCategory": [
-    
+  ],
+  "swiperSlider": [
+    {
+      "id": "1001",
+      "remark": "新人须知！",
+      "link": "",
+      "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/0ab8e5096ac6f08bd632e4d5a15d1792.jpg"
+    },
+    {
+      "id": "1002",
+      "remark": "校享空间1.0版本更新报告。",
+      "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/28c13d0d11b38ec17fa5d83bc6ba5912.jpg"
+    },
+    {
+      "id": "1003",
+      "remark": "平台专辑系统上线了。",
+      "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/28c13d0d11b38ec17fa5d83bc6ba5912.jpg"
+    }
   ]
 }

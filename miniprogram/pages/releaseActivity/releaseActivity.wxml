@@ -3,36 +3,40 @@
   <!-- 顶部按钮组 -->
   <view class="button-group" style="background-color: rgba(51, 51, 51, {{opacity}});">
     <view class="button-group-item cancel" bindtap="handleTapCancel">取消</view>
-    <view class="button-group-item save">存草稿</view>
-    <view class="button-group-item publish">发布</view>
+    <view class="button-group-item save" bindtap="handleTapSaveToDraft">存草稿</view>
+    <view class="button-group-item publish" bindtap="handleTapRelase">发布</view>
   </view>
   <!-- 预览 -->
   <view class="preview">
     <view class="preview-shade" />
     <view class="preview-cover" bindtap="handleTapChangeCover">
-      <view class="preview-cover-edit">点击编辑封面</view>
-      <image src="{{cover}}"></image>
+      <view class="preview-cover-edit">
+        <text>点击编辑封面</text>
+        
+      </view>
+      <image src="{{activity.cover}}"></image>
       <view class="preview-cover-content">
         <view class="preview-cover-content-cantainer">
-          <view class="preview-cover-content-cantainer-name">{{name?name:'活动标题'}}</view>
+          <view class="preview-cover-content-cantainer-name text-overflow-hidden-one">{{activity.name?activity.name:'活动标题'}}</view>
           <view class="preview-cover-content-cantainer-desc">
             <view class="col">
-              <view class="preview-cover-content-cantainer-left">
-                <image src="../../image/location.png" />{{location.name?location.name:'活动位置'}}
+              <view class="preview-cover-content-cantainer-left text-overflow-hidden-one">
+                <image src="../../image/location.png" />
+                {{activity.location.name?activity.location.name:'活动位置'}}
               </view>
-              <view class="preview-cover-content-cantainer-right">
-                {{category?category:'活动分类'}}
+              <view class="preview-cover-content-cantainer-right text-overflow-hidden-one">
+                {{activity.category?activity.category.name:'活动分类'}}
               </view>
             </view>
           </view>
           <view class="preview-cover-content-cantainer-desc">
             <view class="col">
               <view class="preview-cover-content-cantainer-left">
-                <image src="../../image/clock-fill.png" />{{'活动时间'}}
+                <image src="../../image/clock-fill.png" />活动时间
               </view>
               <view class="preview-cover-content-cantainer-right time">
-                <block wx:if="{{activitStartTime!== '' && activitEndTime!== ''}}">
-                  {{activitStartTime}}~{{activitEndTime}}
+                <block wx:if="{{activity.startTime!== '' && activity.endTime!== ''}}">
+                  {{activity.startTime}}{{activity.startTime !== '' ? '~' : ''}} {{activity.endTime}}
                 </block>
               </view>
             </view>
@@ -55,10 +59,10 @@
     <view class="input">
       <view class="input-group">
         <view class="input-group-item">
-          <x-input value="{{name}}" bindinputchange="handleNameInputChange" hiddenCount="{{false}}" hiddenLable="{{false}}" placeholder="此处输入活动标题" lable="活动标题" ph-class="ph-class" ph-active-class="ph-active-class" text-class="text-class" />
+          <x-input value="{{activity.name}}" bindinputchange="handleNameInputChange" hiddenCount="{{false}}" hiddenLable="{{false}}" placeholder="此处输入活动标题" lable="活动标题" ph-class="ph-class" ph-active-class="ph-active-class" text-class="text-class" />
         </view>
         <view class="input-group-item">
-          <x-textarea class="input-group-item-area" value="{{desc}}" bindinputchange="handleDescInputChange" hiddenCount="{{false}}" hiddenLable="{{false}}" placeholder="此处输入活动摘要" lable="活动摘要" text-class="text-area-class" input="{{desc}}" maxlength="500" defaultTextAreaHeight="200">
+          <x-textarea class="input-group-item-area" value="{{activity.desc}}" bindinputchange="handleDescInputChange" hiddenCount="{{false}}" hiddenLable="{{false}}" placeholder="此处输入活动摘要" lable="活动摘要" text-class="text-area-class" input="{{activity.desc}}" maxlength="500" defaultTextAreaHeight="200">
           </x-textarea>
         </view>
         <view class="input-group-item">
@@ -72,13 +76,13 @@
           <view class="input-group-item-content">
             <image src="../../image/location_strong.png" /><text class="title">活动地点</text>
             <view class="content" bindtap="handleTapLocSelector">
-              {{location.name ? location.name : '选择位置'}}
+              {{activity.location.name ? activity.location.name : '选择位置'}}
             </view>
             <view class="arrows"> > </view>
           </view>
           <view class="input-group-item-content">
             <image src="../../image/people.png" /><text class="title">活动人数</text>
-            <input class="content input" placeholder="输入人数" value="{{people}}" maxlength="9" type="number" bindinput="hanlePeopleInputChange"/>
+            <input class="content input" placeholder="输入人数" value="{{activity.people}}" maxlength="9" type="number" bindinput="hanlePeopleInputChange"/>
             <view class="arrows"> > </view>
           </view>
           <!-- 报名时间 -->
@@ -86,23 +90,23 @@
             <view class="row">
               <image src="../../image/clock.png" /><text class="title">活动时间</text>
             </view>
-            <date-time id="activitStartTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{activitStartTime}}" placeholder="{{activitStartTimePlaceholder}}" binddateTimeChanged="handleActivityTimeStart" hidden="{{activitStartTime !== ''}}">  ></date-time>
-            <date-time id="activitEndTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{activitEndTime}}" placeholder="{{activitEndTimePlaceholder}}" binddateTimeChanged="handleActivityTimeEnd" hidden="{{activitStartTime === '' || activitEndTime !== ''}}"> ></date-time>
-            <view wx:if="{{activitStartTime !== '' && activitEndTime !== ''}}">设定完成</view>
+            <date-time id="startTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{activity.startTime}}" placeholder="{{startTimePlaceholder}}" binddateTimeChanged="handleStartTime" hidden="{{activity.startTime !== ''}}"> > </date-time>
+            <date-time id="endTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{activity.endTime}}" placeholder="{{endTimePlaceholder}}" binddateTimeChanged="handleEndTime" hidden="{{activity.startTime === '' || activity.endTime !== ''}}"> ></date-time>
+            <view wx:if="{{activity.startTime !== '' && activity.endTime !== ''}}">设定完成</view>
           </view>
           <view class="input-group-item-content input-group-item-content_pickers">
             <view class="row">
               <image src="../../image/signup.png" /><text class="title">报名时间</text>
             </view>
-            <date-time id="joinStartTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{joinStartTime}}" placeholder="{{joinStartTimePlaceholder}}" binddateTimeChanged="handleJoinTimeStart" hidden="{{joinStartTime !== ''}}">  ></date-time>
-            <date-time id="joinEndTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{joinEndTime}}" placeholder="{{joinEndTimePlaceholder}}" binddateTimeChanged="handleJoinTimeEnd" hidden="{{joinStartTime === '' || joinEndTime !== ''}}"> ></date-time>
-            <view wx:if="{{joinStartTime !== '' && joinEndTime !== ''}}">设定完成</view>
+            <date-time id="joinStartTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{activity.joinStartTime}}" placeholder="{{joinStartTimePlaceholder}}" binddateTimeChanged="handleJoinStartTime" hidden="{{activity.joinStartTime !== ''}}"> > </date-time>
+            <date-time id="joinEndTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{activity.joinEndTime}}" placeholder="{{joinEndTimePlaceholder}}" binddateTimeChanged="handleJoinEndTime" hidden="{{activity.joinStartTime === '' || activity.joinEndTime !== ''}}"> ></date-time>
+            <view wx:if="{{activity.joinStartTime !== '' && activity.joinEndTime !== ''}}">设定完成</view>
           </view>
           <view class="input-group-item-content">
             <image src="../../image/zhuanti.png" /><text class="title">参加专题</text>
-            <switch checked="{{joinTheme}}" bindchange="handleSwitchTheme" />
+            <switch checked="{{activity.joinTheme}}" bindchange="handleSwitchTheme" />
           </view>
-          <block wx:if="{{joinTheme}}">
+          <block wx:if="{{activity.joinTheme}}">
             <view class="input-group-item-content input-group-item-content_topic">
               <text class="title">选择专题</text>
               <picker bindchange="handlePickerTopicChange" range="{{themes}}" range-key="name" value="{{pickerIndex.topic}}" data-id="{{themes[pickerIndex.theme].id}}">
@@ -123,11 +127,11 @@
       <view class="info-content">
         <view class="info-content-item">
           <view class="info-content-item-title">报名时间</view>
-          <view class="info-content-item-content">{{!signTime.start.date ? '待填写' : signTime.start.date}} {{signTime.start.time}} {{signTime.end.date ? '-' : ''}} {{signTime.end.date}} {{signTime.end.time}}</view>
+          <view class="info-content-item-content">{{!activity.joinStartTime ? '待填写' : activity.joinStartTime}}  {{activity.joinEndTime ? '-' : ''}} {{activity.joinEndTime}}</view>
         </view>
         <view class="info-content-item">
           <view class="info-content-item-title">活动时间</view>
-          <view class="info-content-item-content">{{!time.start.date ? '待填写' : time.start.date}} {{time.start.time}} {{time.end.date ? '-' : ''}} {{time.end.date}} {{time.end.time}}</view>
+          <view class="info-content-item-content">{{!activity.startTime ? '待填写' : activity.startTime}}  {{activity.endTime ? '-' : ''}} {{activity.endTime}}</view>
         </view>
       </view>
     </view>
@@ -136,7 +140,7 @@
       <view class="info-content">
         <view class="info-content-item">
           <view class="info-content-item-title">当前活动分类</view>
-          <view class="info-content-item-content">{{category ? category : '待填写'}}</view>
+          <view class="info-content-item-content">{{activity.category.name ? activity.category.name : '待填写'}}</view>
         </view>
       </view>
     </view>
@@ -145,7 +149,7 @@
       <view class="info-content">
         <view class="info-content-item">
           <view class="info-content-item-title">当前活动人数</view>
-          <view class="info-content-item-content">{{people ? people : '待填写'}}</view>
+          <view class="info-content-item-content">{{activity.people ? activity.people : '待填写'}}</view>
         </view>
       </view>
     </view>
@@ -154,11 +158,11 @@
       <view class="info-content">
         <view class="info-content-item">
           <view class="info-content-item-title">是否参与</view>
-          <view class="info-content-item-content">{{topic ? '是' : '否' }}</view>
+          <view class="info-content-item-content">{{activity.joinTheme ? '是' : '否' }}</view>
         </view>
         <view class="info-content-item">
           <view class="info-content-item-title">当前专题活动</view>
-          <view class="info-content-item-content">{{topic ? topic : '不参与专题活动'}}</view>
+          <view class="info-content-item-content">{{activity.theme.name ? activity.theme.name : '不参与专题活动'}}</view>
         </view>
       </view>
     </view>
@@ -172,8 +176,8 @@
           <image src="../../image/avatar.png"></image>
         </view>
         <view class="people-item-middle">
-          <view class="people-item-middle-name">{{sponsor.name}}</view>
-          <view class="people-item-middle-desc">{{sponsor.school}} - {{sponsor.major}}</view>
+          <view class="people-item-middle-name">{{activity.sponsor.name}}</view>
+          <view class="people-item-middle-desc">{{activity.sponsor.school}} - {{activity.sponsor.major}}</view>
         </view>
         <view class="people-item-right">
           <view class="people-item-right-stamp organize">负责人</view>

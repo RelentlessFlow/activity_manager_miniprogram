@@ -61,7 +61,9 @@ Page({
       const rs = await putUsers(user.id, user) 
       if(rs.status) {
         wx.showToast({title: '保存成功'})
-        countDown(wx.navigateBack, 1)
+        setTimeout(() => {
+          wx.navigateBack()
+        }, 1000)
       }else {
         wx.showToast({title: '网络请求超时', icon: 'error'})
       }

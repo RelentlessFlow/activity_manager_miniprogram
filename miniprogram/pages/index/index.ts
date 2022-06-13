@@ -1,8 +1,10 @@
 // index.ts
 
 import { IAppOption } from "../../../typings"
-import { Category } from "../../../typings/types/data/categories"
+import { Category } from "../../../typings/types/data/activity"
+import { SwiperSlider } from "../../../typings/types/data/swiperSlider"
 import { getCategories } from "../../api/apiCategory"
+import { getSwiperSliders } from "../../api/apiSwiper"
 
 // 获取应用实例
 const app = getApp<IAppOption>()
@@ -51,7 +53,8 @@ Page({
       type: "实践育人",
       date: { start: "2022.05.09", end: "2022.5.13" },
       status: "规划中"
-    }]
+    }],
+    swiperSlider: [] as Array<SwiperSlider>,
   },
   handleSearchInput: function(e:any) {  // 搜索框表单
     this.setData({searchInput: e.detail})
@@ -70,6 +73,9 @@ Page({
     wx.navigateTo({
       url: '../../pages/themeActivity/themeActivity'
     })
+  },
+  handleSwiperTap: function(e:any) {
+    console.log(e.detail)
   },
   verifyUserInfo: function() {
     // 存在登录用户
@@ -97,15 +103,21 @@ Page({
     
   },
   intailPageDate: async function () {
-    const cateResult = await getCategories()
+    const cateResult = await getCategories() // 分类数据
     if(cateResult.statusCode === 200) {
       this.setData({categories: cateResult.value})
     } else {wx.showToast({title: cateResult.desc}) }
+    const swiperResult = await getSwiperSliders() // 轮播图数据
+    if(swiperResult.statusCode === 200) {
+      this.setData({swiperSlider: swiperResult.value})
+    } else {wx.showToast({title: swiperResult.desc}) }
   },
   onLoad() {
-    this.intailPageDate()
   },
   onReady() {
-    this.verifyUserInfo()
   },
+  onShow() {
+    this.verifyUserInfo()
+    this.intailPageDate()
+  }
 })
