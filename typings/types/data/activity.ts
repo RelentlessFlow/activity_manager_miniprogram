@@ -1,10 +1,10 @@
-import { User } from "./user"
+import { School, User } from "./user"
 
 export enum ActivityStatus {
-  准备中,
-  报名中,
-  活动中,
-  活动结束,
+  准备中 = '准备中',
+  报名中 = '报名中',
+  活动中 = '活动中',
+  活动结束 = '活动结束',
 }
 
 // 活动
@@ -20,10 +20,11 @@ export type Activity = {
   endTime: Date | undefined | string, // 结束时间
   joinStartTime: Date | undefined | string, 
   joinEndTime: Date | undefined | string // 参与时间
-  cover: String | undefined, // 封面
+  cover: string | undefined, // 封面
   status: ActivityStatus | undefined
-  sponsor: User | undefined // 组织者,
-  joinTheme: boolean | undefined // 是否加入专题
+  sponsor: User | undefined, // 组织者,
+  joinTheme: boolean | undefined, // 是否加入专题
+  school: School | undefined
 }
 
 export type ActivityEntity = {
@@ -32,16 +33,17 @@ export type ActivityEntity = {
   desc: string, // 描述
   people: number, // 人数
   category: Category, // 分类
-  theme: Theme, // 主题
+  theme?: Theme | undefined | null, // 主题
   location: Location, // 位置
   startTime: Date | string, // 开始时间
   endTime: Date | string, // 结束时间
   joinStartTime: Date | string, 
-  joinEndTime: Date | string // 参与时间
+  joinEndTime: Date | string, // 参与时间
   cover: String, // 封面
-  status: ActivityStatus
-  sponsor: User // 组织者,
-  joinTheme: boolean // 是否加入专题
+  status: ActivityStatus,
+  sponsor: User, // 组织者,
+  joinTheme: boolean, // 是否加入专题
+  school: School
 }
 
 export type Category = {
@@ -57,7 +59,8 @@ export type Theme = {
   desc: string,
   startTime: Date,
   endTime: Date,
-  img: String
+  img: String,
+  stick?: boolean
 }
 
 export type Location = {
@@ -70,6 +73,7 @@ export type Location = {
 // 负责一对多关联
 export type ActivityThemeCategory = {
   activityId: string,
-  themeId: string,
-  categoryId: string
+  themeId?: string | undefined | null,
+  categoryId: string,
+  schoolId: string
 }

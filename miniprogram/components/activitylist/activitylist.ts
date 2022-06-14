@@ -1,17 +1,12 @@
+import { ActivityEntity, Category } from "../../../typings/types/data/activity";
+
 // components/activitylist/activitylist.ts
 Component({
   options: { styleIsolation: "apply-shared" },
   properties: {
     activities: {
-      type: Object,
-      value: [{
-        id: "1",
-        cover: 'https://activity-1257765810.cos.ap-beijing.myqcloud.com/WX20220508-222713%402x.png',
-        name: '妈，我想你了1妈，我想你了',
-        type: "实践育人",
-        date: { start: "2022.05.09", end: "2022.5.13" },
-        status: "规划中"
-      }]
+      type: Array,
+      value: [] as Array<ActivityEntity>
     }
   },
   data: {

@@ -1,5 +1,4 @@
 import { IAppOption } from "../../../../typings"
-import { getSchoolByName } from "../../../api/apiSchool"
 import {putUsers} from "../../../api/apiUser"
 const app = getApp<IAppOption>()
 Page({

@@ -33,9 +33,9 @@
       <view class="list-item-left flex1">身份证号（证件号）</view>
       <view class="list-item-right flex">{{user.idCard || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
     </view>
-    <view class="list-item flex align-center border-bottom" data-value="{{user.school || ''}}" data-property="school" data-label="就读学校" bindtap="handleItemTap">
+    <view class="list-item flex align-center border-bottom" data-value="{{user.school.name || ''}}" data-property="school" data-label="就读学校" bindtap="handleItemTap">
       <view class="list-item-left flex1">就读学校</view>
-      <view class="list-item-right flex">{{user.school || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+      <view class="list-item-right flex">{{user.school.name || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
     </view>
     <view class="list-item flex align-center border-bottom" data-value="{{user.major || ''}}" data-property="major" data-label="所在院系" bindtap="handleItemTap">
       <view class="list-item-left flex1">所在院系</view>
@@ -53,6 +53,9 @@
     <view class="list-item flex align-center border-bottom" data-value="{{user.hometown || ''}}" data-property="hometown" data-label="家乡" bindtap="handleItemTap">
       <view class="list-item-left flex1">家乡</view>
       <view class="list-item-right flex">{{user.hometown || '请填写'}}<view class="list-item-right-arrows">{{'>'}}</view></view>
+    </view>
+    <view class="list-item border-bottom flex">
+      <button class="flex1" type="warn" bindtap="handleTapLoginOut">登出</button>
     </view>
     
   </scroll-view>

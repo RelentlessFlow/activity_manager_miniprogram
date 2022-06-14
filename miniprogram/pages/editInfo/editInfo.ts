@@ -3,6 +3,7 @@ import { User } from "../../../typings/types/data/user"
 import { countDown, customNavBack, isUploadFile } from "../../utils/util"
 import { putUsers } from '../../api/apiUser'
 import { uploadFast } from '../../api/apiCloudStorage'
+import { getSchoolByName } from "../../api/apiSchool"
 const app = <IAppOption>getApp()
 // pages/editInfo/editInfo.ts
 Page({
@@ -34,13 +35,17 @@ Page({
       content: v,
       editable: true,
       placeholderText: `此处输入本人${label}`,
-      success (res) {
+      async success (res) {
         if(res.confirm && res.content !== "") {
           const newUser = _this.data.user
-          if(p === 'birthday') {
-            const data = new Date(res.content)
-            newUser['birthday'] = data
-          } else {
+          if(p === 'school') {
+            const schoolsRs = await getSchoolByName(res.content)
+            if(schoolsRs.value.length === 0) {
+              wx.showModal({title: '学校未开通次服务，敬请期待。', showCancel: false})
+              return
+            }
+            newUser['school'] = schoolsRs.value[0]
+          }else {
             newUser[p] = res.content
           }
           _this.setData({user: newUser})
@@ -68,6 +73,10 @@ Page({
         wx.showToast({title: '网络请求超时', icon: 'error'})
       }
     }
+  },
+  handleTapLoginOut: function() {
+    wx.clearStorageSync()
+    wx.navigateTo({url: '../login/login'})
   },
   onLoad() {
 

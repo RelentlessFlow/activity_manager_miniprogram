@@ -1,4 +1,5 @@
 import { IAppOption } from "../../../../typings"
+import { School } from "../../../../typings/types/data/user"
 import { getSchoolByName } from "../../../api/apiSchool"
 import {putUsers} from "../../../api/apiUser"
 const app = getApp<IAppOption>()
@@ -23,15 +24,15 @@ Page({
       return
     }
     const result = await getSchoolByName(this.data.value)
-    if(!result.status) {
+    if(result.value.length === 0) {
       wx.showModal({ title: "您所在的学校未开通此服务，敬请期待！", showCancel: false })
       return
     }
     const user =  app.globalData.currentUser
     if(user) {
-      user.school = this.data.value
-      const result = await putUsers((user.id) as string, user)
-      if(result.status) {
+      user.school = result.value[0]
+      const userResult = await putUsers((user.id) as string, user)
+      if(userResult.status) {
         this.setData({'currentUser':user})
         wx.showToast({ title: "保存成功" })
         wx.navigateTo({url: '../majorSetting/majorSetting'})
@@ -42,8 +43,8 @@ Page({
   },
 
   onReady() {
-    if(app.globalData.currentUser?.school != null) {
-      this.setData({value: app.globalData.currentUser?.school}) 
+    if(app.globalData.currentUser?.school != undefined) {
+      this.setData({value: app.globalData.currentUser?.school.name}) 
     }
   },
 

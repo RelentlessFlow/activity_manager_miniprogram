@@ -24,15 +24,10 @@ App<IAppOption>({
     })
     // 获取最新的用户信息
     const userId = await userIdAysnc
-    if(userId === undefined || userId === null) {
-      wx.navigateTo({url: './pages/login/login'})
-    }
     const result = await getUser(userId)
-    // 找不到用户就直接进登录
-    if(result.status) {
-      this.globalData.currentUser = result.value
-    } else {
+    if(userId === undefined || userId === null || result.statusCode !== 200) { 
       wx.navigateTo({url: './pages/login/login'})
     }
+    this.globalData.currentUser = result.value
   },
 })

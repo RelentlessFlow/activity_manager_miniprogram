@@ -3,6 +3,7 @@ import { Activity, Category, Location, Theme } from "../../../typings/types/data
 import { User } from "../../../typings/types/data/user"
 import { addActivity } from "../../api/apiActivity"
 import { getCategories } from "../../api/apiCategory"
+import { uploadFast } from "../../api/apiCloudStorage"
 import { getThemes } from "../../api/apiTheme"
 import { paramsValidate } from "../../utils/util"
 const app = <IAppOption>getApp()
@@ -11,16 +12,16 @@ Page({
     activity: {
       name: undefined, desc: undefined,
       people: undefined, // 人数
-      category: {} as Category, // 分类
-      theme: {} as Theme,// 专题
-      location: {} as Location, // 位置
+      category: undefined, // 分类
+      theme: undefined,// 专题
+      location: undefined, // 位置
       cover: '../../image/activity-cover.jpg', // 封面,
       // 日期选择器处理
       startTime: "", 
       endTime: "", 
       joinStartTime: "", 
       joinEndTime: "", 
-      sponsor: {} as User, // 发起人
+      sponsor: undefined, // 发起人
       status: 0,
       joinTheme: false, // 是否参加主题
     } as Activity,
@@ -169,8 +170,11 @@ Page({
   // 点击发布活动按钮事件处理
   handleTapRelase: async function () {
     const {activity} = this.data
-    const valrs = paramsValidate(activity)
+    const valrs = paramsValidate(activity, ['theme'])
     if(valrs.size === 0) { // 验证通过
+      // 上传图片到云端
+      const uploadResult = await uploadFast(activity.cover as string, 'activity-cover')
+      if(uploadResult) { activity.cover = uploadResult }
       const result = await addActivity(activity)
       if(result.statusCode === 201) {
         wx.showToast({title: '添加成功'})
@@ -208,21 +212,23 @@ Page({
   // 初始化数据
   intailPageDateAjax: async function () {
     // 分类数据
+    const {activity} = this.data
     const cateResult = await getCategories()
     if (cateResult.statusCode === 200) {
       this.setData({ categories: cateResult.value })
-      this.setData({ category: (cateResult.value[0] as Category) })
+      activity.category = cateResult.value[0]
+      this.setData({ activity })
     } else { wx.showToast({ title: cateResult.desc }) }
     // 专题数据
     const themesResult = await getThemes()
     if (themesResult.statusCode === 200) {
       this.setData({ themes: themesResult.value })
-      this.setData({ theme: (themesResult.value[0] as Theme) })
     } else { wx.showToast({ title: themesResult.desc }) }
     // 发起人（当前用户）
     if (app.globalData.currentUser != null) {
       const {activity} = this.data
       activity.sponsor = app.globalData.currentUser
+      activity.school = app.globalData.currentUser.school
       this.setData({ activity })
     }
   },

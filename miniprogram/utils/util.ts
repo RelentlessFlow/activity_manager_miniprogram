@@ -102,30 +102,29 @@ export function throttle(fn: Function, delay = 500){
 
 /**
  * 递归判断JS对象内所有属性值是否为空，并返回空值的key和value(https://editor.csdn.net/md/?articleId=125267660)
- * @param obj 
+ * @param obj 任意类型的对象
+ * @param roles 设置不进行验证的字段，例子：若需要排除 obj.user.name，则传入参数 ['user', 'name']
  */
-export const paramsValidate = (obj: any) => {
+export const paramsValidate = (obj: any, ...roles: Array<Array<string>>) => {
   let currentKey:Array<string> = [] // 当前的Key
   let unValidateKeyArr:Map<Array<string>, string> = new Map() // 未通过的Key
   const valNull = (obj: any) => {
     for(let k in obj) {    
-      if (obj[k] instanceof Array) {
-        currentKey.push(k)
-        if(obj[k].length === 0) {
-          unValidateKeyArr.set(currentKey.slice(), obj[k])
-        }
-        currentKey.pop()
-      }
       if(obj[k] instanceof Object) {
         currentKey.push(k)
         valNull(obj[k])
         currentKey.pop()
       } 
       currentKey.push(k)
-      if(obj[k] === undefined || obj[k] === null || obj[k] === '') {
-        unValidateKeyArr.set(currentKey.slice(), obj[k])
-      }
-      if(obj[k] instanceof Object && Object.keys(obj[k]).length === 0) {
+      // 判定空值
+      const valueRule = obj[k] === undefined || obj[k] === null || obj[k] === ''
+      // 判断空对象，空数组
+      const objRule = obj[k] instanceof Object && Object.keys(obj[k]).length === 0
+      // 判定是否跳过该条件
+      const customRole = !roles.find(role => {
+        return JSON.stringify(role) === JSON.stringify(currentKey)
+      })
+      if((valueRule || objRule) && customRole) {
         unValidateKeyArr.set(currentKey.slice(), obj[k])
       }
       currentKey.pop()

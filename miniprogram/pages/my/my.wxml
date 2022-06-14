@@ -18,7 +18,7 @@
       </view>
       <view class="user-content-info">
         <view class="user-content-info-name">{{user.name}} {{user.nickName && '('}}{{user.nickName}}{{user.nickName && ')'}}</view>
-        <view class="user-content-info-desc">{{user.school}}{{user.major}}在读</view>
+        <view class="user-content-info-desc">{{user.school.name}}{{user.major}}在读</view>
       </view>
       <view class="user-content-info user-content-info_activity">
         <view class="user-content-info-item"><text class="strong">2</text>我组织</view>

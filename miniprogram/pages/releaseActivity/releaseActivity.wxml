@@ -173,7 +173,7 @@
     <view class="people">
       <view class="people-item">
         <view class="people-item-left">
-          <image src="../../image/avatar.png"></image>
+          <image src="{{activity.sponsor.avatar}}"></image>
         </view>
         <view class="people-item-middle">
           <view class="people-item-middle-name">{{activity.sponsor.name}}</view>

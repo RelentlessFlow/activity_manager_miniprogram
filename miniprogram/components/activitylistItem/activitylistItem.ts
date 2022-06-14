@@ -1,3 +1,5 @@
+import { ActivityEntity } from "../../../typings/types/data/activity"
+
 // components/activitylistItem/activitylistItem.ts
 Component({
   /**
@@ -9,14 +11,7 @@ Component({
     },
     activity: {
       type: Object, 
-      value: {
-        id: "1",
-        cover: 'https://activity-1257765810.cos.ap-beijing.myqcloud.com/WX20220508-222713%402x.png',
-        name: '妈，我想你了1妈，我想你了',
-        type: "实践育人",
-        date: { start: "2022.05.09", end: "2022.5.13" },
-        status: "规划中"
-      }
+      value: {} as ActivityEntity
     }
   },
   data: {
@@ -24,7 +19,6 @@ Component({
   },
   methods: {
     handleTap: function() { // 前往详情页
-      console.log(this.properties.toEdit)
       if(this.properties.toEdit) {
         wx.navigateTo({
           url: '../../pages/editActivity/editActivity'

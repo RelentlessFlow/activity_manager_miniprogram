@@ -79,7 +79,7 @@ Page({
   },
   verifyUserInfo: function() {
     // 存在登录用户
-    if(app.globalData.currentUser !== null || app.globalData.currentUser != undefined) {
+    if(app.globalData.currentUser !== null && app.globalData.currentUser != undefined) {
       const { name, idCard, school, major } = app.globalData.currentUser
       if(name === undefined) {
         wx.navigateTo({url: '../../pages/userSettingPages/nameSetting/nameSetting'})

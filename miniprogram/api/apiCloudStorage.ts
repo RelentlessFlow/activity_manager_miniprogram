@@ -25,13 +25,13 @@ export const uploadFast = async (path: string, target: string) => {
       const rs = await uploadCloud(path, `${target}/${pathArr[3]}`)
       if(rs.statusCode !== 204) {
         wx.showToast({title: '图片上传失败', icon: 'error'})
-        return new Error('上传失败') // 图片上传失败直接返回
+        throw new Error('上传失败') // 图片上传失败直接返回
       }
       return rs.fileID 
     } else {
       return false
     }
   } else {
-    return new Error('文件路径错误')
+    throw new Error('文件路径错误')
   }
 }

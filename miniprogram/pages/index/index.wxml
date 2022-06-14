@@ -38,8 +38,8 @@
   <!-- 校内活动列表 -->
   <view class="activity">
     <x-title>
-      <text slot="title">校内活动</text>
-      <text slot="desc">为你推荐热门校内活动</text>
+      <text slot="title">精品活动</text>
+      <text slot="desc">为你推荐热门精品活动</text>
     </x-title>
     <x-activity-list activities="{{activities}}" class="activity-list"></x-activity-list>
   </view>

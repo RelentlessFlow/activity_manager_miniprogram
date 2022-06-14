@@ -5,7 +5,7 @@
   <view class="search-container">
     <view class="nav-back" bindtap="handleBackTap" />
     <x-search class="search" input="{{searchInput}}" bindinputchange="handleSearchInput" placeholder="{{searchPlaceholder}}" />
-  </view> 
+  </view>
   <!-- 顶部按钮组 -->
   <view class="top-group">
     <x-top-button class="top-group-item">
@@ -16,8 +16,8 @@
       </view>
     </x-top-button>
     <x-top-button class="top-group-item">
-      <picker bindchange="handlePickerStatusChange" range="{{status}}" range-key="name" value="{{pickerIndex.status}}" data-id="{{status[pickerIndex.status].id}}">
-          <view class="picker">{{status[pickerIndex.status].name}}</view>
+      <picker bindchange="handlePickerStatusChange" range="{{status}}" value="{{pickerIndex.status}}">
+          <view class="picker">{{status[pickerIndex.status]}}</view>
         </picker>
     </x-top-button>
   </view>
