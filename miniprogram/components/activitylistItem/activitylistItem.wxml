@@ -1,9 +1,9 @@
 <view class="activity-list-item" bindtap="handleTap">
   <view class="activity-list-item-cover">
-    <image src="{{activity.cover}}"></image>
-    <view class="activity-list-item-cover-status">{{activity.status}}</view>
+    <image src="{{activityDate.cover}}"></image>
+    <view class="activity-list-item-cover-status">{{activityDate.status}}</view>
   </view>
-  <view class="activity-list-item-time">{{activity.date.start}} 至 {{item.date.end}}</view>
-  <view class="activity-list-item-name">{{activity.name}}</view>
-  <view class="activity-list-item-type">{{activity.type}}</view>
+  <view class="activity-list-item-time">{{activityDate.startTime}} 至 {{activityDate.endTime}}</view>
+  <view class="activity-list-item-name">{{activityDate.name}}</view>
+  <view class="activity-list-item-type">{{activityDate.type}}</view>
 </view>

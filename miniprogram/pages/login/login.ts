@@ -33,7 +33,6 @@ Page({
   handleTapLoginButton: async function () { // 登录按钮点击逻辑
     const {phone, password} = this.data
     const result = await getUserByPhoneAndPassoword(phone, password)
-    console.log(result)
     if(result.statusCode === 200) {
       app.globalData.currentUser = result.value[0]
       wx.setStorage({

@@ -2,7 +2,7 @@
   "usingComponents": {
     "x-input": "../../components/myInput/myInput",
     "x-textarea": "../../components/mytextarea/mytextarea",
-    "x-safe-footer": "../../components/safeFooter/safeFooter"
+    "date-time": "../../components/dateTimeComponent/dateTimeComponent"
   },
   "navigationStyle": "custom",
   "navigationBarTextStyle": "white"

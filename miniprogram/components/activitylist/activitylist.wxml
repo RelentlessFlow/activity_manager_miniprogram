@@ -1,5 +1,9 @@
 <view class="activity-list">
+
   <block wx:for="{{activities}}" wx:key="id">
     <x-item activity="{{item}}" style="flex: 1;"></x-item>
+  </block>
+  <block wx:if="{{activities.length === 0}}">
+    无
   </block>
 </view>

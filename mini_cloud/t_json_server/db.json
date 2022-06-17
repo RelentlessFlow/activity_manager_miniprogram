@@ -133,8 +133,8 @@
       "cover": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
       "name": "全国大学生金融挑战赛第一季",
       "desc": "全国大学生金融挑战赛由金融信息及数据服务商Wind资讯发起并主办，第一届比赛正在进行中（2015年10-12月）。",
-      "startTime": "2022.01.22",
-      "endTime": "2022.02.17",
+      "startTime": "1642308844",
+      "endTime": "1644987244",
       "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
       "stick": true
     },
@@ -143,16 +143,16 @@
       "cover": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
       "name": "全国大学生金融挑战赛第二季",
       "desc": "全国大学生金融挑战赛由金融信息及数据服务商Wind资讯发起并主办，第二届比赛正在进行中（2016年10-12月）。",
-      "startTime": "2022.04.22",
-      "endTime": "2022.05.17",
+      "startTime": "1647406444",
+      "endTime": "1655355244",
       "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg"
     }
   ],
   "activities": [
     {
-      "name": "读书分享会第五期",
-      "desc": "读书分享会第五期，本期阅读尤里克斯。",
-      "people": "30",
+      "name": "读书分享会第十六期...",
+      "desc": "读书分享会第六期读书分享会第六期读书分享会第六期读书分享会第六期读书分享会第六期读书分享会第六期读书分享会第六期.....",
+      "people": "202",
       "category": {
         "name": "读书分享会",
         "introduce": "读书分享会......",
@@ -160,22 +160,20 @@
         "id": "1001"
       },
       "location": {
-        "address": "辽宁省辽阳市文圣区河东市政府职工之家对面门市22-5室",
-        "latitude": 41.26526,
-        "longitude": 123.236755,
-        "name": "财富中心"
+        "address": "辽宁省辽阳市文圣区新城路9号辽阳市政府",
+        "latitude": 41.268629,
+        "longitude": 123.236368,
+        "name": "辽阳市行政审批局"
       },
       "cover": "../../image/activity-cover.jpg",
-      "startTime": "2022-01-01 00:03",
-      "endTime": "2022-03-01 00:00",
-      "joinStartTime": "2022-01-01 00:00",
-      "joinEndTime": "2022-02-01 00:00",
+      "startTime": 1643644800000,
+      "endTime": 1646064000000,
+      "joinStartTime": 1640966400000,
+      "joinEndTime": 1643644800000,
       "sponsor": {
         "phone": "17692463717",
-        "password": "q200048@",
         "id": 1,
         "name": "苑紫清",
-        "idCard": "21100220000511121X",
         "school": {
           "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
           "name": "河北传媒学院",
@@ -185,15 +183,8 @@
         },
         "major": "信息技术与管理学院",
         "avatar": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/avatar/0Wt7h2IhIaQM3d525961d95cacc74c23f056e5ef4805.jpeg",
-        "nickName": "AI吃辣机器人",
-        "introduce": "AI，AI，AI，AI",
-        "favorite": "吃饭",
-        "nation": "汉族",
-        "location": "河北石家庄",
-        "hometown": "河北石家庄",
-        "birthday": "2000年10月10日"
+        "nickName": "AI吃辣机器人"
       },
-      "status": "准备中",
       "joinTheme": false,
       "school": {
         "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
@@ -205,9 +196,9 @@
       "id": 1
     },
     {
-      "name": "读书分享会第六期",
-      "desc": "读书分享会第六期，重读尤里克斯",
-      "people": "200",
+      "name": "读书分享会第五期",
+      "desc": "读书分享会第五期",
+      "people": "201",
       "category": {
         "name": "读书分享会",
         "introduce": "读书分享会......",
@@ -221,25 +212,24 @@
         "desc": "全国大学生金融挑战赛由金融信息及数据服务商Wind资讯发起并主办，第一届比赛正在进行中（2015年10-12月）。",
         "startTime": "2022.01.22",
         "endTime": "2022.02.17",
-        "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg"
+        "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
+        "stick": true
       },
       "location": {
-        "address": "辽宁省辽阳市文圣区河东路9号河东市民服务中心A座1层大厅",
-        "latitude": 41.268629,
-        "longitude": 123.236368,
-        "name": "辽阳市不动产登记中心"
+        "address": "辽宁省辽阳市文圣区河东市政府职工之家对面门市22-5室",
+        "latitude": 41.26526,
+        "longitude": 123.236755,
+        "name": "财富中心"
       },
       "cover": "../../image/activity-cover.jpg",
-      "startTime": "2022-01-01 00:00",
-      "endTime": "2022-02-01 00:00",
-      "joinStartTime": "2022-01-01 00:00",
-      "joinEndTime": "2022-02-01 00:00",
+      "startTime": 1646064000000,
+      "endTime": 1651334400000,
+      "joinStartTime": 1640966400000,
+      "joinEndTime": 1643644800000,
       "sponsor": {
         "phone": "17692463717",
-        "password": "q200048@",
         "id": 1,
         "name": "苑紫清",
-        "idCard": "21100220000511121X",
         "school": {
           "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
           "name": "河北传媒学院",
@@ -249,15 +239,8 @@
         },
         "major": "信息技术与管理学院",
         "avatar": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/avatar/0Wt7h2IhIaQM3d525961d95cacc74c23f056e5ef4805.jpeg",
-        "nickName": "AI吃辣机器人",
-        "introduce": "AI，AI，AI，AI",
-        "favorite": "吃饭",
-        "nation": "汉族",
-        "location": "河北石家庄",
-        "hometown": "河北石家庄",
-        "birthday": "2000年10月10日"
+        "nickName": "AI吃辣机器人"
       },
-      "status": "准备中",
       "joinTheme": true,
       "school": {
         "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
@@ -269,14 +252,14 @@
       "id": 2
     },
     {
-      "name": "xxxx",
-      "desc": "xxxxxx",
-      "people": "200",
+      "name": "畅享JavaScript",
+      "desc": "读书分享会第五期",
+      "people": "201",
       "category": {
-        "name": "读书分享会",
-        "introduce": "读书分享会......",
-        "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/book.jpg",
-        "id": "1001"
+        "name": "行业技能交流会",
+        "introduce": "行业技能交流会......",
+        "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/business.jpg",
+        "id": "1007"
       },
       "theme": {
         "id": "1001",
@@ -289,22 +272,20 @@
         "stick": true
       },
       "location": {
-        "address": "辽宁省辽阳市文圣区新城路",
-        "latitude": 41.26809,
-        "longitude": 123.23736,
-        "name": "辽阳市政府"
+        "address": "辽宁省辽阳市文圣区河东市政府职工之家对面门市22-5室",
+        "latitude": 41.26526,
+        "longitude": 123.236755,
+        "name": "财富中心"
       },
-      "cover": "../../image/activity-cover.jpg",
-      "startTime": "2022-01-01 00:00",
-      "endTime": "2022-02-01 00:00",
-      "joinStartTime": "2022-02-01 00:00",
-      "joinEndTime": "2022-03-01 00:00",
+      "cover": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/activity-cover/BOa1No0BIkTH3a326ceabd77f26389e1b470694e6463.jpeg",
+      "startTime": 1643644800000,
+      "endTime": 1646064000000,
+      "joinStartTime": 1646064000000,
+      "joinEndTime": 1651334400000,
       "sponsor": {
         "phone": "17692463717",
-        "password": "q200048@",
         "id": 1,
         "name": "苑紫清",
-        "idCard": "21100220000511121X",
         "school": {
           "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
           "name": "河北传媒学院",
@@ -314,15 +295,8 @@
         },
         "major": "信息技术与管理学院",
         "avatar": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/avatar/0Wt7h2IhIaQM3d525961d95cacc74c23f056e5ef4805.jpeg",
-        "nickName": "AI吃辣机器人",
-        "introduce": "AI，AI，AI，AI",
-        "favorite": "吃饭",
-        "nation": "汉族",
-        "location": "河北石家庄",
-        "hometown": "河北石家庄",
-        "birthday": "2000年10月10日"
+        "nickName": "AI吃辣机器人"
       },
-      "status": "报名中",
       "joinTheme": true,
       "school": {
         "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
@@ -332,181 +306,6 @@
         "ban": false
       },
       "id": 3
-    },
-    {
-      "name": "xxxx",
-      "desc": "xxxxxx",
-      "people": "200",
-      "category": {
-        "name": "读书分享会",
-        "introduce": "读书分享会......",
-        "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/book.jpg",
-        "id": "1001"
-      },
-      "theme": {
-        "id": "1001",
-        "cover": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
-        "name": "全国大学生金融挑战赛第一季",
-        "desc": "全国大学生金融挑战赛由金融信息及数据服务商Wind资讯发起并主办，第一届比赛正在进行中（2015年10-12月）。",
-        "startTime": "2022.01.22",
-        "endTime": "2022.02.17",
-        "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
-        "stick": true
-      },
-      "location": {
-        "address": "辽宁省辽阳市文圣区新城路",
-        "latitude": 41.26809,
-        "longitude": 123.23736,
-        "name": "辽阳市政府"
-      },
-      "cover": "../../image/activity-cover.jpg",
-      "startTime": "2022-01-01 00:00",
-      "endTime": "2022-02-01 00:00",
-      "joinStartTime": "2022-02-01 00:00",
-      "joinEndTime": "2022-03-01 00:00",
-      "sponsor": {
-        "phone": "17692463717",
-        "password": "q200048@",
-        "id": 1,
-        "name": "苑紫清",
-        "idCard": "21100220000511121X",
-        "school": {
-          "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
-          "name": "河北传媒学院",
-          "desc": "河北传媒学院是一所传媒艺术特色鲜明、文、理、工、管兼容的应用型全日制普通高等教育本科院校。",
-          "id": 1,
-          "ban": false
-        },
-        "major": "信息技术与管理学院",
-        "avatar": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/avatar/0Wt7h2IhIaQM3d525961d95cacc74c23f056e5ef4805.jpeg",
-        "nickName": "AI吃辣机器人",
-        "introduce": "AI，AI，AI，AI",
-        "favorite": "吃饭",
-        "nation": "汉族",
-        "location": "河北石家庄",
-        "hometown": "河北石家庄",
-        "birthday": "2000年10月10日"
-      },
-      "status": "报名中",
-      "joinTheme": true,
-      "school": {
-        "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
-        "name": "河北传媒学院",
-        "desc": "河北传媒学院是一所传媒艺术特色鲜明、文、理、工、管兼容的应用型全日制普通高等教育本科院校。",
-        "id": 1,
-        "ban": false
-      },
-      "id": 4
-    },
-    {
-      "name": "xxx",
-      "desc": "XXXXXXX",
-      "people": "292",
-      "category": {
-        "name": "读书分享会",
-        "introduce": "读书分享会......",
-        "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/book.jpg",
-        "id": "1001"
-      },
-      "location": {
-        "address": "辽宁省辽阳市文圣区新城路",
-        "latitude": 41.26809,
-        "longitude": 123.23736,
-        "name": "辽阳市政府"
-      },
-      "cover": "../../image/activity-cover.jpg",
-      "startTime": "2022-01-01 00:00",
-      "endTime": "2022-03-01 00:00",
-      "joinStartTime": "2022-01-01 00:00",
-      "joinEndTime": "2022-02-01 00:00",
-      "sponsor": {
-        "phone": "17692463717",
-        "password": "q200048@",
-        "id": 1,
-        "name": "苑紫清",
-        "idCard": "21100220000511121X",
-        "school": {
-          "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
-          "name": "河北传媒学院",
-          "desc": "河北传媒学院是一所传媒艺术特色鲜明、文、理、工、管兼容的应用型全日制普通高等教育本科院校。",
-          "id": 1,
-          "ban": false
-        },
-        "major": "信息技术与管理学院",
-        "avatar": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/avatar/0Wt7h2IhIaQM3d525961d95cacc74c23f056e5ef4805.jpeg",
-        "nickName": "AI吃辣机器人",
-        "introduce": "AI，AI，AI，AI",
-        "favorite": "吃饭",
-        "nation": "汉族",
-        "location": "河北石家庄",
-        "hometown": "河北石家庄",
-        "birthday": "2000年10月10日"
-      },
-      "status": "报名中",
-      "joinTheme": false,
-      "school": {
-        "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
-        "name": "河北传媒学院",
-        "desc": "河北传媒学院是一所传媒艺术特色鲜明、文、理、工、管兼容的应用型全日制普通高等教育本科院校。",
-        "id": 1,
-        "ban": false
-      },
-      "id": 5
-    },
-    {
-      "name": "XXXX2",
-      "desc": "XXXXX2",
-      "people": "222",
-      "category": {
-        "name": "电影分享会/放映会",
-        "introduce": "电影分享会......",
-        "img": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/category/movie.jpg",
-        "id": "1002"
-      },
-      "location": {
-        "address": "辽宁省辽阳市文圣区河东路9号河东市民服务中心A座1层大厅",
-        "latitude": 41.268629,
-        "longitude": 123.236368,
-        "name": "辽阳市不动产登记中心"
-      },
-      "cover": "../../image/activity-cover.jpg",
-      "startTime": "2022-01-01 00:00",
-      "endTime": "2022-02-01 00:00",
-      "joinStartTime": "2022-01-01 00:00",
-      "joinEndTime": "2022-01-04 00:00",
-      "sponsor": {
-        "phone": "17692463717",
-        "password": "q200048@",
-        "id": 1,
-        "name": "苑紫清",
-        "idCard": "21100220000511121X",
-        "school": {
-          "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
-          "name": "河北传媒学院",
-          "desc": "河北传媒学院是一所传媒艺术特色鲜明、文、理、工、管兼容的应用型全日制普通高等教育本科院校。",
-          "id": 1,
-          "ban": false
-        },
-        "major": "信息技术与管理学院",
-        "avatar": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/avatar/0Wt7h2IhIaQM3d525961d95cacc74c23f056e5ef4805.jpeg",
-        "nickName": "AI吃辣机器人",
-        "introduce": "AI，AI，AI，AI",
-        "favorite": "吃饭",
-        "nation": "汉族",
-        "location": "河北石家庄",
-        "hometown": "河北石家庄",
-        "birthday": "2000年10月10日"
-      },
-      "status": "准备中",
-      "joinTheme": false,
-      "school": {
-        "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
-        "name": "河北传媒学院",
-        "desc": "河北传媒学院是一所传媒艺术特色鲜明、文、理、工、管兼容的应用型全日制普通高等教育本科院校。",
-        "id": 1,
-        "ban": false
-      },
-      "id": 6
     }
   ],
   "activityThemeCategory": [
@@ -520,19 +319,15 @@
       "activityId": 2,
       "categoryId": "1001",
       "schoolId": 1,
-      "id": "1001"
+      "themeId": "1001",
+      "id": 2
     },
     {
-      "activityId": 5,
-      "categoryId": "1001",
+      "activityId": 3,
+      "categoryId": "1007",
       "schoolId": 1,
-      "id": "QdxdJkO"
-    },
-    {
-      "activityId": 6,
-      "categoryId": "1002",
-      "schoolId": 1,
-      "id": "8_wxIl3"
+      "themeId": "1001",
+      "id": 3
     }
   ],
   "swiperSlider": [
@@ -553,7 +348,33 @@
       "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/28c13d0d11b38ec17fa5d83bc6ba5912.jpg"
     }
   ],
-  "activityStatus": [ 
-    "准备中","报名中", "活动中", "活动结束"
+  "activityStatus": [
+    "准备中",
+    "报名中",
+    "活动中",
+    "活动结束"
+  ],
+  "activityParticipators": [
+    {
+      "activityId": 1,
+      "participator": {
+        "phone": "17692463717",
+        "id": 1,
+        "name": "苑紫清",
+        "school": {
+          "badge": "https://imgsa.baidu.com/forum/pic/item/11bfa23533fa828b8ca4686dfa1f4134960a5a3e.jpg",
+          "name": "河北传媒学院",
+          "desc": "河北传媒学院是一所传媒艺术特色鲜明、文、理、工、管兼容的应用型全日制普通高等教育本科院校。",
+          "id": 1,
+          "ban": false
+        },
+        "major": "信息技术与管理学院",
+        "avatar": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/avatar/0Wt7h2IhIaQM3d525961d95cacc74c23f056e5ef4805.jpeg",
+        "nickName": "AI吃辣机器人"
+      },
+      "isDispose": true,
+      "dsResult": false,
+      "id": 1
+    }
   ]
 }

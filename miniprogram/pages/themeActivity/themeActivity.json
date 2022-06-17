@@ -1,9 +1,0 @@
-{
-  "usingComponents": {
-    "x-search": "../../components/search/search",
-    "x-activity-list": "../../components/activitylist/activitylist",
-    "x-top-button": "../../components/topButton/topButton",
-    "x-theme-card": "../../components/themeCard/themeCard"
-  },
-  "navigationStyle": "custom"
-}

@@ -1,11 +1,10 @@
 import { IAppOption } from "../../../typings"
-import { Activity, Category, Location, Theme } from "../../../typings/types/data/activity"
-import { User } from "../../../typings/types/data/user"
+import { Activity, Category, Theme } from "../../../typings/types/data/activity"
 import { addActivity } from "../../api/apiActivity"
 import { getCategories } from "../../api/apiCategory"
 import { uploadFast } from "../../api/apiCloudStorage"
 import { getThemes } from "../../api/apiTheme"
-import { paramsValidate } from "../../utils/util"
+import { formatTimeLocal, paramsValidate } from "../../utils/util"
 const app = <IAppOption>getApp()
 Page({
   data: {
@@ -17,25 +16,30 @@ Page({
       location: undefined, // 位置
       cover: '../../image/activity-cover.jpg', // 封面,
       // 日期选择器处理
-      startTime: "", 
-      endTime: "", 
-      joinStartTime: "", 
-      joinEndTime: "", 
+      startTime: undefined, 
+      endTime: undefined, 
+      joinStartTime: undefined, 
+      joinEndTime: undefined, 
       sponsor: undefined, // 发起人
-      status: 0,
       joinTheme: false, // 是否参加主题
     } as Activity,
+    categories: [] as Array<Category>, // 分类类别
+    themes: [{}] as Array<Theme>, // 专题列表
+    pickerIndex: {
+      activity: 0, theme: 0
+    },
+    // 页面
+    opacity: 0, initialDistance: 0, // 处理顶部导航渐变
+    navIndex: 0,
+    // 时间选择器组件
     startTimePlaceholder: "开始时间",
     endTimePlaceholder: "结束时间",
     joinStartTimePlaceholder: "开始时间",
     joinEndTimePlaceholder: "结束时间",
-    categories: [] as Array<Category>, // 分类类别
-    themes: [{}] as Array<Theme>, // 专题列表
-    pickerIndex: {
-      activity: 0, status: 0, theme: 0
-    },
-    opacity: 0, initialDistance: 0, // 处理顶部导航渐变
-    navIndex: 0,
+    startTime: "", 
+    endTime: "", 
+    joinStartTime: "", 
+    joinEndTime: "", 
   },
   // 事件处理
   handleTapCancel: function () { // 返回上一级
@@ -144,16 +148,28 @@ Page({
   },
   // 日期更新时间处理
   handleStartTime: function (e: any) { 
-    const {activity} = this.data; activity.startTime = e.detail.dateTime; this.setData({ activity }) 
+    this.setData({startTime: e.detail.dateTime}) // 先设置组件数据
+    const {activity} = this.data;  // 在设置实体数据
+    activity.startTime = new Date(e.detail.dateTime).valueOf()
+    this.setData({ activity }) 
   },
   handleEndTime: function (e: any) { 
-    const {activity} = this.data; activity.endTime = e.detail.dateTime; this.setData({ activity }) 
+    this.setData({endTime: e.detail.dateTime}) // 先设置组件数据
+    const {activity} = this.data;  // 在设置实体数据
+    activity.endTime = new Date(e.detail.dateTime).valueOf()
+    this.setData({ activity }) 
   },
   handleJoinStartTime: function (e: any) { 
-    const {activity} = this.data; activity.joinStartTime = e.detail.dateTime; this.setData({ activity }) 
+    this.setData({joinStartTime: e.detail.dateTime}) // 先设置组件数据
+    const {activity} = this.data;  // 在设置实体数据
+    activity.joinStartTime = new Date(e.detail.dateTime).valueOf()
+    this.setData({ activity }) 
   },
   handleJoinEndTime: function (e: any) { 
-    const {activity} = this.data; activity.joinEndTime = e.detail.dateTime; this.setData({ activity }) 
+    this.setData({joinEndTime: e.detail.dateTime}) // 先设置组件数据
+    const {activity} = this.data;  // 在设置实体数据
+    activity.joinEndTime = new Date(e.detail.dateTime).valueOf()
+    this.setData({ activity }) 
   },
 
   // 点击存草稿事件处理
@@ -200,14 +216,15 @@ Page({
 
   // 初始化函数部分
   initalDataComponents: function () { // 初始化日期组件
+    const nowDate = formatTimeLocal(new Date())
     const activitStartTime = this.selectComponent("#startTime");
-    activitStartTime?.setTime("2010-01-01 00:00", "2099-12-31 23:59", "2022-01-01 00:00");
+    activitStartTime?.setTime(nowDate, "2099-12-31 23:59", nowDate);
     const activitEndTime = this.selectComponent("#endTime");
-    activitEndTime?.setTime("2010-01-01 00:00", "2099-12-31 23:59", "2022-01-01 00:00");
+    activitEndTime?.setTime(nowDate, "2099-12-31 23:59", nowDate);
     const joinStartTime = this.selectComponent("#joinStartTime");
-    joinStartTime?.setTime("2010-01-01 00:00", "2099-12-31 23:59", "2022-01-01 00:00");
+    joinStartTime?.setTime(nowDate, "2099-12-31 23:59", nowDate);
     const joinEndTime = this.selectComponent("#joinEndTime");
-    joinEndTime?.setTime("2010-01-01 00:00", "2099-12-31 23:59", "2022-01-01 00:00");
+    joinEndTime?.setTime(nowDate, "2099-12-31 23:59", nowDate);
   },
   // 初始化数据
   intailPageDateAjax: async function () {

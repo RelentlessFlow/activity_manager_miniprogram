@@ -34,6 +34,10 @@ export const formatTime = (date: Date) => {
   return `${date.getHours()}:${date.getMinutes()}`
 }
 
+export const formatTimeLocal = (date: Date) => {
+  return formatDate(date) + ' ' + formatTime(date)
+}
+
 export const formatNumber = (n: number) => {
   const s = n.toString()
   return s[1] ? s : '0' + s

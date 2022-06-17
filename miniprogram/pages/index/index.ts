@@ -1,10 +1,12 @@
 // index.ts
 
 import { IAppOption } from "../../../typings"
-import { Category } from "../../../typings/types/data/activity"
+import { Activity, ActivityEntity, Category, Theme } from "../../../typings/types/data/activity"
 import { SwiperSlider } from "../../../typings/types/data/swiperSlider"
+import { getActivities, getActivitiesQuery, getActivitiesQuerySchools } from "../../api/apiActivity"
 import { getCategories } from "../../api/apiCategory"
 import { getSwiperSliders } from "../../api/apiSwiper"
+import { getFirstTheme } from "../../api/apiTheme"
 
 // 获取应用实例
 const app = getApp<IAppOption>()
@@ -19,41 +21,8 @@ Page({
       {id: 4, title: '返家乡', icon: 'https://activity-1257765810.cos.ap-beijing.myqcloud.com/fangzi.png', color:'#bdbdbd'},
     ],
     categories: [] as Array<Category>,
-    theme: {
-      cover: "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
-      title: '全国大学生金融挑战赛',
-      date: {start: "2022.04.22", end: "2022.05.17"},
-      count: "166"
-    },
-    activities: [{
-      id: "1",
-      cover: 'https://activity-1257765810.cos.ap-beijing.myqcloud.com/WX20220508-222713%402x.png',
-      name: '妈，我想你了1妈，我想你了',
-      type: "实践育人",
-      date: { start: "2022.05.09", end: "2022.5.13" },
-      status: "规划中"
-    },{
-      id: "2",
-      cover: 'https://activity-1257765810.cos.ap-beijing.myqcloud.com/WX20220508-222713%402x.png',
-      name: '妈，我想你了2',
-      type: "实践育人",
-      date: { start: "2022.05.09", end: "2022.5.13" },
-      status: "规划中"
-    },{
-      id: "3",
-      cover: 'https://activity-1257765810.cos.ap-beijing.myqcloud.com/WX20220508-222713%402x.png',
-      name: '妈，我想你了3',
-      type: "实践育人",
-      date: { start: "2022.05.09", end: "2022.5.13" },
-      status: "规划中"
-    },{
-      id: "4",
-      cover: 'https://activity-1257765810.cos.ap-beijing.myqcloud.com/WX20220508-222713%402x.png',
-      name: '妈，我想你了4',
-      type: "实践育人",
-      date: { start: "2022.05.09", end: "2022.5.13" },
-      status: "规划中"
-    }],
+    theme: {} as Theme,
+    activities: [] as Array<ActivityEntity>,
     swiperSlider: [] as Array<SwiperSlider>,
   },
   handleSearchInput: function(e:any) {  // 搜索框表单
@@ -70,12 +39,22 @@ Page({
     })
   },
   handleThemeCardTap: function() {
-    wx.navigateTo({
-      url: '../../pages/themeActivity/themeActivity'
-    })
+    wx.navigateTo({url: `../activity/activity?themeId=${this.data.theme.id}`})
   },
   handleSwiperTap: function(e:any) {
     console.log(e.detail)
+  },
+  handleTapCategoryItem: function(e: any) {
+    const index = e.currentTarget.dataset.index
+    wx.navigateTo({url: `../activity/activity?categoryIndex=${index}`})
+  },
+  handleTapQrCode: function() {
+    wx.scanCode({
+      scanType: ["qrCode"],
+      success: function(res) {
+        console.log(res)
+      }
+    })
   },
   verifyUserInfo: function() {
     // 存在登录用户
@@ -100,7 +79,6 @@ Page({
     } else { // 用户未登录
       wx.navigateTo( {url: '../login/login'} )
     }
-    
   },
   intailPageDate: async function () {
     const cateResult = await getCategories() // 分类数据
@@ -111,6 +89,14 @@ Page({
     if(swiperResult.statusCode === 200) {
       this.setData({swiperSlider: swiperResult.value})
     } else {wx.showToast({title: swiperResult.desc}) }
+    const activityResult = await getActivitiesQuerySchools() // 首页活动数据
+    if(activityResult.statusCode === 200) { 
+      this.setData({activities: activityResult.value})
+    } else {wx.showToast({title: swiperResult.desc}) }
+    const themeResult = await getFirstTheme() // 首页专题数据
+    if(themeResult.statusCode === 200) {
+      this.setData({theme: themeResult.value[0]})
+    }
   },
   onLoad() {
   },

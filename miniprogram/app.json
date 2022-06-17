@@ -20,7 +20,6 @@
     "pages/index/index",
     "pages/login/login",
     "pages/register/register",
-    "pages/themeActivity/themeActivity",
     "pages/releaseActivity/releaseActivity",
     "pages/editActivity/editActivity",
     "pages/activity/activity",

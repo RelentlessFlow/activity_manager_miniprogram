@@ -15,12 +15,14 @@
     </x-top-button>
     <x-top-button class="top-group-item">平台精品</x-top-button>
     <x-top-button class="top-group-item">待办</x-top-button>
+    <!-- 二维码扫描 -->
+    <image class="qrcode" src="../../image/qrcode.png" bindtap="handleTapQrCode" />
   </view>
   <x-swiper class="swiper" imgs="{{swiperSlider}}" binditemtap="handleSwiperTap"/><!-- 轮播图 -->
   <!-- 热门分类 -->
   <view class="hot-gourp">
     <block wx:for="{{categories}}" wx:key="id">
-      <view class="hot-gourp-item">
+      <view class="hot-gourp-item" bindtap="handleTapCategoryItem" data-index="{{index}}">
         <view class="hot-gourp-item-icon" style="background-color: {{'#bdbdbd'}};"><image src="{{item.img}}" /></view>
         <view class="hot-gourp-item-desc text-overflow-hidden-two">{{item.name}}</view>
       </view>

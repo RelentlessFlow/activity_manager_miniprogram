@@ -1,37 +1,44 @@
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>
 <!-- 发布活动 -->
 <view class="container">
   <!-- 顶部按钮组 -->
   <view class="button-group" style="background-color: rgba(51, 51, 51, {{opacity}});">
-    <view class="button-group-item cancel" bindtap="handleTapCancel">取消</view>
-    <view class="button-group-item delete">删除</view>
-    <view class="button-group-item publish">修改</view>
+    <view class="button-group-item cancel" bindtap="handleTapCancel">返回</view>
+    <view class="button-group-item del" bindtap="handleTapDel">删除</view>
+    <view class="button-group-item publish" bindtap="handleTapRelase">修改</view>
   </view>
   <!-- 预览 -->
   <view class="preview">
     <view class="preview-shade" />
     <view class="preview-cover" bindtap="handleTapChangeCover">
-      <view class="preview-cover-edit">点击编辑封面</view>
-      <image src="{{cover}}"></image>
+      <view class="preview-cover-edit">
+        <text>点击编辑封面</text>
+
+      </view>
+      <image src="{{activity.cover}}"></image>
       <view class="preview-cover-content">
         <view class="preview-cover-content-cantainer">
-          <view class="preview-cover-content-cantainer-name">{{name?name:'活动标题'}}</view>
+          <view class="preview-cover-content-cantainer-name text-overflow-hidden-one">{{activity.name?activity.name:'活动标题'}}</view>
           <view class="preview-cover-content-cantainer-desc">
             <view class="col">
-              <view class="preview-cover-content-cantainer-left">
-                <image src="../../image/location.png" />{{location.name?location.name:'活动位置'}}
+              <view class="preview-cover-content-cantainer-left text-overflow-hidden-one">
+                <image src="../../image/location.png" />
+                {{activity.location.name?activity.location.name:'活动位置'}}
               </view>
-              <view class="preview-cover-content-cantainer-right">
-                {{category?category:'活动分类'}}
+              <view class="preview-cover-content-cantainer-right text-overflow-hidden-one">
+                {{activity.category?activity.category.name:'活动分类'}}
               </view>
             </view>
           </view>
           <view class="preview-cover-content-cantainer-desc">
             <view class="col">
               <view class="preview-cover-content-cantainer-left">
-                <image src="../../image/clock-fill.png" />{{'活动时间'}}
+                <image src="../../image/clock-fill.png" />活动时间
               </view>
               <view class="preview-cover-content-cantainer-right time">
-                {{time.start.date}}-{{time.start.time}}~{{time.end.date}}-{{time.end.time}}
+                <block wx:if="{{activity.startTime!== '' && activity.endTime!== ''}}">
+                  {{tools.formatTime(activity.startTime)}}{{activity.startTime !== '' ? '~' : ''}} {{tools.formatTime(activity.endTime)}}
+                </block>
               </view>
             </view>
           </view>
@@ -53,10 +60,10 @@
     <view class="input">
       <view class="input-group">
         <view class="input-group-item">
-          <x-input value="{{name}}" bindinputchange="handleNameInputChange" hiddenCount="{{false}}" hiddenLable="{{false}}" placeholder="此处输入活动标题" lable="活动标题" ph-class="ph-class" ph-active-class="ph-active-class" text-class="text-class" />
+          <x-input value="{{activity.name}}" bindinputchange="handleNameInputChange" hiddenCount="{{false}}" hiddenLable="{{false}}" placeholder="此处输入活动标题" lable="活动标题" ph-class="ph-class" ph-active-class="ph-active-class" text-class="text-class" />
         </view>
         <view class="input-group-item">
-          <x-textarea class="input-group-item-area" value="{{desc}}" bindinputchange="handleDescInputChange" hiddenCount="{{false}}" hiddenLable="{{false}}" placeholder="此处输入活动摘要" lable="活动摘要" text-class="text-area-class" input="{{desc}}" maxlength="500" defaultTextAreaHeight="200">
+          <x-textarea class="input-group-item-area" value="{{activity.desc}}" bindinputchange="handleDescInputChange" hiddenCount="{{false}}" hiddenLable="{{false}}" placeholder="此处输入活动摘要" lable="活动摘要" text-class="text-area-class" input="{{activity.desc}}" maxlength="500" defaultTextAreaHeight="200">
           </x-textarea>
         </view>
         <view class="input-group-item">
@@ -70,13 +77,13 @@
           <view class="input-group-item-content">
             <image src="../../image/location_strong.png" /><text class="title">活动地点</text>
             <view class="content" bindtap="handleTapLocSelector">
-              {{location.name ? location.name : '选择位置'}}
+              {{activity.location.name ? activity.location.name : '选择位置'}}
             </view>
             <view class="arrows"> > </view>
           </view>
           <view class="input-group-item-content">
             <image src="../../image/people.png" /><text class="title">活动人数</text>
-            <input class="content input" placeholder="输入人数" maxlength="9" type="number" />
+            <input class="content input" type="number" placeholder="输入人数" value="{{activity.people}}" maxlength="9" type="number" bindinput="hanlePeopleInputChange" />
             <view class="arrows"> > </view>
           </view>
           <!-- 报名时间 -->
@@ -84,65 +91,27 @@
             <view class="row">
               <image src="../../image/clock.png" /><text class="title">活动时间</text>
             </view>
-            <view class="input-group-item-content-pickers">
-              <block wx:if="{{!time.start.date}}">
-                <picker mode="date" value="{{time.start.date}}" bindchange="handleStartDate">
-                  <view class="picker content"> 开始日期{{time.start.date}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-              <block wx:elif="{{time.start.date && !time.start.time}}">
-                <picker mode="time" value="{{time.start.time}}" bindchange="handleStartTime">
-                  <view class="picker content"> 开始时间 {{time.start.time}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-              <block wx:elif="{{time.start.time && !time.end.date}}">
-                <picker mode="date" value="{{time.end.date}}" bindchange="handleEndDate">
-                  <view class="picker content"> 结束日期 {{time.end.date}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-              <block wx:elif="{{time.end.date}}">
-                <picker mode="time" value="{{time.end.time}}" bindchange="handleEndTime">
-                  <view class="picker content"> 结束时间 {{time.end.time}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-            </view>
+            <date-time id="startTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{startTime}}" placeholder="{{startTimePlaceholder}}" binddateTimeChanged="handleStartTime" hidden="{{startTime !== ''}}"> > </date-time>
+            <date-time id="endTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{endTime}}" placeholder="{{endTimePlaceholder}}" binddateTimeChanged="handleEndTime" hidden="{{startTime === '' || endTime !== ''}}"> ></date-time>
+            <view wx:if="{{startTime !== '' && endTime !== ''}}">设定完成</view>
           </view>
           <view class="input-group-item-content input-group-item-content_pickers">
             <view class="row">
               <image src="../../image/signup.png" /><text class="title">报名时间</text>
             </view>
-            <view class="input-group-item-content-pickers">
-              <block wx:if="{{!signTime.start.date}}">
-                <picker mode="date" value="{{signTime.start.date}}" bindchange="handleStartDate">
-                  <view class="picker content"> 开始日期{{signTime.start.date}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-              <block wx:elif="{{signTime.start.date && !signTime.start.time}}">
-                <picker mode="time" value="{{signTime.start.time}}" bindchange="handleStartTime">
-                  <view class="picker content"> 开始时间 {{signTime.start.time}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-              <block wx:elif="{{signTime.start.time && !signTime.end.date}}">
-                <picker mode="date" value="{{signTime.end.date}}" bindchange="handleEndDate">
-                  <view class="picker content"> 结束日期 {{signTime.end.date}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-              <block wx:elif="{{signTime.end.date}}">
-                <picker mode="time" value="{{signTime.end.time}}" bindchange="handleEndTime">
-                  <view class="picker content"> 结束时间 {{signTime.end.time}}<text class="arrows"> > </text></view>
-                </picker>
-              </block>
-            </view>
+            <date-time id="joinStartTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{joinStartTime}}" placeholder="{{joinStartTimePlaceholder}}" binddateTimeChanged="handleJoinStartTime" hidden="{{joinStartTime !== ''}}"> > </date-time>
+            <date-time id="joinEndTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{joinEndTime}}" placeholder="{{joinEndTimePlaceholder}}" binddateTimeChanged="handleJoinEndTime" hidden="{{joinStartTime === '' || joinEndTime !== ''}}"> ></date-time>
+            <view wx:if="{{joinStartTime !== '' && joinEndTime !== ''}}">设定完成</view>
           </view>
           <view class="input-group-item-content">
             <image src="../../image/zhuanti.png" /><text class="title">参加专题</text>
-            <switch checked="{{joinTopic}}" bindchange="handleSwitchTopic" />
+            <switch checked="{{activity.joinTheme}}" bindchange="handleSwitchTheme" />
           </view>
-          <block wx:if="{{joinTopic}}">
+          <block wx:if="{{activity.joinTheme}}">
             <view class="input-group-item-content input-group-item-content_topic">
               <text class="title">选择专题</text>
-              <picker bindchange="handlePickerTopicChange" range="{{topics}}" range-key="name" value="{{pickerIndex.topic}}" data-id="{{topics[pickerIndex.topic].id}}">
-                <view class="picker content">{{topics[pickerIndex.topic].name}}</view>
+              <picker bindchange="handlePickerTopicChange" range="{{themes}}" range-key="name" value="{{pickerIndex.topic}}" data-id="{{themes[pickerIndex.theme].id}}">
+                <view class="picker content">{{themes[pickerIndex.theme].name}}</view>
               </picker>
               <view class="arrows"> > </view>
             </view>
@@ -152,18 +121,18 @@
     </view>
   </block>
 
-<!-- 信息 -->
+  <!-- 信息 -->
   <block wx:if="{{navIndex === 1}}">
     <view class="info">
       <view class="info-title">时间范围</view>
       <view class="info-content">
         <view class="info-content-item">
           <view class="info-content-item-title">报名时间</view>
-          <view class="info-content-item-content">{{!signTime.start.date ? '待填写' : signTime.start.date}} {{signTime.start.time}} {{signTime.end.date ? '-' : ''}} {{signTime.end.date}} {{signTime.end.time}}</view>
+          <view class="info-content-item-content">{{!activity.joinStartTime ? '待填写' : tools.formatTime(activity.joinStartTime)}} {{activity.joinEndTime ? '-' : ''}} {{tools.formatTime(activity.joinEndTime)}}</view>
         </view>
         <view class="info-content-item">
           <view class="info-content-item-title">活动时间</view>
-          <view class="info-content-item-content">{{!time.start.date ? '待填写' : time.start.date}} {{time.start.time}} {{time.end.date ? '-' : ''}} {{time.end.date}} {{time.end.time}}</view>
+          <view class="info-content-item-content">{{!activity.startTime ? '待填写' : tools.formatTime(activity.startTime)}} {{activity.endTime ? '-' : ''}} {{tools.formatTime(activity.endTime)}}</view>
         </view>
       </view>
     </view>
@@ -172,7 +141,7 @@
       <view class="info-content">
         <view class="info-content-item">
           <view class="info-content-item-title">当前活动分类</view>
-          <view class="info-content-item-content">{{category ? category : '待填写'}}</view>
+          <view class="info-content-item-content">{{activity.category.name ? activity.category.name : '待填写'}}</view>
         </view>
       </view>
     </view>
@@ -181,7 +150,7 @@
       <view class="info-content">
         <view class="info-content-item">
           <view class="info-content-item-title">当前活动人数</view>
-          <view class="info-content-item-content">1000</view>
+          <view class="info-content-item-content">{{activity.people ? activity.people : '待填写'}}</view>
         </view>
       </view>
     </view>
@@ -190,11 +159,11 @@
       <view class="info-content">
         <view class="info-content-item">
           <view class="info-content-item-title">是否参与</view>
-          <view class="info-content-item-content">{{topic ? '是' : '否' }}</view>
+          <view class="info-content-item-content">{{activity.joinTheme ? '是' : '否' }}</view>
         </view>
         <view class="info-content-item">
           <view class="info-content-item-title">当前专题活动</view>
-          <view class="info-content-item-content">{{topic ? topic : '不参与专题活动'}}</view>
+          <view class="info-content-item-content">{{activity.theme.name ? activity.theme.name : '不参与专题活动'}}</view>
         </view>
       </view>
     </view>
@@ -203,21 +172,38 @@
   <!-- 人员 -->
   <block wx:if="{{navIndex === 2}}">
     <view class="people">
-      <block wx:for="{{userList}}" wx:key="id">
-        <view class="people-item" data-id="{{item.id}}" data-index="{{index}}" bindtap="{{item.status.type === 1 ? '' : 'handlePeopleDisposeTap'}}">
+      <!-- 负责人 -->
+      <view class="people-item">
         <view class="people-item-left">
-          <image src="{{item.avatar}}"></image>
+          <image src="{{activity.sponsor.avatar}}"></image>
         </view>
         <view class="people-item-middle">
-          <view class="people-item-middle-name">{{item.name}}</view>
-          <view class="people-item-middle-desc">{{item.school}}</view>
+          <view class="people-item-middle-name">{{activity.sponsor.name}}</view>
+          <view class="people-item-middle-desc">{{activity.sponsor.school.name}} - {{activity.sponsor.major}}</view>
         </view>
         <view class="people-item-right">
-          <view class="people-item-right-stamp {{item.status.type === 1 ? 'organize' : ''}} {{item.status.type === 2 ? 'admit' : ''}} {{item.status.type === 3 ? 'pending' : ''}}">{{item.status.name}}</view>
+          <view class="people-item-right-stamp organize">负责人</view>
         </view>
       </view>
+      <!-- 参与列表 -->
+      <block wx:for="{{activityParticipators}}">
+        <view class="people-item" data-item="{{item}}" data-index="{{index}}" bindtap="handleTapDisposeInfo">
+          <view class="people-item-left">
+            <image src="{{item.participator.avatar}}"></image>
+          </view>
+          <view class="people-item-middle">
+            <view class="people-item-middle-name">{{item.participator.name}}</view>
+            <view class="people-item-middle-desc">{{item.participator.school.name}} - {{item.participator.major}}</view>
+          </view>
+          <view class="people-item-right">
+            <view class="people-item-right-stamp {{item.isDispose ? (item.dsResult ? 'admit' : 'reject') : 'pending'}} {{}}">
+              {{item.isDispose ? (item.dsResult ? '已录用' : '已拒绝') : '待处理'}}
+            </view>
+          </view>
+        </view>
       </block>
     </view>
+
   </block>
 
   <block wx:if="{{navIndex === 3}}">

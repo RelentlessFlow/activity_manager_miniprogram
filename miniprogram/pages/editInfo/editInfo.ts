@@ -18,7 +18,6 @@ Page({
       sourceType: ['album', 'camera'],
       success(res) {
         const path = res.tempFilePaths[0]
-        console.log(path)
         const {user} = _this.data
         user.avatar = path
         _this.setData({ user })

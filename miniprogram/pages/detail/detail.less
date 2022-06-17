@@ -143,24 +143,18 @@
     }
   }
 
-  // 编辑
-  .input {
-    display: flex;
-    margin: 0 40rpx;
-    flex-direction: column;
-    .input-group {
-      .input-group-item {
-        margin-top: 50rpx;
-        .ph-class {}
-
-        .ph-active-class {}
-
-        .text-class { // 输入框样式（活动标题）
-          border-bottom: none;
-        }
-        .text-area-class { // 多行输入框样式（活动摘要）
-          border-bottom: none;
-        }
+  // 首页
+  .index {
+    padding: 50rpx;
+    .index-item {
+      margin-bottom: 50rpx;
+      .index-item-title {
+        font-size: 35rpx;
+        font-weight: 550;
+      }
+      .index-item-desc {
+        font-size: 28rpx;
+        margin-top: 30rpx;
       }
     }
   }
@@ -238,6 +232,7 @@
           font-weight: 300;
           color: #ffffff;
           padding: 3rpx 10rpx;
+          background-color: saddlebrown;
           &.organize {
             background-color: #eab146;
           }
@@ -245,7 +240,10 @@
             background-color: #54b43a;
           }
           &.pending {
-            background-color: #7c7c7c;
+            background-color: #8583ff;
+          }
+          &.reject {
+            background-color: #ff6d6d;
           }
         }
       }

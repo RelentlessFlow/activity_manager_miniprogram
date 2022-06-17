@@ -9,7 +9,7 @@ Component({
     maxlength: { type: String, value: "40" },
     hiddenCount: {type: Boolean, value: true }, // 隐藏字数统计
     hiddenLable: {type: Boolean, value: true}, // 隐藏输入提示
-    disable: {type: Boolean, value: false}, // 禁用输入框
+    disabled: {type: Boolean, value: false}, // 禁用输入框
   },
   data: {inputFucused: false, inputLength: 0},
   observers: {

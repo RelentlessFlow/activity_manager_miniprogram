@@ -31,11 +31,9 @@
       width: auto;
     }
 
-    .delete {
-      color: #ffffff;
-      border: .1rpx solid rgb(255, 79, 79);
+    .del {
       margin-left: 150rpx;
-      background-color: rgba(136, 136, 136, 0.616);
+      color: #ffffff;
     }
 
     .publish {
@@ -172,7 +170,10 @@
           .title {flex: 1; font-weight: 550;}
           .content {font-size: 26rpx;}
           .arrows {margin-left: 10rpx;}
-          .input {width: 135rpx;}
+          .input {
+            text-align: right; flex: 1;
+            margin-right: 0;
+          }
           
         }
         .input-group-item-content_pickers {
@@ -266,6 +267,7 @@
           font-weight: 300;
           color: #ffffff;
           padding: 3rpx 10rpx;
+          background-color: saddlebrown;
           &.organize {
             background-color: #eab146;
           }
@@ -273,11 +275,14 @@
             background-color: #54b43a;
           }
           &.pending {
-            background-color: #7c7c7c;
-            text-align: center;
+            background-color: #8583ff;
+          }
+          &.reject {
+            background-color: #ff6d6d;
           }
         }
       }
+
     }
   }
 

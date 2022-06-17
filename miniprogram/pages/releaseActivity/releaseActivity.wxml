@@ -35,8 +35,8 @@
                 <image src="../../image/clock-fill.png" />活动时间
               </view>
               <view class="preview-cover-content-cantainer-right time">
-                <block wx:if="{{activity.startTime!== '' && activity.endTime!== ''}}">
-                  {{activity.startTime}}{{activity.startTime !== '' ? '~' : ''}} {{activity.endTime}}
+                <block wx:if="{{startTime!== '' && endTime!== ''}}">
+                  {{startTime}}{{startTime !== '' ? '~' : ''}} {{endTime}}
                 </block>
               </view>
             </view>
@@ -90,17 +90,17 @@
             <view class="row">
               <image src="../../image/clock.png" /><text class="title">活动时间</text>
             </view>
-            <date-time id="startTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{activity.startTime}}" placeholder="{{startTimePlaceholder}}" binddateTimeChanged="handleStartTime" hidden="{{activity.startTime !== ''}}"> > </date-time>
-            <date-time id="endTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{activity.endTime}}" placeholder="{{endTimePlaceholder}}" binddateTimeChanged="handleEndTime" hidden="{{activity.startTime === '' || activity.endTime !== ''}}"> ></date-time>
-            <view wx:if="{{activity.startTime !== '' && activity.endTime !== ''}}">设定完成</view>
+            <date-time id="startTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{startTime}}" placeholder="{{startTimePlaceholder}}" binddateTimeChanged="handleStartTime" hidden="{{startTime !== ''}}"> > </date-time>
+            <date-time id="endTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{endTime}}" placeholder="{{endTimePlaceholder}}" binddateTimeChanged="handleEndTime" hidden="{{startTime === '' || endTime !== ''}}"> ></date-time>
+            <view wx:if="{{startTime !== '' && endTime !== ''}}">设定完成</view>
           </view>
           <view class="input-group-item-content input-group-item-content_pickers">
             <view class="row">
               <image src="../../image/signup.png" /><text class="title">报名时间</text>
             </view>
-            <date-time id="joinStartTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{activity.joinStartTime}}" placeholder="{{joinStartTimePlaceholder}}" binddateTimeChanged="handleJoinStartTime" hidden="{{activity.joinStartTime !== ''}}"> > </date-time>
-            <date-time id="joinEndTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{activity.joinEndTime}}" placeholder="{{joinEndTimePlaceholder}}" binddateTimeChanged="handleJoinEndTime" hidden="{{activity.joinStartTime === '' || activity.joinEndTime !== ''}}"> ></date-time>
-            <view wx:if="{{activity.joinStartTime !== '' && activity.joinEndTime !== ''}}">设定完成</view>
+            <date-time id="joinStartTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{joinStartTime}}" placeholder="{{joinStartTimePlaceholder}}" binddateTimeChanged="handleJoinStartTime" hidden="{{joinStartTime !== ''}}"> > </date-time>
+            <date-time id="joinEndTime" mode="time" format="YYYY-MM-DD hh:mm" text="{{joinEndTime}}" placeholder="{{joinEndTimePlaceholder}}" binddateTimeChanged="handleJoinEndTime" hidden="{{joinStartTime === '' || joinEndTime !== ''}}"> ></date-time>
+            <view wx:if="{{joinStartTime !== '' && joinEndTime !== ''}}">设定完成</view>
           </view>
           <view class="input-group-item-content">
             <image src="../../image/zhuanti.png" /><text class="title">参加专题</text>
@@ -127,11 +127,11 @@
       <view class="info-content">
         <view class="info-content-item">
           <view class="info-content-item-title">报名时间</view>
-          <view class="info-content-item-content">{{!activity.joinStartTime ? '待填写' : activity.joinStartTime}}  {{activity.joinEndTime ? '-' : ''}} {{activity.joinEndTime}}</view>
+          <view class="info-content-item-content">{{!joinStartTime ? '待填写' : joinStartTime}}  {{joinEndTime ? '-' : ''}} {{joinEndTime}}</view>
         </view>
         <view class="info-content-item">
           <view class="info-content-item-title">活动时间</view>
-          <view class="info-content-item-content">{{!activity.startTime ? '待填写' : activity.startTime}}  {{activity.endTime ? '-' : ''}} {{activity.endTime}}</view>
+          <view class="info-content-item-content">{{!startTime ? '待填写' : startTime}}  {{endTime ? '-' : ''}} {{endTime}}</view>
         </view>
       </view>
     </view>
@@ -177,7 +177,7 @@
         </view>
         <view class="people-item-middle">
           <view class="people-item-middle-name">{{activity.sponsor.name}}</view>
-          <view class="people-item-middle-desc">{{activity.sponsor.school}} - {{activity.sponsor.major}}</view>
+          <view class="people-item-middle-desc">{{activity.sponsor.school.name}} - {{activity.sponsor.major}}</view>
         </view>
         <view class="people-item-right">
           <view class="people-item-right-stamp organize">负责人</view>

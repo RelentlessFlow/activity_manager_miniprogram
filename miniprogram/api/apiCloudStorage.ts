@@ -5,7 +5,6 @@ export const uploadCloud = (location: string, target: string) => {
       filePath: location, // 小程序临时文件路径
       success: res => {
         // 返回文件 ID
-        console.log(res.fileID)
         resolve(res)
       },
       fail: () => {reject(new Error('上传文件失败'))}
