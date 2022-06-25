@@ -146,5 +146,66 @@ export const putParticipators = async (id: string, dispose: boolean) => {
       reject(pResult)
     }
   })
-
 }
+//扫码签到
+export const changeCodeState = async (activityId: string) =>{
+  const activityResult = await getActivity(activityId)
+  console.log(activityResult)
+  if(activityResult.statusCode===200){//查询活动是否存在
+    // console.log("有活动")
+    // console.log(`开始时间${activityResult.value.startTime}`)
+    // console.log(`结束时间${activityResult.value.endTime}`)
+    // const startTime =activityResult.value.startTime ? activityResult.value.startTime :0
+    // const endTime =activityResult.value.endTime ? activityResult.value.endTime :0
+    const startTime = Number(new Date('2020-02-22 03:25:02'))
+    const endTime =Number(new Date('2051-02-22 03:25:02'))
+    let now = Number(new Date())
+    if(startTime==0&&endTime==0){//查看是否在活动时间
+      wx.showToast({
+        title: '错误',
+        icon: 'error',
+        duration: 2000
+      })
+    }else if(now>=startTime&&now<=endTime){
+      const getUser = app.globalData.currentUser
+      console.log(`用户id${getUser?.id}`)
+      console.log(`成员id${activityResult.value.sponsor?.id}`)
+      console.log("时间内")
+      if(getUser?.id===activityResult.value.sponsor?.id){//查看是否参加活动
+        if(activityResult.value.sponsor?.id!==undefined){
+          const pResult = await getParticipator(activityResult.value.sponsor?.id)
+          pResult.value.singIn=true
+          const putResult = putAysnc<ActivityParticipator>(`${rootUrl}/activityParticipators/${activityResult.value.sponsor?.id}`, pResult.value)
+        }
+        console.log("签到成功")
+      }else{
+        wx.showToast({
+          title: '该用户未参加活动',
+          icon: 'error',
+          duration: 2000
+        })
+      }
+    }else if(now<startTime){
+      wx.showToast({
+        title: '活动未开始',
+        icon: 'error',
+        duration: 2000
+      })
+    }else if(now>endTime){
+      wx.showToast({
+        title: '活动已结束',
+        icon: 'error',
+        duration: 2000
+      })
+    }
+    console.log(now)
+  }else if(activityResult.statusCode!==200){
+    wx.showToast({
+      title: '该活动不存在',
+      icon: 'error',
+      duration: 5000
+    })
+  }
+}
+
+

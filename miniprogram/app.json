@@ -9,6 +9,7 @@
     }
   },
   "pages": [
+    
     "pages/guide/guide",
     "pages/userSettingPages/nameSetting/nameSetting",
     "pages/userSettingPages/idCardSetting/idCardSetting",
@@ -20,6 +21,7 @@
     "pages/register/register",
     "pages/releaseActivity/releaseActivity",
     "pages/editActivity/editActivity",
+    "pages/code/code",
     "pages/activity/activity",
     "pages/detail/detail",
     "pages/my/my",

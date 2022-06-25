@@ -3,7 +3,7 @@
 import { IAppOption } from "../../../typings"
 import { Activity, ActivityEntity, Category, Theme } from "../../../typings/types/data/activity"
 import { SwiperSlider } from "../../../typings/types/data/swiperSlider"
-import { getActivities, getActivitiesQuery, getActivitiesQuerySchools } from "../../api/apiActivity"
+import { getActivities, getActivitiesQuery, getActivitiesQuerySchools ,changeCodeState} from "../../api/apiActivity"
 import { getCategories } from "../../api/apiCategory"
 import { getSwiperSliders } from "../../api/apiSwiper"
 import { getFirstTheme } from "../../api/apiTheme"
@@ -49,7 +49,12 @@ Page({
     wx.scanCode({
       scanType: ["qrCode"],
       success: function(res) {
-        console.log(res)
+        console.log(res.result)
+        changeCodeState(res.result);
+        // 1. 去库activities里面找这个活动是否存在
+        // 2. 如果存在，接着走，不存在，告诉他活动不存在。return
+        // 3. 判断活动开始和结束时间，如果当前时间在这个范围之内，接着走，否则wx.showToast,wx.showModxxx，告诉他活动已经技术
+        // 4. activityParticipators，通过用户id和活动id找到这条数据，直接通过put请求更改singIn为true
       }
     })
   },

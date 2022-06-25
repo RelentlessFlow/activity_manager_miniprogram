@@ -167,6 +167,15 @@
         </view>
       </view>
     </view>
+    <view class="info">
+      <view class="info-title">签到</view>
+      <view class="info-content">
+        <view class="info-content-item">
+          <view class="info-content-item-title">签到二维码</view>
+          <view class="info-content-item-content"><image src="../../image/code.png" bindtap="gotocode"/></view>
+        </view>
+      </view>
+    </view>
   </block>
 
   <!-- 人员 -->
@@ -198,6 +207,11 @@
           <view class="people-item-right">
             <view class="people-item-right-stamp {{item.isDispose ? (item.dsResult ? 'admit' : 'reject') : 'pending'}} {{}}">
               {{item.isDispose ? (item.dsResult ? '已录用' : '已拒绝') : '待处理'}}
+            </view>
+          </view>
+          <view class="people-item-right">
+            <view class="people-item-right-stamp {{item.singIn ? '已签到' : '未签到'}} {{}}" >
+              {{item.singIn ? '已签到' : '未签到'}}
             </view>
           </view>
         </view>
