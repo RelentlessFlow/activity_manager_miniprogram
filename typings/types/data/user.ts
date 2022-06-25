@@ -13,7 +13,8 @@ export type User = {
   major: string | undefined,
   nation: string | undefined,
   location: string | undefined,
-  hometown: string | undefined
+  hometown: string | undefined,
+  roles: ["platform" | "school"]
 }
 
 export type School = {

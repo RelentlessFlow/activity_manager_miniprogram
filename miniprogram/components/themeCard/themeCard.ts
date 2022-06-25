@@ -12,25 +12,17 @@ Component({
       value: {} as Theme
     }
   },
-  data: {
-    themeDate: {} as Theme
+  data: {},
+  methods: {
+    handleTap: function() {
+      wx.navigateTo({url: `../activity/activity?themeId=${this.data.theme.id}`})
+    }
   },
-  methods: {},
   lifetimes: {  
     attached: function() {
       
     }
   },
   pageLifetimes: {
-    show: function() {
-      const theme = this.properties.theme as Theme
-      const pp = JSON.parse(JSON.stringify(this.properties)) 
-      for(let k in theme) {
-        if(k === 'startTime' || k === 'endTime') {
-          theme[k] = formatDateTime(new Date(theme[k]))
-        }
-      }
-      this.setData({themeDate: theme})
-    }
   }
 })

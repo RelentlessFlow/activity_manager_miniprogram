@@ -1,3 +1,4 @@
+<wxs module="tools" src="../../utils/tools.wxs"></wxs>
 <view class="container">
   <view class="user">
     <view class="user-top">
@@ -14,6 +15,9 @@
           <view class="user-content-top-right-info" bindtap="handleTapInfoEdit">
             编辑资料
           </view>
+          <view class="user-content-top-right-info" bindtap="handleTapToAdmin" wx:if="{{user.roles.length > 0}}">
+            管理端
+          </view>
         </view>
       </view>
       <view class="user-content-info">
@@ -21,33 +25,26 @@
         <view class="user-content-info-desc">{{user.school.name}}{{user.major}}在读</view>
       </view>
       <view class="user-content-info user-content-info_activity">
-        <view class="user-content-info-item"><text class="strong">2</text>我组织</view>
-        <view class="user-content-info-item"><text class="strong">20</text>我参与</view>
-        <view class="user-content-info-item"><text class="strong">1</text>正在进行</view>
-        <view class="user-content-info-item"><text class="strong">21</text>已结束</view>
+        <view bindtap="handleTapFilter" data-type="Organize" class="user-content-info-item {{filter === 'Organize' ? 'active' : ''}}"><text class="strong">2</text>我组织</view>
+        <view bindtap="handleTapFilter" data-type="Participate" class="user-content-info-item {{filter === 'Participate' ? 'active' : ''}}"><text class="strong">20</text>我参与</view>
+        <view bindtap="handleTapFilter" data-type="Progress" class="user-content-info-item {{filter === 'Progress' ? 'active' : ''}}"><text class="strong">1</text>正在进行</view>
+        <view bindtap="handleTapFilter" data-type="Finish" class="user-content-info-item {{filter === 'Finish' ? 'active' : ''}}"><text class="strong">21</text>已结束</view>
       </view>
     </view>
   </view>
 
   <view class="activity">
+  <block wx:for="{{activities}}" wx:key="id">
     <view class="activity-item">
       <view class="activity-item-left">
-        <text class="activity-item-left-text">12月21日 \n <text class="small">参与了</text></text>
+        <text class="activity-item-left-text">{{tools.formatYearChinese(item.joinStartTime)}} \n {{tools.formatMonthDayChinese(item.joinStartTime)}} \n <text class="small">{{item.organize ? '组织了' : '参与了'}} </text></text>
         <view class="activity-item-left-circle"/>
       </view>
       <veiw class="activity-item-right">
-        <x-activity-item></x-activity-item>
+        <x-activity-item activity="{{item}}"></x-activity-item>
       </veiw>
     </view>
-    <view class="activity-item">
-      <view class="activity-item-left">
-        <text class="activity-item-left-text">12月21日 \n <text class="small">参与了</text></text>
-        <view class="activity-item-left-circle"/>
-      </view>
-      <veiw class="activity-item-right">
-        <x-activity-item></x-activity-item>
-      </veiw>
-    </view>
+  </block>
   </view>
 
 

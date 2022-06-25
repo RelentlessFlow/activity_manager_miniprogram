@@ -1,13 +1,12 @@
 import { IAppOption } from "../../typings"
 import { Activity, ActivityEntity, ActivityParticipator, ActivityThemeCategory, Category, UserInfo } from "../../typings/types/data/activity"
-import { User } from "../../typings/types/data/user"
 import { ApiResult, getAysnc, postAysnc, putAysnc, rootUrl } from "./common"
 const app = getApp<IAppOption>()
 
 // 添加活动信息
 export const addActivity = async (activity: Activity) => {
-  return new Promise<ApiResult<ActivityEntity | Array<ActivityEntity | ActivityThemeCategory>>>(async (resolve, reject) => {
-    const acResult = await postAysnc<Activity>(`${rootUrl}/activities`, activity)
+  return new Promise<ApiResult<ActivityEntity | [ActivityEntity, ActivityThemeCategory]>>(async (resolve, reject) => {
+    const acResult = await postAysnc<ActivityEntity>(`${rootUrl}/activities`, activity)
     const { statusCode: acStatusCode, value: acValue, } = acResult
     if (acStatusCode === 201) {
       const { id: activityId, category: { id: categoryId }, school: { id: schoolId }, theme } = acValue as ActivityEntity
@@ -30,8 +29,8 @@ export const addActivity = async (activity: Activity) => {
 
 // 修改活动信息
 export const putActivity = async (activity: Activity) => {
-  return new Promise<ApiResult<Array<ActivityEntity> | Array<Array<ActivityEntity | ActivityThemeCategory> | ActivityThemeCategory>>>(async (resolve, reject) => {
-    const acResult = await postAysnc<Activity>(`${rootUrl}/activities`, activity)
+  return new Promise<ApiResult< ActivityEntity | [ActivityEntity,ActivityThemeCategory] >>(async (resolve, reject) => {
+    const acResult = await postAysnc<ActivityEntity>(`${rootUrl}/activities`, activity)
     const { statusCode: acStatusCode, value: acValue, } = acResult
     if (acStatusCode === 200) {
       const { id: activityId, category: { id: categoryId }, school: { id: schoolId }, theme } = acValue as ActivityEntity
@@ -55,8 +54,8 @@ export const putActivity = async (activity: Activity) => {
 }
 
 // 获取全部活动信息
-export const getActivities = () => {
-  return getAysnc<Array<Activity>>(`${rootUrl}/activities`)
+export const getActivities = (q = [] as Array<Object>) => {
+  return getAysnc<Array<ActivityEntity>>(`${rootUrl}/activities`, q)
 }
 
 // 查询活动信息查询参数
@@ -64,10 +63,11 @@ export type ActivitiesQuery = {
   activityId?: string
   categoryId?: string,
   schoolId?: string,
-  themeId?: string
+  themeId?: string,
+  "sponsor.id"?: string,
 }
 
-// 查询活动信息（带查询）
+// 查询活动信息（带查询）(外键查询)
 export const getActivitiesQuery = async (q = [] as Array<ActivitiesQuery>) => {
   return new Promise<ApiResult<Array<ActivityEntity>>>(async (resolve, reject) => {
     const actResult = await getAysnc<Array<ActivityThemeCategory>>(`${rootUrl}/activityThemeCategory`, q)
@@ -86,7 +86,6 @@ export const getActivitiesQuery = async (q = [] as Array<ActivitiesQuery>) => {
       reject(actResult)
     }
   })
-
 }
 
 // 获取本校活动信息
@@ -97,29 +96,31 @@ export const getActivitiesQuerySchools = async (q = [] as Array<ActivitiesQuery>
 
 // ID获取单个活动信息
 export const getActivity = (id: string) => {
-  return getAysnc<Array<Activity>>(`${rootUrl}/activities/${id}`)
+  return getAysnc<Activity>(`${rootUrl}/activities/${id}`)
 }
 
 // 添加参与者信息
 export const addParticipator = (activityId: string, participator: UserInfo) => {
   const obj = { activityId, participator, isDispose: false, dsResult: false } as ActivityParticipator
-  return postAysnc(`${rootUrl}/activityParticipators`, obj)
+  return postAysnc<ActivityParticipator>(`${rootUrl}/activityParticipators`, obj)
 }
 
 // 通过用户ID查找参与者信息
-export const getParticipatorsByUserId = (userId: string, activityId: string) => {
-  return getAysnc<Array<ActivityParticipator>>(`${rootUrl}/activityParticipators?participator.id=${userId}&activityId=${activityId}`)
+export const getParticipatorsByUserId = (userId: string, activityId?: string) => {
+  const query = {userId}
+  if(activityId !== undefined) { Object.assign({activityId}) }
+  return getAysnc<Array<ActivityParticipator>>(`${rootUrl}/activityParticipators`, query)
 }
 
-// // 通过用户ID查找用户参与过的全部活动与活动信息。
-// export const getParticipatorsAndActivitiesByUserId = (userId: string, activityId: string) => {
-//   return new Promise<ApiResult>(async (resolve, reject) => {
-//     const ppResult: <ApiResult> ActivityParticipator = await getParticipatorsByUserId(userId, activityId)
-//     if (ppResult.statusCode !== 200) { reject(ppResult) }
-
-//   })
-
-// }
+// 通过用户ID查找用户参与过的全部活动与活动信息。
+export const getParticipatorsAndActivitiesByUserId = (userId: string) => {
+  return new Promise<ApiResult<Array<ActivityEntity>>>(async (resolve, reject) => {
+    const ppResult: ApiResult<Array<ActivityParticipator>> = await getParticipatorsByUserId(userId)
+    if (ppResult.statusCode !== 200) { reject(ppResult) }
+    const query = ppResult.value.map(item => {return {id: item.activityId}})
+    resolve(await getAysnc<Array<ActivityEntity>>(`${rootUrl}/activities`, query))
+  })
+}
 
 // 通过活动ID查找啊参与者信息
 export const getParticipatorsByActivityId = (activityId: string) => {
@@ -128,7 +129,7 @@ export const getParticipatorsByActivityId = (activityId: string) => {
 
 // ID定位到参与者信息（单个）
 export const getParticipator = (id: string) => {
-  return getAysnc<Array<ActivityParticipator>>(`${rootUrl}/activityParticipators/${id}`)
+  return getAysnc<ActivityParticipator>(`${rootUrl}/activityParticipators/${id}`)
 }
 
 // 修改参与者信息
@@ -136,7 +137,7 @@ export const putParticipators = async (id: string, dispose: boolean) => {
   return new Promise<ApiResult<ActivityParticipator>>(async (resolve, reject) => {
     const pResult = await getParticipator(id)
     if (pResult.statusCode === 200 && pResult.value.id != undefined) {
-      const pObj = pResult.value as ActivityParticipator
+      const pObj = pResult.value
       pObj.dsResult = dispose
       pObj.isDispose = true
       const putResult = putAysnc<ActivityParticipator>(`${rootUrl}/activityParticipators/${id}`, pObj)

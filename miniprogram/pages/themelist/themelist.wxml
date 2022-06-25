@@ -1,0 +1,14 @@
+<view class="container">
+  <view class="top">
+    <view class="content flex column align-center">
+      <view class="content-title">平台专题</view>
+      <view class="content-desc text-overflow-hidden-two">平台专题汇聚平台所有精品活动，每个活动都别具风采，希望您在这里玩的愉快，踊跃参与。</view>
+    </view>
+    <view class="background">
+      <image class="image" src="../../image/team.png"/>
+    </view>
+  </view>
+  <view class="main flex justify-center align-center column" wx:for="{{themes}}">
+    <x-theme-card theme="{{item}}" class="theme"/>
+  </view>
+</view>

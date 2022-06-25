@@ -1,4 +1,4 @@
-export type ApiResult<T> = { value: T | any, status: boolean, desc: string, statusCode: number }
+export type ApiResult<T> = { value: T, status: boolean, desc: string, statusCode: number }
 export const getAysnc = <T>(url: string, query?: Object | Array<Object>) => {
   if (query != undefined) {
     // 拼接查询语句
@@ -25,7 +25,7 @@ export const getAysnc = <T>(url: string, query?: Object | Array<Object>) => {
       url, header: { 'content-type': 'application/json' },
       success(res) {
         if (res.statusCode === 200 || res.statusCode === 201) {
-          resolve({ value: res.data, status: true, desc: '成功', statusCode: res.statusCode } as ApiResult<T>)
+          resolve({ value: res.data as T, status: true, desc: '成功', statusCode: res.statusCode } as ApiResult<T>)
         }
         if (res.statusCode === 400 || res.statusCode === 404) {
           resolve({ value: res.data, status: false, desc: '请求资源无效', statusCode: res.statusCode } as ApiResult<T>)

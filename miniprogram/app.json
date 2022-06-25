@@ -10,8 +10,6 @@
   },
   "pages": [
     "pages/guide/guide",
-    "pages/manager/platform/platform",
-    "pages/manager/platformaddschool/platformaddschool",
     "pages/userSettingPages/nameSetting/nameSetting",
     "pages/userSettingPages/idCardSetting/idCardSetting",
     "pages/userSettingPages/schoolSetting/schoolSetting",
@@ -25,10 +23,8 @@
     "pages/activity/activity",
     "pages/detail/detail",
     "pages/my/my",
-    
     "pages/manager/index/index",
-    "pages/manager/school/school"
-
+    "pages/themelist/themelist"
   ],
   "tabBar": {
     "color": "#cccccc",
@@ -50,8 +46,8 @@
       {
         "selectedIconPath": "image/square_fill.png",
         "iconPath": "image/square_line.png",
-        "pagePath": "pages/manager/index/index",
-        "text": "管理"
+        "pagePath": "pages/themelist/themelist",
+        "text": "专题"
       }
     ]
   },

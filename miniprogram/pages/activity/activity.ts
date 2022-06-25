@@ -1,12 +1,14 @@
+import { IAppOption } from "../../../typings"
 import { ActivityEntity, Category, Theme } from "../../../typings/types/data/activity"
-import { ActivitiesQuery, getActivities, getActivitiesQuerySchools } from "../../api/apiActivity"
+import { ActivitiesQuery, getActivities, getActivitiesQuery, getActivitiesQuerySchools } from "../../api/apiActivity"
 import { getCategories } from "../../api/apiCategory"
 import { getThemes } from "../../api/apiTheme"
-
+const app = <IAppOption>getApp()
 // pages/activity/activity.ts
 Page({
   data: {
     searchInput: '', searchPlaceholder: 'Search',
+    searchInitalData: [] as Array<ActivityEntity>,
     activities: [] as Array<ActivityEntity>,
     categories: [] as Array<Category>,   //活动分类 
     themes: [] as Array<Theme>,
@@ -26,7 +28,23 @@ Page({
     wx.navigateBack()
   },
   handleSearchInput: function (e: any) {  // 搜索表单输入逻辑
-    this.setData({ searchInput: e.detail })
+    this.setData({ searchInput: e.detail },async () => {
+      const {searchInput, activities, searchInitalData} = this.data
+      if(searchInput !== '') { // 输入有东西
+        // 第一次输入把结果存一下做个缓存，防止重复请求
+        if(searchInitalData.length === 0) { this.setData({searchInitalData: activities}) }
+        // 这里该做个节流...但是不太会...
+        const rs = await getActivities([{name: searchInput}, {"school.name": app.globalData.currentUser?.school?.name}])
+        if(rs.statusCode !== 200) {
+          wx.showToast({title: "网络请求失败", icon: "error"})
+          return
+        }
+        this.setData({activities: rs.value})
+      }
+      if(searchInput === '') { // 输入值为空
+        this.setData({activities: searchInitalData})
+      }
+    })
   },
   handlePickerActivityChange: function (e: any) { // 活动分类选择器逻辑
     this.setCategoryData(e.detail.value, this.getActivitiesData)

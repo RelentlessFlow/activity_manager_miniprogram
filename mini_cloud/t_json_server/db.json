@@ -21,7 +21,8 @@
       "nation": "汉族",
       "location": "河北石家庄",
       "hometown": "河北石家庄",
-      "birthday": "2000年10月10日"
+      "birthday": "2000年10月10日",
+      "roles": ["platform","school"]
     }
   ],
   "schools": [
@@ -133,8 +134,8 @@
       "cover": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
       "name": "全国大学生金融挑战赛第一季",
       "desc": "全国大学生金融挑战赛由金融信息及数据服务商Wind资讯发起并主办，第一届比赛正在进行中（2015年10-12月）。",
-      "startTime": "1642308844",
-      "endTime": "1644987244",
+      "startTime": 1643644800000,
+      "endTime": 1646064000000,
       "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
       "stick": true
     },
@@ -143,8 +144,8 @@
       "cover": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg",
       "name": "全国大学生金融挑战赛第二季",
       "desc": "全国大学生金融挑战赛由金融信息及数据服务商Wind资讯发起并主办，第二届比赛正在进行中（2016年10-12月）。",
-      "startTime": "1647406444",
-      "endTime": "1655355244",
+      "startTime": 1643644800000,
+      "endTime": 1646064000000,
       "img": "https://activity-1257765810.cos.ap-beijing.myqcloud.com/2fd26bb99b723337a2f8eaba84f7d5bb.jpg"
     }
   ],
@@ -373,7 +374,7 @@
         "nickName": "AI吃辣机器人"
       },
       "isDispose": true,
-      "dsResult": false,
+      "dsResult": true,
       "id": 1
     }
   ]

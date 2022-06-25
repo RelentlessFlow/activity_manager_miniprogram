@@ -29,7 +29,7 @@
     </block>
   </view>
   <!-- 平台专题 -->
-  <view class="theme" bindtap="handleThemeCardTap">
+  <view class="theme">
     <view class="dividing_line"/>
     <x-title>
       <text slot="title">平台专题</text>

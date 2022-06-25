@@ -1,11 +1,27 @@
-// pages/manager/school/school.ts
+import { Theme } from "../../../typings/types/data/activity";
+import { getThemes } from "../../api/apiTheme";
+
+// pages/themelist/themelist.ts
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    themes: [] as Array<Theme>
+  },
 
+  initailPage: function() {
+    this.getThemesDate()
+  },
+
+  getThemesDate: async function() {
+    const themsResult = await getThemes()
+    if(themsResult.statusCode != 200) {
+      wx.showToast({title: '网络请求错误', icon: 'error'})
+      return
+    }
+    this.setData({themes: themsResult.value})
   },
 
   /**
@@ -19,7 +35,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    this.initailPage()
   },
 
   /**
@@ -47,7 +63,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
   },
 
   /**

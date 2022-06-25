@@ -58,8 +58,8 @@ export type Theme = {
   id: string | undefined,
   name: string,
   desc: string,
-  startTime: Date | number,
-  endTime: Date | number,
+  startTime: number,
+  endTime: number,
   img: String,
   stick?: boolean
 }
@@ -73,6 +73,7 @@ export type Location = {
 
 // 负责一对多关联
 export type ActivityThemeCategory = {
+  id?: string
   activityId: string,
   themeId?: string | undefined | null,
   categoryId: string,

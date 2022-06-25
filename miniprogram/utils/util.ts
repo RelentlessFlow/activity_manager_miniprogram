@@ -98,7 +98,7 @@ export function throttle(fn: Function, delay = 500){
   return () =>{
       if(timer) return
       timer = setTimeout(()=>{
-          fn.apply(this, arguments)
+           fn.apply(this, arguments)
           timer = null
       }, delay)
   }

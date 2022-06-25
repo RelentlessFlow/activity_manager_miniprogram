@@ -1,18 +1,22 @@
-// pages/square/square.ts
+import { IAppOption } from "../../../../typings"
+import { User } from "../../../../typings/types/data/user"
+
+const app = <IAppOption>getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    platform: false,
+    school: false
   },
 
   handleTapToPlatform: function() {
-    wx.navigateTo({url: '../platform/platform'})
+    console.log('handleTapToPlatform')
   },
   handleTapToSchool: function() {
-    wx.navigateTo({url: '../school/school'})
+    console.log('handleTapToSchool')
   },
   /**
    * 生命周期函数--监听页面加载
@@ -25,7 +29,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    const user = app.globalData.currentUser
+    if(user === null) {
+      wx.showToast({ title: '用户不存在' })
+      return
+    }
+    for(let k of user.roles) {
+      if(k === "platform") {
+        this.setData({platform: true})
+      }
+      if(k === "school") {
+        this.setData({school: true})
+      }
+    }
   },
 
   /**

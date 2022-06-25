@@ -38,9 +38,6 @@ Page({
       url: '../../pages/releaseActivity/releaseActivity'
     })
   },
-  handleThemeCardTap: function() {
-    wx.navigateTo({url: `../activity/activity?themeId=${this.data.theme.id}`})
-  },
   handleSwiperTap: function(e:any) {
     console.log(e.detail)
   },

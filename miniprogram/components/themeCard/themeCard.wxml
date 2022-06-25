@@ -1,11 +1,11 @@
 <wxs module="tools" src="../../utils/tools.wxs"></wxs>
-<view class="theme-card">
+<view class="theme-card" bindtap="handleTap">
   <view class="theme-card-img">
     <image src="{{theme.cover}}" />
   </view>
   <view class="theme-card-content">
     <view class="theme-card-content-title">{{theme.name}}</view>
-    <view class="theme-card-content-time">专题事件：{{tools.formatTime(theme.startTime)}} 至 {{tools.formatTime(theme.endTime)}}</view>
-    <view class="theme-card-content-count text-overflow-hidden-one">{{theme.desc}}</view>
+    <view class="theme-card-content-time">{{tools.formatTime(theme.startTime)}} 至 {{tools.formatTime(theme.endTime)}}</view>
+    <view class="theme-card-content-count text-overflow-hidden-two">{{theme.desc}}</view>
   </view>
 </view>

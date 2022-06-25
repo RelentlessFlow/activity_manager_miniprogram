@@ -6,13 +6,48 @@ function formatTime(timestamp) {
   var date = getDate(newTimeStamp);//时间戳为10位需*1000
   var Y = date.getFullYear() + '-';
   var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-  var D = date.getDate() + ' ';
-  var h = date.getHours() + ':';
-  var m = date.getMinutes() + ':';
-  var s = date.getSeconds();
-  return Y + M + D + h + m + s;
+  var D = (date.getDate() < 10 ? '0' : '') + date.getDate() + ' ';
+  var h = (date.getHours() < 10 ? '0' : '') + date.getHours() + ':';
+  var m = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+  return Y + M + D + h + m;
+}
+
+function formatDate(timestamp) {
+  var newTimeStamp = timestamp
+  if(newTimeStamp <= 1000000000) {
+    newTimeStamp *= 1000
+  }
+  var date = getDate(newTimeStamp);//时间戳为10位需*1000
+  var Y = date.getFullYear() + '-';
+  var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+  var D = (date.getDate() < 10 ? '0' : '') + date.getDate() + ' ';
+  return Y + M + D;
+}
+
+function formatMonthDayChinese(timestamp) {
+  var newTimeStamp = timestamp
+  if(newTimeStamp <= 1000000000) {
+    newTimeStamp *= 1000
+  }
+  var date = getDate(newTimeStamp);//时间戳为10位需*1000
+  var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '月';
+  var D = (date.getDate() < 10 ? '0' : '') + date.getDate() + ' ';
+  return M + D;
+}
+
+function formatYearChinese(timestamp) {
+  var newTimeStamp = timestamp
+  if(newTimeStamp <= 1000000000) {
+    newTimeStamp *= 1000
+  }
+  var date = getDate(newTimeStamp);//时间戳为10位需*1000
+  var Y = date.getFullYear() + '年';
+  return Y
 }
 
 module.exports = {
-  formatTime:formatTime
+  formatTime:formatTime,
+  formatDate:formatDate,
+  formatMonthDayChinese:formatMonthDayChinese,
+  formatYearChinese:formatYearChinese
 }

@@ -1,9 +1,0 @@
-{
-  "usingComponents": {
-    "x-search": "../../../components/search/search",
-    "x-list": "../components/list/list"
-  },
-  "navigationBarTitleText": "校享空间管理后台",
-  "navigationBarBackgroundColor": "#f0f1f3",
-  "backgroundColor": "#f0f1f3"
-}
