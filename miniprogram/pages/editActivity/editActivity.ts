@@ -7,6 +7,7 @@ import { formatTimeLocal, paramsValidate } from "../../utils/util"
 Page({
   data: {
     activity: {
+      id:undefined,
       name: undefined, desc: undefined,
       people: undefined, // 人数
       category: undefined, // 分类
@@ -297,5 +298,12 @@ Page({
   onPageScroll(e) {
     const opacity = e.scrollTop / this.data.initialDistance * 2
     if (opacity >= 0) { this.setData({ opacity }) }
+  },
+  gotocode:function(){
+    const id =this.data.activity.id
+    console.log(this.data.activity.id)
+    wx.navigateTo({
+      url: '../code/code?id='+id
+    })
   }
 })

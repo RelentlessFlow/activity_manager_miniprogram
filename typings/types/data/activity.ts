@@ -82,6 +82,7 @@ export type ActivityThemeCategory = {
 
 export type ActivityParticipator = {
   activityId: string,
+  singIn:boolean,
   participator: UserInfo,
   isDispose: boolean,
   dsResult: boolean,

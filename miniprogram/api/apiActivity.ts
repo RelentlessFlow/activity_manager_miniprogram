@@ -29,7 +29,7 @@ export const addActivity = async (activity: Activity) => {
 
 // 修改活动信息
 export const putActivity = async (activity: Activity) => {
-  return new Promise<ApiResult< ActivityEntity | [ActivityEntity,ActivityThemeCategory] >>(async (resolve, reject) => {
+  return new Promise<ApiResult<ActivityEntity | [ActivityEntity, ActivityThemeCategory]>>(async (resolve, reject) => {
     const acResult = await postAysnc<ActivityEntity>(`${rootUrl}/activities`, activity)
     const { statusCode: acStatusCode, value: acValue, } = acResult
     if (acStatusCode === 200) {
@@ -107,8 +107,8 @@ export const addParticipator = (activityId: string, participator: UserInfo) => {
 
 // 通过用户ID查找参与者信息
 export const getParticipatorsByUserId = (userId: string, activityId?: string) => {
-  const query = {userId}
-  if(activityId !== undefined) { Object.assign({activityId}) }
+  const query = { userId }
+  if (activityId !== undefined) { Object.assign({ activityId }) }
   return getAysnc<Array<ActivityParticipator>>(`${rootUrl}/activityParticipators`, query)
 }
 
@@ -117,7 +117,7 @@ export const getParticipatorsAndActivitiesByUserId = (userId: string) => {
   return new Promise<ApiResult<Array<ActivityEntity>>>(async (resolve, reject) => {
     const ppResult: ApiResult<Array<ActivityParticipator>> = await getParticipatorsByUserId(userId)
     if (ppResult.statusCode !== 200) { reject(ppResult) }
-    const query = ppResult.value.map(item => {return {id: item.activityId}})
+    const query = ppResult.value.map(item => { return { id: item.activityId } })
     resolve(await getAysnc<Array<ActivityEntity>>(`${rootUrl}/activities`, query))
   })
 }
@@ -146,5 +146,31 @@ export const putParticipators = async (id: string, dispose: boolean) => {
       reject(pResult)
     }
   })
-
+}
+//扫码签到
+export const putSignInSatus = async (activityId: string, userId: string) => {
+  return new Promise<ApiResult<ActivityParticipator>>((async (resolve, reject) => {
+    const activityResult = await getActivity(activityId)
+    if (activityResult.statusCode !== 200) {
+      reject({ statusCode: 500, status: false, desc: "参数异常", value: {} } as ApiResult<ActivityParticipator>)
+      return
+    }
+    const { startTime, endTime } = activityResult.value
+    if (typeof startTime !== "number" || typeof endTime !== "number") {
+      reject({ statusCode: 500, status: false, desc: "参数异常", value: {} } as ApiResult<ActivityParticipator>)
+      return
+    }
+    const nowTimeStamp = new Date().valueOf()
+    if (nowTimeStamp <= startTime || nowTimeStamp >= endTime) {
+      resolve({ statusCode: 200, status: true, desc: "活动已结束", value: {} } as ApiResult<ActivityParticipator>)
+    }
+    const apResult = await getAysnc<Array<ActivityParticipator>>(`${rootUrl}/activityParticipators?activityId=${activityId}&participator.id=${userId}`)
+    if (apResult.statusCode !== 200 || apResult.value.length < 1) {
+      resolve({ statusCode: 200, status: false, desc: "参数错误", value: {} } as ApiResult<ActivityParticipator>)
+    }
+    const putObj = apResult.value[0]
+    putObj.singIn = true
+    return putAysnc(`${rootUrl}/activityParticipators/${putObj.id}`, putObj)
+  }
+  ))
 }

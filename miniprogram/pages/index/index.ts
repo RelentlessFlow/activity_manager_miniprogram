@@ -3,7 +3,7 @@
 import { IAppOption } from "../../../typings"
 import { Activity, ActivityEntity, Category, Theme } from "../../../typings/types/data/activity"
 import { SwiperSlider } from "../../../typings/types/data/swiperSlider"
-import { getActivities, getActivitiesQuery, getActivitiesQuerySchools } from "../../api/apiActivity"
+import { getActivities, getActivitiesQuery, getActivitiesQuerySchools ,changeCodeState, putSignInSatus} from "../../api/apiActivity"
 import { getCategories } from "../../api/apiCategory"
 import { getSwiperSliders } from "../../api/apiSwiper"
 import { getFirstTheme } from "../../api/apiTheme"
@@ -48,8 +48,15 @@ Page({
   handleTapQrCode: function() {
     wx.scanCode({
       scanType: ["qrCode"],
-      success: function(res) {
-        console.log(res)
+      success: async function(res) {       
+        const user = app.globalData.currentUser
+        if(user === null || user.id === undefined) { return }
+        const rs = await putSignInSatus(res.result, user.id)
+        if(rs.statusCode !== 200) {
+          wx.showModal({title: "网络请求失败，签到失败", showCancel: false})
+          return
+        }
+        wx.showToast({title: "签到成功", icon: "success"})
       }
     })
   },

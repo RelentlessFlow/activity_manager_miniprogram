@@ -22,7 +22,10 @@
       "location": "河北石家庄",
       "hometown": "河北石家庄",
       "birthday": "2000年10月10日",
-      "roles": ["platform","school"]
+      "roles": [
+        "platform",
+        "school"
+      ]
     }
   ],
   "schools": [
@@ -358,6 +361,7 @@
   "activityParticipators": [
     {
       "activityId": 1,
+      "singIn": true,
       "participator": {
         "phone": "17692463717",
         "id": 1,
@@ -373,7 +377,7 @@
         "avatar": "cloud://cloud1-3gsztpuzcaddc2ec.636c-cloud1-3gsztpuzcaddc2ec-1309917799/avatar/0Wt7h2IhIaQM3d525961d95cacc74c23f056e5ef4805.jpeg",
         "nickName": "AI吃辣机器人"
       },
-      "isDispose": true,
+      "isDispose": false,
       "dsResult": true,
       "id": 1
     }
